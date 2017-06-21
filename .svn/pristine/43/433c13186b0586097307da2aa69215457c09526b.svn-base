@@ -1,0 +1,565 @@
+<!--<style>-->
+    <!--/*  table中的checkbox垂直居中样式修改  */-->
+    <!--.layui-table .layui-form-checkbox[lay-skin=primary] {-->
+        <!--margin-top: 0;-->
+    <!--}-->
+    <!--/* 查看学校的弹层样式 */-->
+    <!--.check-school-show{-->
+        <!--border: 1px solid #f4f7f8;-->
+        <!--width: 90%;-->
+        <!--margin: 20px auto;-->
+    <!--}-->
+    <!--.check-school-show ul{-->
+        <!--padding: 0 0 20px 20px;-->
+    <!--}-->
+    <!--.check-school-show li{-->
+        <!--width: 96%;-->
+        <!--padding-left: 10px;-->
+        <!--line-height: 40px;-->
+        <!--background-color: #f4f7f8;-->
+        <!--color: #535353;-->
+        <!--font-size: 14px;-->
+        <!--margin-right: 20px;-->
+        <!--margin-top: 10px;-->
+    <!--}-->
+
+
+    <!--.larry-personal-body {-->
+        <!--padding: 20px;-->
+    <!--}-->
+
+    <!--.larry-personal-body > form {-->
+        <!--margin-right: 40px;-->
+    <!--}-->
+
+<!--</style>-->
+<style>
+    .layui-input-block{margin-left: 0px; min-height: 0px;}
+    .layui-tab-card>.layui-tab-title { background-color: #ffffff; }
+    .layui-tab-content {  padding-top:0px;  }
+    .layui-layer-content{padding: 20px;}
+</style>
+
+<div class="detailsTitle">
+    <div class="oneTitle">新建项目</div>
+    <div class="partingLine"></div>
+
+    <div class="layui-tab-content"></div>
+</div>
+<div id="projectEdit">
+    <div class="layui-collapse" lay-accordion >
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title data-colla-title">基本信息</h2>
+            <div class="layui-colla-content layui-show">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>项目名称:</div>
+                        <div class="layui-input-inline">
+                            <input type="text" name="projectName" required lay-verify="required" placeholder="请输入项目名称"
+                                   autocomplete="off" class="layui-input" id="projectName" style="width: 320px;" >
+                        </div>
+                    </div>
+
+
+                    <!--<div class="layui-form-item">-->
+                        <!--<div class="twoTitle"><i></i>项目时间:</div>-->
+                        <!--<div class="layui-input-inline">-->
+                            <!--<input name="starttime" required lay-verify="required"  class="layui-input" placeholder="开始日" id="starttime">-->
+                        <!--</div>-->
+                        <!--<div class="layui-input-inline">-->
+                            <!--<input name="endtime" required lay-verify="required"  class="layui-input" placeholder="截止日" id="endtime">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>项目时间:</div>
+                        <div class="layui-inline">
+                            <div class="dataInputBox dataDateBox">
+                                <p class="dataInputHeader"></p>
+                                <div class=" fl">
+                                    <input name="starttime" type="text" required  lay-verify="required"  autocomplete="off" placeholder="请选择开始日期" id="starttime" class="layui-input dataInput dataDateInput ">
+                                </div>
+                            </div>
+                            <span class="time-link">--</span>
+                            <div class="dataInputBox">
+                                <p class="dataInputHeader"></p>
+                                <div class="fl">
+                                    <input type="text" name="endtime" required lay-verify="required" autocomplete="off" placeholder="请选择截止日期" id="endtime" class="layui-input dataInput dataDateInput">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>项目概述:</div>
+
+                        <div class="">
+                            <textarea placeholder="请输入项目描述" required lay-verify="required"  class="layui-textarea" id="projectRemark"></textarea>
+                            <!--<input type="text" name="title" required lay-verify="required" placeholder="请输入项目描述"-->
+                            <!--autocomplete="off" class="layui-input">-->
+                        </div>
+                    </div>
+                    <div style="text-align: center">
+                        <button class="layui-btn mt3 mr10" lay-submit="" lay-filter="projectSave" >保存项目</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="tac mt30">-->
+    <!--<button class="layui-btn layui-btn-normal layui-btn-radius" id="projectSave">保存项目</button>-->
+    <!--</div>-->
+</div>
+<div id="projectDisplay" style="display:none;">
+    <div class="layui-collapse" lay-accordion >
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title data-colla-title">基本信息</h2>
+            <div class="layui-colla-content layui-show">
+                <div style="text-align: right;">
+                    <div class="layui-btn-group">
+                        <button class="layui-btn layui-btn-small" id="showProjectEdit">
+                            <i class="layui-icon">&#xe642;</i>
+                        </button>
+                    </div>
+                </div>
+                <form class="" action="">
+                    <div>
+                        <label class="layui-form-label">项目名称:</label>
+                        <div class="layui-field-box" id="projectNameDis">
+
+                        </div>
+                    </div>
+                    <div>
+
+                        <label class="layui-form-label">项目时间:</label>
+                        <div class="layui-field-box" id="projectTimeDis">
+
+                        </div>
+                    </div>
+                    <div>
+                        <label class="layui-form-label">项目概述:</label>
+                        <div class="layui-field-box" id="projectRemarkDis">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tac  pt30 pb30 bgc_f4">
+    <button class="layui-btn ww100" id="addTask">
+        <i class="layui-icon">&#xe608;</i> 添加任务
+    </button>
+</div>
+
+<div id="taskLists" style="display: block">
+</div>
+
+<!-- 任务模板 begin -->
+<div  class="task taskEdit" id="taskEditTemplate" style="display:none;">
+    <div class="layui-collapse" lay-accordion>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title data-colla-title">
+                <div class="taskName">学生任务</div>
+                <!--<button class="layui-btn layui-btn-danger layui-btn-radius clearTask" style="float: right;margin-top: 5px;">删除任务</button>-->
+            </h2>
+            <div class="layui-colla-content layui-block layui-show">
+                <div style="text-align: right;">
+                    <div class="layui-btn-group">
+                        <button class="layui-btn layui-btn-small clearTask">
+                            <i class="layui-icon">&#xe640;</i>
+                        </button>
+                    </div>
+                </div>
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>适用对象</div>
+                        <div class="layui-input-inline">
+                            <select name="quesTarget" lay-verify="required" lay-filter="quesTarget">
+                                <option value="学生">学生</option>
+                                <option value="家长">家长</option>
+                                <option value="教师">教师</option>
+                                <option value="校长">校长</option>
+                                <option value="资料管理员">资料管理员</option>
+                            </select>
+                            <!--<input type="checkbox" title="全选" lay-skin="primary"  id="targetCheckAll"
+                                   lay-filter="targetCheckAll">
+                            <input type="checkbox" name="quesTarget" title="学生" lay-skin="primary"  value="学生" lay-filter="quesTarget">
+                            <input type="checkbox" name="quesTarget" title="家长" lay-skin="primary"  value="家长" lay-filter="quesTarget">
+                            <input type="checkbox" name="quesTarget" title="教师" lay-skin="primary"  value="教师" lay-filter="quesTarget">
+                            <input type="checkbox" name="quesTarget" title="校长" lay-skin="primary"  value="校长" lay-filter="quesTarget">
+                            <input type="checkbox" name="quesTarget" title="资料管理员" lay-skin="primary"  value="资料管理员" lay-filter="quesTarget">-->
+                            <!--<a class="layui-btn" lay-submit="" lay-filter="demo1" id="testbtn">查询</a>-->
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>适用学段</div>
+                        <div class="layui-input-block">
+                            <input type="checkbox" title="全选" lay-skin="primary"  id="gradeCheckAll"
+                                   lay-filter="gradeCheckAll" checked>
+                            <input type="checkbox" name="quesGrade" title="幼儿园" lay-skin="primary"  value="幼儿园" lay-filter="quesGrade" checked>
+                            <input type="checkbox" name="quesGrade" title="小学" lay-skin="primary"  value="小学" lay-filter="quesGrade" checked>
+                            <input type="checkbox" name="quesGrade" title="初中" lay-skin="primary"  value="初中" lay-filter="quesGrade" checked>
+                            <input type="checkbox" name="quesGrade" title="高中" lay-skin="primary"  value="高中" lay-filter="quesGrade" checked>
+                            <input type="checkbox" name="quesGrade" title="职高" lay-skin="primary"  value="职高" lay-filter="quesGrade" checked>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>适用年级</div>
+                        <div class="layui-input-block">
+                            <input type="checkbox" title="全选" lay-skin="primary"  id="yearCheckAll"
+                                   lay-filter="yearCheckAll">
+                            <input type="checkbox" name="quesYear" title="一年级 " lay-skin="primary"  value="1 " lay-filter="quesYear" data-belong="小学">
+                            <input type="checkbox" name="quesYear" title="二年级 " lay-skin="primary"  value="2 " lay-filter="quesYear" data-belong="小学">
+                            <input type="checkbox" name="quesYear" title="三年级 " lay-skin="primary"  value="3 " lay-filter="quesYear" data-belong="小学">
+                            <input type="checkbox" name="quesYear" title="四年级 " lay-skin="primary"  value="4 " lay-filter="quesYear" data-belong="小学">
+                            <input type="checkbox" name="quesYear" title="五年级 " lay-skin="primary"  value="5 " lay-filter="quesYear" data-belong="小学">
+                            <input type="checkbox" name="quesYear" title="六年级 " lay-skin="primary"  value="6 " lay-filter="quesYear" data-belong="小学">
+                            <input type="checkbox" name="quesYear" title="七年级 " lay-skin="primary"  value="7 " lay-filter="quesYear" data-belong="初中">
+                            <input type="checkbox" name="quesYear" title="八年级 " lay-skin="primary"  value="8 " lay-filter="quesYear" data-belong="初中">
+                            <input type="checkbox" name="quesYear" title="九年级 " lay-skin="primary"  value="9 " lay-filter="quesYear" data-belong="初中">
+                            <input type="checkbox" name="quesYear" title="高一 " lay-skin="primary"  value="10 " lay-filter="quesYear" data-belong="高中">
+                            <input type="checkbox" name="quesYear" title="高二 " lay-skin="primary"  value="11 " lay-filter="quesYear" data-belong="高中">
+                            <input type="checkbox" name="quesYear" title="高三 " lay-skin="primary"  value="12 " lay-filter="quesYear" data-belong="高中">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>调研方式</div>
+                        <div class="">
+                            <div class="layui-tab layui-tab-card">
+                                <ul class="layui-tab-title data-tab-title ">
+                                    <li class="layui-this"><i></i>问卷</li>
+                                    <li><i></i>资料</li>
+                                    <li><i></i>量表</li>
+                                </ul>
+                                <div class="layui-tab-content" >
+                                    <div class="layui-tab-item layui-show">
+                                        <div class="">
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="50">
+                                                    <!--<col width=3%>-->
+                                                    <!--<col width="97%">-->
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th><input name="" lay-skin="primary" lay-filter="questionnaireCheckAll" type="checkbox">
+                                                    </th>
+                                                    <th>问卷名称</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="quesTbody">
+                                                <!--<tr>
+                                                    <td><input name="quesQuestionnaire" lay-skin="primary" type="checkbox" lay-filter="quesQuestionnaire"></td>
+                                                    <td>顺义区</td>
+                                                    <td><a class="layui-btn layui-btn-normal layui-btn-radius" >预览</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input name="quesQuestionnaire" lay-skin="primary" type="checkbox" lay-filter="quesQuestionnaire"></td>
+                                                    <td>海淀区</td>
+                                                    <td><a class="layui-btn layui-btn-normal layui-btn-radius" >预览</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input name="quesQuestionnaire" lay-skin="primary" type="checkbox" lay-filter="quesQuestionnaire"></td>
+                                                    <td>昌平区</td>
+                                                    <td><a class="layui-btn layui-btn-normal layui-btn-radius" >预览</a></td>
+                                                </tr>-->
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="layui-tab-item">
+                                        <div class="">
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="50">
+                                                    <!--<col width=3%>-->
+                                                    <!--<col width="97%">-->
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th><input name="" lay-skin="primary" lay-filter="attachmentCheckAll" type="checkbox">
+                                                    </th>
+                                                    <th>资料名称</th>
+                                                    <th>所属类别</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="attachmentTbody">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="layui-tab-item">
+                                        <div class="">
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="50">
+                                                    <!--<col width=3%>-->
+                                                    <!--<col width="97%">-->
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th><input name="" lay-skin="primary" lay-filter="scaleCheckAll" type="checkbox">
+                                                    </th>
+                                                    <th>量表名称</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="scaleTbody">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>选择学校</div>
+                        <div class="">
+                            <!--<button class="layui-btn layui-btn-normal layui-btn-radius" id="addSchool">添加学校</button>-->
+                            <a class="layui-btn layui-btn-normal " id="addSchool">添加学校</a>
+
+                            <div style="margin-top: 20px;">
+                                <table class="layui-table"><thead><tr><th>教管中心</th><th>学校</th><th>操作</th></tr></thead><tbody class="schoolCheckedTbody"></tbody></table>
+                                <!--<table class="layui-table">-->
+                                <!--<thead>-->
+                                <!--<tr><th>教管中心</th><th>学校</th><th>操作</th></tr>-->
+                                <!--</thead>-->
+                                <!--<tbody >-->
+                                <!--<tr><td>教管中心</td><td>学校</td><td><div class="layui-btn-group"> <a class="layui-btn">查看</a><a class="layui-btn">删除</a></div></td></tr>-->
+                                <!--<tr><td>教管中心</td><td>学校</td><td><a class="layui-btn"><i class="layui-icon">&#xe640;</i> 删除</a></td></tr>-->
+                                <!--<tr><td>教管中心</td><td>学校</td><td><a class="layui-btn"><i class="layui-icon">&#xe640;</i> 删除</a></td></tr>-->
+                                <!--</tbody>-->
+                                <!--</table>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center">
+                        <!--<button class="layui-btn mt3 mr10" lay-submit="" lay-filter="taskSave" >保存任务</button>-->
+                        <a class="layui-btn mt3 mr10 taskSave" lay-filter="taskSave" >保存任务</a>
+                        <a class="layui-btn mt3 mr10 cancelUpdate" lay-filter="cancelUpdate" >取消修改</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div  class="task taskDis" id="taskDisplayTemplate" style="display:none;">
+    <div class="layui-collapse" lay-accordion>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title data-colla-title">
+                <div class="taskName">学生任务</div>
+            </h2>
+            <div class="layui-colla-content layui-block layui-show">
+                <div style="text-align: right;">
+                    <div class="layui-btn-group">
+                        <button class="layui-btn layui-btn-small showTaskEdit">
+                            <i class="layui-icon">&#xe642;</i>
+                        </button>
+                        <button class="layui-btn layui-btn-small clearTask">
+                            <i class="layui-icon">&#xe640;</i>
+                        </button>
+                    </div>
+                </div>
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>适用对象</div>
+                        <div class="layui-field-box quesTargetDis" >
+
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>适用学段</div>
+
+                        <div class="layui-field-box quesGradeDis" >
+
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>适用年级</div>
+
+                        <div class="layui-field-box quesYearDis">
+
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>调研方式</div>
+
+                        <div class="">
+                            <div class="layui-tab layui-tab-card">
+                                <ul class="layui-tab-title data-tab-title">
+                                    <li class="layui-this"><i></i>问卷</li>
+                                    <li><i></i>资料</li>
+                                    <li><i></i>量表</li>
+                                </ul>
+                                <div class="layui-tab-content" >
+                                    <div class="layui-tab-item layui-show">
+                                        <table class="layui-table">
+                                            <thead>
+                                            <tr>
+                                                <th>问卷名称</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="quesTbody">
+                                            <tr>
+                                                <td>顺义区</td>
+                                                <td><a class="layui-btn layui-btn-normal layui-btn-radius" >预览</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>海淀区</td>
+                                                <td><a class="layui-btn layui-btn-normal layui-btn-radius" >预览</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>昌平区</td>
+                                                <td><a class="layui-btn layui-btn-normal layui-btn-radius" >预览</a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="layui-tab-item">
+                                        <table class="layui-table">
+                                            <thead>
+                                            <tr>
+                                                <th>资料名称</th>
+                                                <th>所属类别</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="attachmentTbody">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="layui-tab-item">
+                                        <table class="layui-table">
+                                            <thead>
+                                            <tr>
+                                                <th>量表名称</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="scaleTbody">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="twoTitle"><i></i>选择学校</div>
+
+                        <div class="">
+                            <!--<button class="layui-btn layui-btn-normal layui-btn-radius" id="addSchool">添加学校</button>-->
+                            <table class="layui-table"><thead><tr><th>教管中心</th><th>学校</th><th>操作</th></tr></thead><tbody class="schoolCheckedTbody"></tbody></table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 任务模板 end -->
+
+
+<!--弹出添加学校-->
+<div id="addSchoolModal" style="display:none;">
+    <div class="larry-personal-body">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">任务学段</label>
+                <div class="layui-field-box" id="schoolModalGrade">
+                    内容区域
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">教育局</label>
+                <div class="layui-field-box" >
+                    大方县教育局
+                </div>
+                <!--<a class="layui-btn layui-btn-normal layui-btn-radius" id="getSchool">查询学校</a>-->
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">教管中心</label>
+                <div class="layui-input-block">
+                    <div class="layui-form">
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="50">
+                                <col width="500">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><input name="" lay-skin="primary" lay-filter="organCheckAll" type="checkbox"></th>
+                                <th>全选</th>
+                            </tr>
+                            </thead>
+                            <tbody id="organTbody">
+                            <tr>
+                                <td><input name="quesEdu" lay-skin="primary" type="checkbox" lay-filter="organ" data-organid="001"></td>
+                                <td>顺义区</td>
+                            </tr>
+                            <tr>
+                                <td><input name="quesEdu" lay-skin="primary" type="checkbox"  lay-filter="organ" data-organid="002"></td>
+                                <td>海淀区</td>
+                            </tr>
+                            <tr>
+                                <td><input name="quesEdu" lay-skin="primary" type="checkbox"  lay-filter="organ" data-organid="003"></td>
+                                <td>昌平区</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">学校名称</label>
+                <div class="layui-input-block">
+                    <div class="layui-field-box" >请先勾选教管中心</div>
+                    <div class="layui-form" id="schoolTableWrapper" style="display:none;">
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="50">
+                                <col width="500">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><input name="" lay-skin="primary" lay-filter="schoolCheckAll" type="checkbox"></th>
+                                <th>全选</th>
+                            </tr>
+                            </thead>
+                            <tbody id="schoolTbody">
+                            <!--<tr>
+                                <td><input name="quesSchool" lay-skin="primary" type="checkbox"  lay-filter="quesSchool" ></td>
+                                <td>一小学</td>
+                            </tr>
+                            <tr>
+                                <td><input name="quesSchool" lay-skin="primary" type="checkbox" lay-filter="quesSchool" ></td>
+                                <td>顺义区体育卫生发展情况学生调查问卷</td>
+                            </tr>
+                            <tr>
+                                <td><input name="quesSchool" lay-skin="primary" type="checkbox" lay-filter="quesSchool" ></td>
+                                <td>顺义区体育卫生发展情况学生调查问卷</td>
+                            </tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+

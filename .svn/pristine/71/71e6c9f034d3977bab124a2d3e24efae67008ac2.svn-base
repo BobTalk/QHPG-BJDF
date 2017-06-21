@@ -1,0 +1,123 @@
+<div class="layui-form-item">
+    <div class="crumbs">
+        <a href="#scheduleProject" id="sch_pro" name="sch_pro">进度查看</a><span></span>
+        <a href="" style="display: none;" id="sch_bur" name="sch_bur" class="crumbs_bur">教官中心进度</a><span style="display: none;" class="crumbs_bur"></span>
+        <a href="" style="display: none;" id="sch_sch_list" name="sch_sch_list" class="crumbs_list">各学校进度</a><span style="display: none;" class="crumbs_list"></span>
+        <a href="">学校进度</a>
+    </div>
+    <div class="crumbsBottom"></div>
+</div>
+<div class=" layui-form layui-form-pane">
+    <!--单项标题-->
+    <div class="singleTitle"><i></i><span id="schoolname" name="schoolname">东风西校</span></div>
+    <div class="layui-form-item">
+        <div class="statisticsList">
+            <div class="statistics">
+                <div>
+                    <div class="schoolName"><span>统计</span></div>
+                    <div class="statisticsContent ">
+                        <p class="contentTitle mt30">已提交问卷</p>
+                        <div class="contentTotal h80">
+                            <p id="sumNum" name="sumNum">0 <span>份</span></p>
+                        </div>
+                        <div class="partingLine"></div>
+                        <div class="h40 partingLine">
+                            <span class="questionnaireIcon"></span><span class="statisticsTxt">调查问卷</span>
+                        </div>
+                        <div class="h40 partingLine">
+                            <span class="videoIcon"></span><span class="statisticsTxt">视频</span>
+                        </div>
+                        <div class="h40 partingLine">
+                            <span class="formIcon"></span><span class="statisticsTxt">表格</span>
+                        </div>
+
+                        <div class="h40 mb55 partingLine ">
+                            <span class="otherIcon"></span><span class="statisticsTxt">其它</span>
+                        </div>
+                    </div>
+                    <div class="dataFooter2">
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="statisticsItem">
+                <div class="statisticsContent ">
+                    <p class="contentTitle mt55">教师</p>
+                    <div class="contentTotal h80">
+                        <p id="teacher_num" name="teacher_num"></p>
+                    </div>
+                    <div class="partingLine"></div>
+                    <div class="h40 partingLine" id="teacher_paper" name="teacher_paper">
+
+                    </div>
+                    <div class="h40 partingLine" id="teacher_subnum" name="teacher_subnum">
+
+                    </div>
+                    <div class="h40 partingLine" id="teacher_percent" name="teacher_percent">
+
+                    </div>
+
+                    <div class="h40 mb40 partingLine ">
+                        <span class="viewDetails"></span><a class="checkScheduleInfo" id="teacher_a" id="teacher_a" role="教师">查看详情</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="statisticsItem">
+                <div class="statisticsContent ">
+                    <p class="contentTitle mt55">家长</p>
+                    <div class="contentTotal h80">
+                        <p id="parent_num" name="parent_num"></p>
+                    </div>
+                    <div class="partingLine"></div>
+                    <div class="h40 partingLine" id="parent_paper" name="parent_paper">
+
+                    </div>
+                    <div class="h40 partingLine" id="parent_subnum" name="parent_subnum">
+
+                    </div>
+                    <div class="h40 partingLine" id="parent_percent" name="parent_percent">
+
+                    </div>
+
+                    <div class="h40 mb40 partingLine ">
+                        <span class="viewDetails"></span><a class="checkScheduleInfo" id="parent_a" id="parent_a" role="家长">查看详情</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="statisticsItem">
+                <div class="statisticsContent ">
+                    <p class="contentTitle mt55">学生</p>
+                    <div class="contentTotal h80">
+                        <p id="student_num" name="student_num"></p>
+                    </div>
+                    <div class="partingLine"></div>
+                    <div class="h40 partingLine"  id="student_paper" name="student_paper">
+
+                    </div>
+                    <div class="h40 partingLine" id="student_subnum" name="student_subnum">
+
+                    </div>
+                    <div class="h40 partingLine" id="student_percent" name="student_percent">
+
+                    </div>
+
+                    <div class="h40 mb40 partingLine ">
+                        <span class="viewDetails"></span><a class="checkScheduleInfo" id="student_a" id="student_a" role="学生">查看详情</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

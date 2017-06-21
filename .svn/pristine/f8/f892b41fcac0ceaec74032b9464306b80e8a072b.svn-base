@@ -1,0 +1,44 @@
+/**
+ * Created by sanghuina on 17/5/22.
+ * 教育局人员进入教育局列表(最小教育局--教官中心列表)
+ * 点击进入是进入到某个教官中心下的学校列表页面scheduleSchoolList
+ */
+define(function (require) {
+    "use strict";
+    var tpl = require('text!tpl/schedule/scheduleBureauEdu.html'),
+        template = _.template(tpl), _this,_form,_jsonObject;
+    return Backbone.View.extend({
+        className: "layui-main",
+        initialize: function () {
+            _this = this;
+            this.render();
+        },
+        render: function () {
+            this.$el.html(template(this.model));
+            return this;
+        },
+        afterRender: function () {
+            _form = PublicUTIL.layForm;
+            _form.render();
+            /*页面路由参数*/
+            _jsonObject=_this.model._jsonObject;
+        },
+        events:{
+            "click .Getinto":"GetintoFun"
+        },
+        GetintoFun:function(_event){
+            /*教官中心(教育局)列表中的进入详情按钮事件,进入学校列表页面*/
+            _event.stopPropagation();
+            var _event = _event || event;
+            var eventobj = _event.srcElement?_event.srcElement:_event.target;
+            var $this=$(eventobj);
+                //教育局下的教官中心人员
+            var obj={
+                 projectId:$this.attr("projectid"),
+                organId:PublicUTIL.UserObject.server_id
+           };
+           location.href="#scheduleSchoolList/"+JSON.stringify(obj);
+
+        }
+    });
+});

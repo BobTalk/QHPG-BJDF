@@ -1,0 +1,68 @@
+/**
+ * Created by byx on 17/5/16.
+ * 问卷填报模块 业务处理层
+ */
+var $util = require('../../util/util');
+
+var questionnaireDao = require('../../dao/client_dao/questionnaireDao');
+
+module.exports = {
+    //问卷填报
+    saveAnswer: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var answerInfo = {};
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            answerInfo.answer_id = param.answer_id.length == 0 ? $util.GUID() : param.answer_id;
+            answerInfo.user_id = param.user_id;
+            answerInfo.server_id = param.server_id;
+            answerInfo.user_role = param.user_role;
+            answerInfo.project_id = param.project_id;
+            answerInfo.task_id = param.task_id;
+            answerInfo.questionnaire_id = param.questionnaire_id;
+            answerInfo.content = param.content;
+            answerInfo.page_num = param.page_num;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        questionnaireDao.saveAnswer(answerInfo, function (err, result) {
+            if (err != null) {
+                $util.resJSONError(err, res);
+                return;
+            }
+            $util.resJSON.resultnum = $util.resConfig.ok;
+            $util.resJSON.resultdata = {answer_id: answerInfo.answer_id};
+            res.json($util.resJSON);
+        });
+    },
+    //获取问卷答案
+    getQuestionnaireAnswer: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var answerInfo = {};
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            answerInfo.project_id = param.project_id;
+            answerInfo.task_id = param.task_id;
+            answerInfo.questionnaire_id = param.questionnaire_id;
+            answerInfo.page_num = param.page_num;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+
+        questionnaireDao.getQuestionnaireAnswer(answerInfo, function (err, result) {
+            if (err != null) {
+                $util.resJSONError(err, res);
+                return;
+            }
+            $util.resJSON.resultnum = $util.resConfig.ok;
+            $util.resJSON.resultdata = result;
+            res.json($util.resJSON);
+        });
+    }
+};

@@ -1,0 +1,285 @@
+/**
+ * Created by wyx on 2017/5/9.
+ * 具体的业务实现js文件,在页面总需要用layui注入引用此业务js,在业务js最终必须要exports输出
+ */
+// ================================================================
+//  author:wenxia
+//  createDate: 2017/5/2.
+//  description: 清华评估-数据表
+//  ===============================================================
+define(function (require) {
+    "use strict";
+    var tpl = require('text!tpl/demo/formAssembly.html'),
+        template = _.template(tpl), _this;
+    return Backbone.View.extend({
+        className: "layui-main",
+        initialize: function () {
+            _this = this;
+            this.render();
+        },
+        render: function () {
+            this.$el.html(template(this.model));
+            return this;
+        },
+        afterRender: function () {
+            var me=this;
+            me.initEvent();
+            //初始化页面弹层及事件
+            me.initModal();
+        },
+        initEvent:function(){
+            var form = PublicUTIL.layForm;//layui.form();
+            form.render();
+
+            //适用对象的全选事件初始化
+            PublicUTIL.initLayuiCheckAll('targetCheckAll','quesTarget');
+            //适用学段的全选事件初始化
+            PublicUTIL.initLayuiCheckAll('gradeCheckAll','quesGrade');
+            //适用年级的全选事件初始化
+            PublicUTIL.initLayuiCheckAll('yearCheckAll','quesYear');
+
+            //问卷列表的全选事件初始化
+            PublicUTIL.initLayuiCheckAll('questionnaireCheckAll','quesQuestionnaire','.layui-table');
+
+            //时间控件初始化
+            // layui.use(['laydate'], function(){
+            //     //时间控件
+            //     var laydate = layui.laydate;
+            //     var start = {
+            //         min: laydate.now()
+            //         , max: '2099-06-16 23:59:59'
+            //         , istoday: false
+            //         , choose: function (datas) {
+            //             end.min = datas; //开始日选好后，重置结束日的最小日期
+            //             end.start = datas //将结束日的初始值设定为开始日
+            //         }
+            //     };
+            //
+            //     var end = {
+            //         min: laydate.now()
+            //         , max: '2099-06-16 23:59:59'
+            //         , istoday: false
+            //         , choose: function (datas) {
+            //             start.max = datas; //结束日选好后，重置开始日的最大日期
+            //         }
+            //     };
+            //     document.getElementById('starttime').onclick = function () {
+            //         start.elem = this;
+            //         laydate(start);
+            //     };
+            //     document.getElementById('endtime').onclick = function () {
+            //         end.elem = this;
+            //         laydate(end);
+            //     };
+            //     //    时间控件结束
+            // });
+
+
+            //form组件集合
+            layui.use(['form', 'layedit', 'laydate', 'jquery'], function (exports) {
+                var form = layui.form()
+                    , layer = layui.layer
+                    , layedit = layui.layedit
+                    , laydate = layui.laydate
+                    , $ = layui.jquery;
+
+                //创建一个编辑器
+                var editIndex = layedit.build('LAY_demo_editor');
+
+                //自定义验证规则
+                form.verify({
+                    title: function (value) {
+                        if (value.length < 5) {
+                            return '标题至少得5个字符啊';
+                        }
+                    }
+                    , pass: [/(.+){6,12}$/, '密码必须6到12位']
+                    , content: function (value) {
+                        layedit.sync(editIndex);
+                    }
+                });
+
+                //监听指定开关
+                form.on('switch(switchTest)', function (data) {
+                    layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+                        offset: '6px'
+                    });
+                    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+                });
+
+                //监听提交
+                form.on('submit(demo1)', function (data) {
+                    layer.alert(JSON.stringify(data.field), {
+                        title: '最终的提交信息'
+                    })
+                    return false;
+                });
+                //exports('input', {}); //注意，这里是模块输出的核心，模块名必须和use时的模块名一致
+
+                /*范围日期事件start*/
+                var start = {
+                    min: laydate.now()
+                    , max: '2099-06-16 23:59:59'
+                    , istoday: false
+                    , choose: function (datas) {
+                        end.min = datas; //开始日选好后，重置结束日的最小日期
+                        end.start = datas //将结束日的初始值设定为开始日
+                    }
+                };
+
+                var end = {
+                    min: laydate.now()
+                    , max: '2099-06-16 23:59:59'
+                    , istoday: false
+                    , choose: function (datas) {
+                        start.max = datas; //结束日选好后，重置开始日的最大日期
+                    }
+                };
+
+                document.getElementById('LAY_demorange_s').onclick = function () {
+                    start.elem = this;
+                    laydate(start);
+                }
+                document.getElementById('LAY_demorange_e').onclick = function () {
+                    end.elem = this
+                    laydate(end);
+                }
+                /*范围日期事件end*/
+
+                /*自定义编辑器start*/
+                layedit.build('LAY_demo2', {
+                    tool: ['face', 'image']
+                    , height: 100
+                });
+                /*自定义编辑器end*/
+
+
+                /* 自定义当用户获取输入框焦点的时候文字定位到边框上部 star*/
+                /*效果必须引入*/
+                $('.dataInput').focus(function () {
+                    var inputTxt = $(this).attr('placeholder');
+                    var inputHeader = $(this).parent().prev();
+                    inputHeader.html("");
+                    inputHeader.append(inputTxt);
+                });
+                /* 自定义当用户获取输入框焦点的时候文字定位到边框上部 end*/
+
+            });
+
+            //学校遮罩层效果
+            $(".eachSchoolBox").hover(function(){
+                $(this).find(".eachSchoolMask").fadeIn();
+                $(this).find(".eachSchoolBottom").fadeOut();
+            },function(){
+                $(this).find(".eachSchoolMask").fadeOut();
+                $(this).find(".eachSchoolBottom").fadeIn();
+            });
+
+
+            //显示与关闭为提交花名册
+            $(".uncommittedBtn").click(function () {
+                $(this).parent().css("display","none");
+                $(this).parent().next(".uncommittedDetails").fadeIn(1000);
+            });
+            $(".viewDetailsBtn").click(function () {
+                $(this).parent().parent().prev().fadeIn(500);
+                $(this).parent().parent().css("display","none");
+            });
+
+
+
+            //    增加任务
+            $("#addTask").click(function () {
+                var taskClone=$('#taskTemplate').clone();
+                taskClone.removeAttr("id");
+                taskClone.css('display','block');
+                $("#taskLists").append(taskClone);
+                PublicUTIL.layElement.init();
+                PublicUTIL.layForm.render();
+
+            });
+            //    删除任务
+            $("#taskLists").delegate(".clearTask","click",function(){
+                $(this).parents('.task').remove();
+            });
+        },
+        initModal:function(){
+            //将弹层节点移动到body节点下；
+            var modal=$('#addSchoolModal');
+            $('#addSchoolModal').remove();
+            $(document.body).append(modal);
+
+            var form=PublicUTIL.layForm;
+            //适用教育局全选
+            form.on('checkbox(eduCheckAll)', function(data){
+                var child = $("#addSchoolModal").find('input[name="quesEdu"]');
+                child.each(function(index, item){
+                    item.checked = data.elem.checked;
+                });
+                form.render('checkbox');
+            });
+
+            //适用选取学校全选
+            form.on('checkbox(schoolCheckAll)', function(data){
+                var child = $("#addSchoolModal").find('input[name="quesSchool"]');
+                child.each(function(index, item){
+                    item.checked = data.elem.checked;
+                });
+                form.render('checkbox');
+            });
+        },
+        addSchool:function(){
+            //弹层设置问卷
+            layer.open({
+                type:1,
+                title:'添加学校'
+//                content:$("#modal")//,//使用页面元素作为内容时，弹层无法关闭
+                ,content: $('#addSchoolModal'),// $('#modal').html(),//tplArr.join(""),//$('#modal'),////'页面内容字符串',
+                zIndex:19891019,
+                skin:'layui-layer-molv',//layui-layer-lan layui-layer-molv
+                area: ['600px', '500px'],
+                offset:'100px'//['100px','50px'],//位置偏移量坐标
+                ,btn: ['保存','返回']//['按钮一', '按钮二', '按钮三']
+                ,yes: function(index, layero){//确定按钮回调方法，默认不关闭？！
+                    //获取弹层中表单数据
+                    //获取适用对象
+                    var quesTargetList = $("#addSchoolModal").find('input[name="quesTarget"]:checked');
+                    var quesTargetStr="";
+                    for(var i=0;i<quesTargetList.length;i++){
+                        if(quesTargetStr){
+                            quesTargetStr+=",";
+                        }
+                        quesTargetStr += $(quesTargetList[i]).val();
+                    }
+                    var quesGradeList = $("#addSchoolModal").find('input[name="quesGrade"]:checked');
+                    var quesGradeStr="";
+                    for(var i=0;i<quesGradeList.length;i++){
+                        if(quesGradeStr){
+                            quesGradeStr+=",";
+                        }
+                        quesGradeStr += $(quesGradeList[i]).val();
+                    }
+//                    debugger;
+                    console.log(quesTargetStr+"   "+quesGradeStr);
+                }
+                ,btnAlign: 'c'
+                ,closeBtn:2//关闭按钮的风格
+                ,shade: [0.8, '#393D49']//0
+                ,shadeClose:true//是否点击遮罩关闭
+                ,maxmin:true
+                ,resize:false
+                ,scrollbar:false//屏蔽浏览器滚动条
+                ,move: false
+                ,success: function(layero, index){
+                }
+                ,end:function(){
+                    //层销毁之后触发的回调，确定或者关闭都会执行
+                }
+            });
+        }
+    });
+});
+
+
+
+

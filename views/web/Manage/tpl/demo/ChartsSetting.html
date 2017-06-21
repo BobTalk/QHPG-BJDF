@@ -1,0 +1,151 @@
+<style>
+    .col2-left{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 30%;
+    }
+    .col2-right{
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 70%;
+    }
+    @media screen and (max-width: 750px) {
+        .col2-left,.col2-right{
+            position: static;
+            width: 100%;
+        }
+    }
+    .input-block-right{
+        text-align: right; padding-right: 15px;
+    }
+    .input-block-left{
+        text-align: left; padding-left: 15px;
+    }
+    .input-margin{
+        margin-top: 10px;
+    }
+    #canvasDiv{
+        height: 400px;
+    }
+    .series-name{
+        background-color: #f2f2f2;
+    }
+</style>
+<div>
+    <div class="col2-left" >
+        <form class="layui-form ">
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>配置图表</legend>
+            </fieldset>
+            <div class="layui-form-item" pane="" >
+                <label class="layui-form-label">图表类型</label>
+                <div class="layui-input-block" id="chartTypeGroup">
+                    <input type="radio" name="chartType" value="bar" title="柱状图" checked="">
+                    <input type="radio" name="chartType" value="line" title="折线图">
+                    <input type="radio" name="chartType" value="pie" title="饼图">
+                    <input type="radio" name="chartType" value="radar" title="雷达图">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">主标题</label>
+                <div class="layui-input-block">
+                    <input type="text" placeholder="请输入主标题" autocomplete="off" class="layui-input" id="main-title" value="主标题">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">副标题</label>
+                <div class="layui-input-block">
+                    <input type="text" autocomplete="off" placeholder="请输入副标题" class="layui-input" id="sub-title" value="副标题">
+                </div>
+            </div>
+        </form>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>配置数据</legend>
+        </fieldset>
+        <div id="dataWrapper">
+            <div class="layui-form-item">
+                <div class="layui-input-block input-margin" >
+                    <button class="layui-btn" lay-submit="" lay-filter="demo1" id="addSeries" >添加数据系列</button>
+                    <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                </div>
+            </div>
+            <div class="layui-collapse series-wrapper" >
+                <div class="layui-colla-item">
+                    <!--<h2 class="layui-colla-title">系列名：</h2>-->
+                    <input type="text" name="" placeholder="请输入系列名" lay-verify="required" autocomplete="off" class="layui-input series-name" value="系列1" >
+                    <div class="layui-colla-content layui-show">
+                        <div class="layui-form">
+                            <table class="layui-table" id="chartData1" >
+                                <colgroup>
+                                    <col >
+                                    <col >
+                                    <col width="100">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>数值</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" name="col1" autocomplete="off" placeholder="" class="layui-input" value="名称一"></td>
+                                        <td><input type="text" name="col2" autocomplete="off" placeholder="" class="layui-input" value="20"></td>
+                                        <!--<td><input type="checkbox" name="" lay-skin="primary"></td>-->
+                                        <td><button type="reset" class="layui-btn layui-btn-primary">删除</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="col1" autocomplete="off" placeholder="" class="layui-input" value="名称二"></td>
+                                        <td><input type="text" name="col2" autocomplete="off" placeholder="" class="layui-input" value="30"></td>
+                                        <td><button type="reset" class="layui-btn layui-btn-primary">删除</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="col1" autocomplete="off" placeholder="" class="layui-input" value="名称三"></td>
+                                        <td><input type="text" name="col2" autocomplete="off" placeholder="" class="layui-input" value="40"></td>
+                                        <td><button type="reset" class="layui-btn layui-btn-primary">删除</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block input-block-right" >
+                        <button class="layui-btn addRow" lay-submit="" lay-filter="demo1" >添加一行</button>
+                        <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col2-right">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>图表展示</legend>
+        </fieldset>
+        <div class="layui-form-item">
+            <div class="layui-input-block input-block-right" >
+                <button class="layui-btn" lay-submit="" lay-filter="demo1" id="refreshChart">刷新</button>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="chart-wrapper" id='canvasDiv'>
+
+            </div>
+        </div>
+        <!--<div class="layui-collapse">-->
+        <!--</div>-->
+        <!--<div class="layui-tab-card">-->
+        <!--</div>-->
+    </div>
+    <!--<div style="width: 60%;float: left;">-->
+        <!--<div style="width:100%">-->
+            <!--我是内容-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

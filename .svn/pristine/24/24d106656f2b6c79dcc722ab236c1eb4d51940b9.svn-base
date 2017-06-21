@@ -1,0 +1,117 @@
+/**
+ * Created by sanghuina on 17/5/10.
+ * 举报功能开发
+ */
+var roleValue = "学生", UserID = "1001", UserName = "学生", ServiceID = "axyr1001", ServiceName = "大方一小", tip_state = "";
+window.onload = function () {
+    //参数先写固定的
+    /*roleValue=decodeURIComponent(getUrlPara("role"));
+     UserID=getUrlPara("uid");
+     UserName=decodeURIComponent(getUrlPara("uname"));
+     ServiceID=getUrlPara("serid");
+     ServiceName=decodeURIComponent(getUrlPara("xxmc"));*/
+    getTipoffList(null);
+    /*加载遮罩层事件*/
+    if($( parent.document.body).find("#LoadToast").length==0){
+        parent.window.initPopuDiv();
+    }
+};
+var getTipoffList = function (tip_type) {
+    var ajaxobj = {
+        itype: "get",
+        iname: "client/tipoffController/getTipoffList"
+    };
+    var actobj = {
+        "tip_state": tip_state,
+        "use_role": roleValue,
+        "user_id": UserID,
+        "service_id": ServiceID,
+        "tip_type": tip_type,
+        "page_size": 10000,
+        "page_num": 1
+    }
+    parent.window.alertpop('LoadToast');
+    getdata(ajaxobj, actobj, function (data) {
+        if (data.resultnum == "0000") {
+            var jsondata = data.resultdata;
+            if (jsondata.length > 0) {
+                var tsStr="";
+                for (var i = 0; i < jsondata.length; i++) {
+                    var tip_time="";
+                    if(jsondata[i].tip_time!=undefined&&jsondata[i].tip_time!=null&&jsondata[i].tip_time!=""){
+                        tip_time=jsondata[i].tip_time.substr(0,10);
+                    }
+                    tsStr+="<tr><td>"+jsondata[i].tipoff_type_name+"</td><td>"+jsondata[i].tip_school_name+"</td><td>"+tip_time+"</td><td>"+jsondata[i].tip_content+"</td>" ;
+                    if(jsondata[i].state==0){
+                        tsStr+="<td tipoff_id='"+jsondata[i].tipoff_id+"'><a class=\"editData green\">编辑</a><a class=\"deleteData green maginleft10\">删除</a><a class=\"checkData green maginleft10\">查看</a></td></tr>";
+                    }else{
+                        tsStr+="<td tipoff_id='"+jsondata[i].tipoff_id+"'><a class=\"green\">已核实处理</a><a class=\"checkData green maginleft10\">查看</a></td></tr>";
+                    }
+                }
+                $("#tipoffbody").html(tsStr);
+            }else{
+                $("#tipoffbody").html("");
+            }
+        }else{
+            $("#tipoffbody").html("");
+        }
+        parent.window.alertclose();
+    });
+},
+getUrlPara= function(m){
+    var sValue = location.search.match(new RegExp("[\?\&]" + m + "=([^\&]*)(\&?)", "i"));
+    return sValue ? sValue[1] : sValue;
+};
+/*点击我要举报弹出举报层*/
+function showOverlay() {
+    /*action 0查看,1添加,2修改*/
+    var url="tipoff/tipoffInfo.html?action=1&uid="+UserID+"&serid="+ServiceID+"&role="+encodeURIComponent(roleValue)+"&xxmc="+encodeURIComponent(ServiceName)+"&uname="+encodeURIComponent(UserName);
+    $( parent.document.body).find("#mainiframe").attr("src",url);
+}
+/*查询事件*/
+$("#select").click(function(){
+    var tip_type=$("#tipoff_type").val();
+    getTipoffList(tip_type);
+});
+/*列表中编辑事件*/
+$("#tipoffbody").delegate(".editData","click",function(_event){
+    _event.stopPropagation();
+    var _event = _event || event;
+    var eventobj = _event.srcElement?_event.srcElement:_event.target;
+    var $this=$(eventobj);
+    var tipoff_id=$this.parent().attr("tipoff_id");
+    var url="tipoff/tipoffInfo.html?action=2&pk="+tipoff_id+"&uid="+UserID+"&serid="+ServiceID+"&role="+encodeURIComponent(roleValue)+"&xxmc="+encodeURIComponent(ServiceName)+"&uname="+encodeURIComponent(UserName);
+    $( parent.document.body).find("#mainiframe").attr("src",url);
+});
+/*列表中删除事件*/
+$("#tipoffbody").delegate(".deleteData","click",function(_event){
+    _event.stopPropagation();
+    var _event = _event || event;
+    var eventobj = _event.srcElement?_event.srcElement:_event.target;
+    var $this=$(eventobj);
+    var tipoff_id=$this.parent().attr("tipoff_id");
+    var ajaxobj = {
+        itype: "get",
+        iname: "client/tipoffController/deleteTipoff"
+    };
+    var actobj = {
+        "tipoff_id": tipoff_id
+    }
+    parent.window.alertpop('LoadToast');
+    getdata(ajaxobj, actobj, function (data) {
+        parent.window.alertclose();
+        if (data.code == "0000") {
+            $this.parents("tr").remove();
+        }
+    });
+});
+/*列表中查看事件*/
+$("#tipoffbody").delegate(".checkData","click",function(_event){
+    _event.stopPropagation();
+    var _event = _event || event;
+    var eventobj = _event.srcElement?_event.srcElement:_event.target;
+    var $this=$(eventobj);
+    var tipoff_id=$this.parent().attr("tipoff_id");
+    var url="tipoff/tipoffInfo.html?action=0&pk="+tipoff_id+"&uid="+UserID+"&serid="+ServiceID+"&role="+encodeURIComponent(roleValue)+"&xxmc="+encodeURIComponent(ServiceName)+"&uname="+encodeURIComponent(UserName);
+    $( parent.document.body).find("#mainiframe").attr("src",url);
+});

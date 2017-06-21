@@ -1,0 +1,37 @@
+/**
+ * Created by sanghuina on 17/5/22.
+ * 点击页面中的某个角色(校长,教师,学生,家长),进入到本角色的提交情况页面scheduleInfo
+ */
+define(function (require) {
+    "use strict";
+    var tpl = require('text!tpl/schedule/scheduleSchoolInfo.html'),
+        template = _.template(tpl), _this,_form,_jsonObject;
+    return Backbone.View.extend({
+        className: "layui-main",
+        initialize: function () {
+            _this = this;
+            this.render();
+        },
+        render: function () {
+            this.$el.html(template(this.model));
+            return this;
+        },
+        afterRender: function () {
+            _form = PublicUTIL.layForm;
+            _form.render();
+            /*页面路由参数*/
+            _jsonObject=_this.model._jsonObject;
+        },
+        events:{
+            "click .checkScheduleInfo":"checkScheduleInfo"
+        },
+        checkScheduleInfo:function(_event){
+            _event.stopPropagation();
+            var _event = _event || event;
+            var eventobj = _event.srcElement?_event.srcElement:_event.target;
+            var $this=$(eventobj);
+            var paprmjson={};
+            location.href="#scheduleInfo/"+JSON.stringify(paprmjson);
+        }
+    });
+});

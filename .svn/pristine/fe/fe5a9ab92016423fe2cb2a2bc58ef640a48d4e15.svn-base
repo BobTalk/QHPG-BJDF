@@ -1,0 +1,47 @@
+/**
+ * Created by sanghuina on 17/5/22.
+ * 进度详情,班级进度,可以查看未提交人员名单,可以用年级和问卷作为搜索条件
+ */
+define(function (require) {
+    "use strict";
+    var tpl = require('text!tpl/schedule/scheduleDetails.html'),
+        template = _.template(tpl), _this,_form,_jsonObject;
+    return Backbone.View.extend({
+        className: "layui-main",
+        initialize: function () {
+            _this = this;
+            this.render();
+        },
+        render: function () {
+            this.$el.html(template(this.model));
+            return this;
+        },
+        afterRender: function () {
+            _form = PublicUTIL.layForm;
+            _form.render();
+            /*页面路由参数*/
+            _jsonObject=_this.model._jsonObject;
+            //显示与关闭为提交花名册, 写在数据渲染之后
+        },
+        events:{
+            "click .uncommittedBtn":"uncommittedBtnFun",
+            "click .viewDetailsBtn":"viewDetailsBtnFun"
+        },
+        uncommittedBtnFun:function(_event){
+            _event.stopPropagation();
+            var _event = _event || event;
+            var eventobj = _event.srcElement?_event.srcElement:_event.target;
+            var $this=$(eventobj);
+            $this.parent().css("display","none");
+            $this.parent().next(".uncommittedDetails").fadeIn(1000);
+        },
+        viewDetailsBtnFun:function(_event){
+            _event.stopPropagation();
+            var _event = _event || event;
+            var eventobj = _event.srcElement?_event.srcElement:_event.target;
+            var $this=$(eventobj);
+            $this.parent().parent().prev().fadeIn(500);
+            $this.parent().parent().css("display","none");
+        }
+    });
+});

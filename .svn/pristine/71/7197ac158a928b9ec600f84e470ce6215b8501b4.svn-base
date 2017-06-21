@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style media="screen"></style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>举报</title>
+    <link href="../css/comon.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/tipoff.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="layui-main">
+    <div class="detailsTitle">
+        <div class="layui-tab layui-tab-brief pageTitle" lay-filter="docDemoTabBrief ">
+            <ul class="layui-tab-title">
+                <li class="layui-this"><p><span><i>我的举报数据</i></span></p></li>
+            </ul>
+            <div class="layui-tab-content"></div>
+        </div>
+    </div>
+    <div class="selectCondition layui-form">
+        <div class="layui-form-item">
+            <div class="layui-form-item selectSubmitArea">
+                <div>
+                    <button class="layui-btn layui-btn-danger" id="report" name="report" onclick="showOverlay()">我要举报</button>
+                </div>
+                <div>
+                    <button class="layui-btn" id="select" name="select">查询</button>
+                </div>
+                <div class="layui-input-inline">
+                    <div class="layui-input-block">
+                        <select class="layui-select" id="tipoff_type" name="tipoff_type">
+                            <option value="" score="0">请选择事件类别</option>
+                            <option value="1002002002" score="5">免试就近入学</option>
+                            <option value="1002002003" score="5">复读生和重点班</option>
+                            <option value="1002003003" score="5">教师有偿补课</option>
+                            <option value="1004001001" score="5">教职工非正常上访</option>
+                            <option value="1004001002" score="5">大面积停课罢课</option>
+                            <option value="1007002001" score="5">隐瞒重大事情引发事故</option>
+                            <option value="1007002002" score="5">重大安全事故</option>
+                            <option value="1007002003" score="5">公共卫生突发事件</option>
+                            <option value="1007005" score="3">食品安全</option>
+                            <option value="1008001001" score="5">廉政与纪律问题</option>
+                            <option value="1008001002" score="5">师德师风问题</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dataTableWrapper">
+        <div> <!-- 数据表开始 -->
+            <div class="tablecon">
+                <div class="scroll-pane position3">
+                    <table border="0" cellspacing="0" cellpadding="0"
+                           class="table table-striped table-bordered table-hover">
+                        <!-- 表头列布局开始 -->
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;">举报分类</th>
+                            <th style="text-align: center;">举报学校</th>
+                            <th style="text-align: center;">举报时间</th>
+                            <th style="text-align: center;">举报描述</th>
+                            <th style="text-align: center;">操作</th>
+                        </tr>
+                        </thead>
+                        <!-- 表头列布局结束 -->
+                        <!-- 表数据布局开始 -->
+                        <tbody style="text-align: center;" id="tipoffbody" name="tipoffbody">
+                        </tbody>
+                        <!-- 表数据布局结束 -->
+                    </table>
+                </div>
+            </div>
+            <!-- 数据表结束 -->
+            <!-- 分页条开始 -->
+            <div class="datelist_page">
+                <div class="row">
+                    <div class="tablefy">
+                        <div style="background-color:#fff; height:70px">
+                            <!-- <div class="col-md-5 col-sm-12" style="float: left;width: 50%;">
+                                 <div class="dataTables_info">当前显示第 1 到第 4 条数据,总计  4 条数据</div>
+                             </div>
+                             <div class="col-md-7 col-sm-12" style="float: left;width: 50%;">
+                                 <div class="dataTables_paginate paging_simple_numbers" style="text-align: right;">
+                                     <ul class="pagination"><li class="paginate_button previous disabled" id="datatable_previous"><a href="javascript:;">&lt;</a></li><li class="paginate_button active"><a href="javascript:;">1</a></li><li class="paginate_button next disabled" id="datatable_next"><a href="javascript:;">&gt;</a></li></ul>
+                                 </div>
+                             </div>-->
+                            <div class="dataFooter">
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 分页条结束 -->
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
+<script type="text/javascript" src="../js/tipoff.js"></script>
+</body>
+</html>

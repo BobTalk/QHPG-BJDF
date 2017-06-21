@@ -1,0 +1,115 @@
+/*
+ 2017年5月4日 16:40:50
+ byx
+ 评估管理-问卷模块的dao层,sql语句
+ * */
+
+var Questionnaire = {
+    //获取问卷列表
+    getQuestionnaireList: function (use_role, use_xueduan_items, pagesize, pagenum) {
+        var sql = "SELECT DISTINCT questionnaire_id, questionnaire_name, descript, load_user_id, create_time, use_role ";
+        sql += "FROM questionnaire ";
+        if (use_xueduan_items != "-1") {
+            sql += "  LEFT  JOIN questionnaire_xueduan ON questionnaire.questionnaire_id = questionnaire_xueduan.q_id " +
+                "where questionnaire_xueduan.xd_name IN (" + use_xueduan_items + ")";
+            if (use_role != '-1') {
+                sql += " and questionnaire.use_role = '" + use_role + "'";
+            }
+        } else if (use_role != '-1') {
+            sql += " where use_role = '" + use_role + "'";
+        }
+        sql += " LIMIT " + pagenum + ", " + pagesize;
+        return sql;
+    },
+    //获取问卷列表
+    getQuestionnaireList2: function (questionnaire_name, use_role, use_xueduan_items, pagesize, pagenum) {
+        var sql = "SELECT DISTINCT questionnaire_id, questionnaire_name, descript, load_user_id, create_time, use_role ";
+        sql += "FROM questionnaire ";
+        if (use_xueduan_items != "-1") {
+            sql += "  LEFT  JOIN questionnaire_xueduan ON questionnaire.questionnaire_id = questionnaire_xueduan.q_id " +
+                "where questionnaire_xueduan.xd_name IN (" + use_xueduan_items + ")";
+            if (use_role != '-1') {
+                sql += " and questionnaire.use_role = '" + use_role + "'";
+                sql += " and questionnaire.questionnaire_name like '%" + questionnaire_name + "%'";
+            }
+        } else if (use_role != '-1') {
+            sql += " where use_role = '" + use_role + "'";
+        }
+        sql += " LIMIT " + pagenum + ", " + pagesize;
+        return sql;
+    },
+    //获取问卷列表-总数
+    getQuestionnaireListRows: function (use_role, use_xueduan_items) {
+        var sql = "SELECT DISTINCT questionnaire_id, count(questionnaire_id) as rows  ";
+        sql += "FROM questionnaire ";
+        if (use_xueduan_items != "-1") {
+            sql += "  LEFT  JOIN questionnaire_xueduan ON questionnaire.questionnaire_id = questionnaire_xueduan.q_id " +
+                "where questionnaire_xueduan.xd_name IN (" + use_xueduan_items + ")";
+            if (use_role != '-1') {
+                sql += " and questionnaire.use_role = '" + use_role + "'";
+            }
+        } else if (use_role != '-1') {
+            sql += " where use_role = '" + use_role + "'";
+        }
+        return sql;
+    },
+    //获取问卷列表-总数
+    getQuestionnaireListRows2: function (questionnaire_name, use_role, use_xueduan_items) {
+        var sql = "SELECT DISTINCT questionnaire_id, count(questionnaire_id) as rows  ";
+        sql += "FROM questionnaire ";
+        if (use_xueduan_items != "-1") {
+            sql += "  LEFT  JOIN questionnaire_xueduan ON questionnaire.questionnaire_id = questionnaire_xueduan.q_id " +
+                "where questionnaire_xueduan.xd_name IN (" + use_xueduan_items + ")";
+            if (use_role != '-1') {
+                sql += " and questionnaire.use_role = '" + use_role + "'";
+            }
+            if (questionnaire_name != "-1") {
+                sql += " and questionnaire.questionnaire_name like '%" + questionnaire_name + "%'";
+            }
+        } else if (use_role != '-1') {
+            sql += " where use_role = '" + use_role + "'";
+            if (questionnaire_name != "-1") {
+                sql += " and questionnaire.questionnaire_name like '%" + questionnaire_name + "%'";
+            }
+        } else if (questionnaire_name != "-1") {
+            sql += " and questionnaire.questionnaire_name like '%" + questionnaire_name + "%'";
+        }
+        return sql;
+    },
+    //删除问卷 by hyq
+    removeQuestionnaire: function (param) {
+        var sql = "DELETE questionnaire,task_questionnaire FROM questionnaire left join task_questionnaire  on questionnaire.questionnaire_id = task_questionnaire.questionnaire_id WHERE questionnaire.questionnaire_name != task_questionnaire.questionnaire_name AND questionnaire.questionnaire_id=" + param + ";";
+        return sql;
+    },
+    //更新问卷 by hyq
+    updateQuestionnaire: function (param) {
+        var sqlAry = [];
+        var sql = "UPDATE questionnaire SET ";
+        for (var key in param) {
+            if (key != "xueduan_items") {
+                if (key != "questionnaire_id") {
+                    sql += " " + key + " = " + "'" + param[key] + "',"
+                }
+            }
+        }
+        sql = sql.substring(0, sql.lastIndexOf(","));
+        sql += " WHERE questionnaire_id=" + "'" + param.questionnaire_id + "';";
+        sqlAry.push(sql);
+        sql = "DELETE FROM questionnaire_xueduan WHERE q_id= " + "'" + param.questionnaire_id + "';";
+        sqlAry.push(sql);
+        for (var i = 0; i < param.xueduan_items.length; i++) {
+            sql = "INSERT INTO questionnaire_xueduan (q_id,xd_name) VALUE (";
+            sql += "'" + param.questionnaire_id + "'," + "'" + param.xueduan_items[i] + "'"
+            sql += ");"
+            sqlAry.push(sql);
+        }
+        return sqlAry;
+    },
+    //获取问卷详情 by  hyq
+    getQuestionnaire: function (getQuestionnaireId) {
+        var sql = "SELECT * FROM questionnaire INNER JOIN questionnaire_xueduan  ON questionnaire.questionnaire_id = questionnaire_xueduan.q_id AND questionnaire.questionnaire_id=" + "'" + getQuestionnaireId + "';";
+        return sql;
+    }
+};
+
+module.exports = Questionnaire;

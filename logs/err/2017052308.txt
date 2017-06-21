@@ -1,0 +1,33 @@
+[2017-05-23 08:45:27.712] [ERROR] logErr - 错误信息：TypeError: Cannot read property 'length' of undefined
+    at Object.getProjectList (F:\work\QHPG-BJDF\service\pgmanage_service\scheduleService.js:102:50)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\scheduleRoute.js:14:21
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+    at Function.proto.handle (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:166:3)
+[2017-05-23 08:45:50.891] [ERROR] logErr - 错误信息：TypeError: Cannot read property 'length' of undefined
+    at Object.getProjectList (F:\work\QHPG-BJDF\service\pgmanage_service\scheduleService.js:102:50)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\scheduleRoute.js:14:21
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+    at Function.proto.handle (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:166:3)
+[2017-05-23 08:46:27.769] [ERROR] logErr - 错误信息：TypeError: Cannot read property 'length' of undefined
+    at Object.getProjectList (F:\work\QHPG-BJDF\service\pgmanage_service\scheduleService.js:102:50)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\scheduleRoute.js:14:21
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+    at Function.proto.handle (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:166:3)

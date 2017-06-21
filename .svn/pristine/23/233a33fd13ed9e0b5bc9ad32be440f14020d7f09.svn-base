@@ -1,0 +1,39 @@
+/**
+ * Created by sanghuina on 17/5/22.
+ * 教师,校长,年级进度页面,
+ * 教师,校长在本页面可以查看未提交人员详情,可以按照问卷搜索
+ * 年级进度可以点击进入到进度详情scheduleDetails
+ */
+define(function (require) {
+    "use strict";
+    var tpl = require('text!tpl/schedule/scheduleInfo.html'),
+        template = _.template(tpl), _this,_form,_jsonObject;
+    return Backbone.View.extend({
+        className: "layui-main",
+        initialize: function () {
+            _this = this;
+            this.render();
+        },
+        render: function () {
+            this.$el.html(template(this.model));
+            return this;
+        },
+        afterRender: function () {
+            _form = PublicUTIL.layForm;
+            _form.render();
+            /*页面路由参数*/
+            _jsonObject=_this.model._jsonObject;
+        },
+        events:{
+            "click .checkScheduleDetails":"checkScheduleDetailsFun"
+        },
+        checkScheduleDetailsFun:function(_event){
+            _event.stopPropagation();
+            var _event = _event || event;
+            var eventobj = _event.srcElement?_event.srcElement:_event.target;
+            var $this=$(eventobj);
+            var paprmjson={};
+            location.href="#scheduleDetails/"+JSON.stringify(paprmjson);
+        }
+    });
+});

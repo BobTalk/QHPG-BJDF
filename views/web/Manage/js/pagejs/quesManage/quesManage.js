@@ -1,0 +1,293 @@
+// ================================================================
+//  author:wenxia
+//  createDate: 2017/5/16.
+//  description: 清华评估-问卷管理
+//  ===============================================================
+define(function (require) {
+    "use strict";
+    var tpl = require('text!tpl/quesManage/quesManage.html'),
+        template = _.template(tpl), _this;
+    var DataTable = require('dataTable1');
+    return Backbone.View.extend({
+        className: "layui-main",
+        initialize: function () {
+            _this = this;
+            this.render();
+        },
+        render: function () {
+            this.$el.html(template(this.model));
+            return this;
+        },
+        afterRender: function () {
+            var form=PublicUTIL.layForm;
+            form.render();
+
+            //加载datatable中数据
+            this.initDataTableData();
+            //初始化页面弹层及事件
+            this.initModal();
+        },
+        events: {
+            "click #import":"importQuestionnaire"
+            ,"click #select":"selectQuestionnaire"//,
+        },
+        initModal:function(){
+            var me=this;
+
+            //将弹层节点移动到body节点下；
+            var modal=$('#modal');
+            $('#modal').remove();
+            $(document.body).append(modal);
+
+            //适用学段的全选事件初始化
+            PublicUTIL.initLayuiCheckAll('gradeCheckAll','quesGrade');
+            var form=PublicUTIL.layForm;
+            //监听问卷表单提交
+            form.on('submit(quesSave)', function(data){
+                //验证是否勾选了适用学段
+                var gradeChecked=$('input[lay-filter="quesGrade"]:checked');
+                if(gradeChecked.length==0){
+                    PublicUTIL.message("alert","请勾选适用学段");
+                    return false;
+                }
+                //获取问卷id,如果没有id就是添加，需要判断是否上传了文件
+                var quesId=$("#modal").attr("data-quesid");
+                if(!quesId){
+                    //判断是否有文件上传
+                }
+                me.quesSave();
+                return false;
+            });
+
+            //引入弹层需要的layui模块
+//            layui.use(['upload' ], function(){
+//                layui.upload({
+//                    url: '' ,//上传接口
+//                    success: function(res){
+//                        //上传成功后的回调
+//                        console.log(res)
+//                    }
+//                });
+//            });
+
+        },
+        //保存问卷
+        quesSave:function(){
+            //获取问卷id,
+        },
+        selectQuestionnaire:function(){
+        },
+        importQuestionnaire:function(){
+            var me=this;
+            PublicUTIL.layerOpen({
+                title:'问卷上传'
+                ,content: $('#modal')
+                ,btn: ['保存','返回']//['按钮一', '按钮二', '按钮三']
+                ,yes: function(index, layero){//确定按钮回调方法，默认不关闭？！
+                    //获取弹层中表单数据
+                    $('button[lay-filter="quesSave"]').click();
+//                    $('form[lay-filter="quesForm"]').submit();
+
+                    /*var quesTargetList = $("#modal").find('input[name="quesTarget"]:checked');
+                    var quesTargetStr="";
+                    for(var i=0;i<quesTargetList.length;i++){
+                        if(quesTargetStr){
+                            quesTargetStr+=",";
+                        }
+                        quesTargetStr += $(quesTargetList[i]).val();
+                    }
+                    var quesGradeList = $("#modal").find('input[name="quesGrade"]:checked');
+                    var quesGradeStr="";
+                    for(var i=0;i<quesGradeList.length;i++){
+                        if(quesGradeStr){
+                            quesGradeStr+=",";
+                        }
+                        quesGradeStr += $(quesGradeList[i]).val();
+                    }
+                    console.log(quesTargetStr+"   "+quesGradeStr);*/
+                },end:function(){
+//                    $("#modal").removeAttribute("data-quesid");
+                    $("#modal").attr("data-quesid","");
+                },success:function(){
+                    $("#uploadFile").on("change",function(){
+                        me.uploadExcelTpl();
+                    });
+                }
+            });
+        },
+        initDataTableData:function(){
+            var me=this;
+            var options = {
+                // 数据来源方法
+                data : {
+                    // 异步数据源
+                    sync : function(syncOptions, callback) {
+                        //下面注释的是获取异步数据方法
+                        var quesName=me.$("#quseName").val();
+                        var quesRole=me.$("#quesRole").val();
+                        var JSONPARAM={
+                            questionnaire_name:quesName,
+                            use_role:quesRole,//"",
+                            use_xueduan_items:[],
+                            page_size:syncOptions.data.rows,
+                            page_num:syncOptions.data.page
+                        };
+
+                        PublicAjax.ajaxGet(PublicAjax.ajaxUrl.getQuestionnaireList2,JSON.stringify(JSONPARAM),function(data){
+                            callback && callback({rows:data.resultdata,total:data.rows});
+                        });
+
+                        //模拟问卷数据
+                        /*setTimeout(function(){
+                            var dataList=[{questionnaire_id:'8787367361',questionnaire_name:'学生问卷1',descript:"问卷描述，学生问卷1",create_time:'2017-05-14T16:00:00.000Z',use_role:'学生',use_xueduan_items:'小学，初中，高中',is_use:0},
+                                {questionnaire_id:'8787367362',questionnaire_name:'学生问卷1',descript:"问卷描述，学生问卷1",create_time:'2017-05-14T16:00:00.000Z',use_role:'学生',use_xueduan_items:'小学，初中，高中',is_use:1},
+                                {questionnaire_id:'8787367363',questionnaire_name:'学生问卷1',descript:"问卷描述，学生问卷1",create_time:'2017-05-14T16:00:00.000Z',use_role:'学生',use_xueduan_items:'小学，初中，高中',is_use:1},
+                                {questionnaire_id:'8787367364',questionnaire_name:'学生问卷1',descript:"问卷描述，学生问卷1",create_time:'2017-05-14T16:00:00.000Z',use_role:'学生',use_xueduan_items:'小学，初中，高中',is_use:0},
+                                {questionnaire_id:'8787367365',questionnaire_name:'学生问卷1',descript:"问卷描述，学生问卷1",create_time:'2017-05-14T16:00:00.000Z',use_role:'学生',use_xueduan_items:'小学，初中，高中',is_use:0}
+                            ];
+                            var dataCount=11;
+                            callback && callback({rows:dataList,total:dataCount});
+                        },200);*/
+                    },
+                    // 数据列表的索引
+                    dataArrayIndex : 'rows',
+                    // 分页参数
+                    paging : {
+                        enable : true,
+                        // 每页数据条数
+                        pageSize : 5
+                    },
+                    collection : Backbone.Collection//DataSourceCollection
+                },
+                //显示序号列
+                displayIndex:true,
+                //列显示循序：
+                columns : [
+                    {
+                        text : "名称",
+                        dataIndex : "questionnaire_name"
+                    },
+                    {
+                        text : "适用对象",
+                        dataIndex : "use_role"
+                    },
+                    {
+                        text : "适用学段",
+                        dataIndex : "use_xueduan_items"
+                    },
+                    {
+                        text : "上传日期",
+                        dataIndex : "create_time",
+                        render:function(value, row){
+                            return value.substring(0,10);
+                        }
+                    },
+                    {
+                        text : "操作",
+                        dataIndex : "is_use",//问卷是否被使用，0=未被使用；1=使用中；
+                        render:function(value, row){//预览、删除、修改
+                            var result=value==0?'<a class="greenBtnTxt editData" style="margin-right: 10px;" data-id="'+row["questionnaire_id"]+'">[修改]</a><a class="redBtnTxt deleteData" data-id="'+row["questionnaire_id"]+'">[删除]</a>':'';
+                            result+='<a class="greenBtnTxt previewQues" data-id="'+row["questionnaire_id"]+'">[预览]</a>';
+                            return result;
+                        }
+                    }],
+                // 默认多选模式
+                "selModel" : {
+                    // single/multi,为空则不显示
+                    mode :  "",
+                    // 是否显示行的checkbox
+                    checkbox : false,
+                    //定义选中的数据列表
+                    selectData:{
+                        keyword:"XM",
+                        selectDataValue:["张月月","白宇熙"]//["1","232423","232424","232432","232435"]
+                    },
+                    keepCheckState:{//保持勾选状态才能获取全部的勾选数据
+                        keepCheck:true,
+                        keepStateKeyword:"XM"
+                    }
+                },
+                //表头、表数据初始化完成后调用
+                initTableEventsCall : function(){
+                    //为table中的删除按钮添加事件：
+                    me.$(".deleteData").click(function(_event){
+                        _event.stopPropagation();
+                        var needDelId=$(event.target).attr("data-id");
+
+                        PublicUTIL.message("confirm","确认删除该问卷？",function(){
+                            var JSONPARAM={questionnaire_id:needDelId};
+                            PublicAjax.ajaxGet(PublicAjax.ajaxUrl.deleteQuestoinnaire,JSON.stringify(JSONPARAM),function(data){
+                                PublicUTIL.message("success","问卷数据删除成功");
+                                me.dataTable.render();
+                            });
+                        });
+                    });
+                    //为table中的编辑按钮添加事件：
+                    me.$(".editData").click(function(_event){
+                        _event.stopPropagation();
+                        var needEditId=$(event.target).attr("data-id");
+                        //弹层显示数据；只显示基本数据，只能修改基本数据
+                        PublicUTIL.layerOpen({
+                            title:'问卷上传'
+                            ,content: $('#modal')
+                            ,btn: ['保存','返回']//['按钮一', '按钮二', '按钮三']
+                            ,yes: function(index, layero){//确定按钮回调方法，默认不关闭？！
+                                //获取弹层中表单数据
+                                $('button[lay-filter="quesSave"]').click();
+                            }
+                            ,success: function(layero, index){
+                                $("#modal").attr("data-quesid",needEditId);
+                                //回显数据
+                                var JSONPARAM={questionnaire_id:needEditId};
+                                /*PublicAjax.ajaxGet(PublicAjax.ajaxUrl.getQuestoinnaireInfo,JSON.stringify(JSONPARAM),function(data){
+                                    //数据回显
+
+                                });*/
+                            }
+                            ,end:function(){
+//                                $("#modal").removeAttribute("data-quesid");
+                                $("#modal").attr("data-quesid","");
+                            }
+                        });
+                    });
+                    //为table中的预览按钮添加事件：
+                    me.$(".previewQues").click(function(_event){
+                        _event.stopPropagation();
+                        var needEditId=$(event.target).attr("data-id");
+
+                        //弹层预览页面
+
+                        location.href="#projectDetail/3/"+ needEditId;
+                    });
+                }
+            };
+            this.dataTable = new DataTable(options);
+            // 渲染至页面
+            this.$("#dataTableWrapper").html(this.dataTable.$el);
+        },
+        uploadExcelTpl:function(){
+            var me=this;
+            var filename=event.target.files[0].name;
+            var uploadInputId=event.target.id;
+            //验证文件类型，页面元素上已限制，这里再次验证
+            var fileType=event.target.files[0].type;
+//            if(fileType!="application/vnd.ms-excel"){
+//                PublicUTIL.message("alert","只能上传.xls文件");
+//            }
+            PublicUTIL.UploadFile(event, function(file,fileinfo) {
+                //调上传文件接口
+                var ajaxUrl=PublicAjax.ajaxUrl.importQuestionnaire;
+
+                var params={
+                    file_name:filename,
+                    fileData:file
+                };
+                PublicAjax.ajaxPost(ajaxUrl, JSON.stringify(params), function(d){
+                    var fileName=d.resultdata.excel_name;
+                });
+            });
+        }
+    });
+});
+
+

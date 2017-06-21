@@ -1,0 +1,68 @@
+/**
+ * Created by Administrator on 2017/4/26.
+ */
+
+require.config({
+    baseUrl:'js',
+    paths:{
+        common: 'common',
+        pages: 'pagejs',
+        tpl: '../tpl',
+
+        jquery: '../../js/lib/jquery.min',
+        jquerymigrate: '../../js/lib/jquery-migrate-1.2.1',
+
+        text: '../../js/lib/text',
+        underscore: '../../js/lib/underscore-1.6.0.min',
+        backbone: '../../js/lib/backbone-1.1.2.min',
+
+        //layui相关
+//        layui:'../../js/plugins/layui/layui'
+//        layer:'../../js/plugins/layui/lay/modules/layer'
+
+        //统计图表--echarts
+        echarts:'../../js/plugins/echarts/echarts',
+        //echarts的主题
+        macarons:'../../js/plugins/echarts/macarons',
+        //数据表1
+        dataTable1:'../../js/plugins/DataTableView/DataTable',
+        //数据表2
+        dataTable2:'../../js/plugins/DataTableView_new/DataTable',
+
+        /* <script type="text/javascript" src="../js/ossupload/base64.js"></script>
+         <script type="text/javascript" src="../js/ossupload/plupload-2.1.2/js/plupload.full.min.js"></script>
+         <script type="text/javascript" src="../js/ossupload/upload1.js"></script>*/
+        //附件上传相关
+//        myossupload:'../../js/plugins/ossupload/upload1',
+        myossupload:'../../js/plugins/ossupload/myossupload',
+        plupload:'../../js/plugins/ossupload/plupload-2.1.2/js/plupload.full.min',
+        base64:'../../js/plugins/ossupload/base64'
+    },
+    shim:{
+        backbone: {
+            deps: ['underscore', 'jquery'],
+            exports: 'Backbone'
+        },
+        underscore: {
+            exports: '_'
+        },
+        jquerymigrate: {
+            deps: ['jquery']
+        }
+//        ,myossupload:{
+//            deps: ['plupload', 'base64']
+//        }
+    }
+});
+require(['common/publicUtil', 'common/ajax'], function () {
+    require(['backbone', 'jquery', 'underscore', 'jquerymigrate'], function (Backbone, $, _) {
+//        require(['../../js/plugins/layui/layui'], function () {
+            require(['common/router'], function (Router) {
+                PublicUTIL.initLayui();
+                //不同角色走不同的起始页,使用公共的router,根据不同的角色加载不同的起始路由
+                var router = new Router();
+                Backbone.history.start();
+            });
+//        })
+    })
+});

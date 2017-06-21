@@ -1,0 +1,172 @@
+<div class="detailsTitle">
+    <!--<br/>-->
+    <div class="layui-tab layui-tab-brief pageTitle" lay-filter="docDemoTabBrief ">
+        <ul class="layui-tab-title">
+            <li class="layui-this"><p><span><i>数据表展示</i></span></p></li>
+        </ul>
+        <div class="layui-tab-content"></div>
+    </div>
+</div>
+
+<div class="selectCondition layui-form layui-form-pane">
+    <div class="layui-form-item">
+        <div class="layui-input-inline">
+            <select name="quiz1">
+                <option value="">请选择省</option>
+                <option value="浙江" selected="">浙江省</option>
+                <option value="你的工号">江西省</option>
+                <option value="你最喜欢的老师">福建省</option>
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select name="quiz2">
+                <option value="">请选择市</option>
+                <option value="杭州">杭州</option>
+                <option value="宁波" disabled="">宁波</option>
+                <option value="温州">温州</option>
+                <option value="温州">台州</option>
+                <option value="温州">绍兴</option>
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select name="quiz3">
+                <option value="">请选择县/区</option>
+                <option value="西湖区">西湖区</option>
+                <option value="余杭区">余杭区</option>
+                <option value="拱墅区">临安市</option>
+            </select>
+        </div>
+        <div class="selectSubmitArea">
+            <div class="layui-input-inline">
+                <input type="text" name="username" placeholder="请输入关键词" autocomplete="off" class="layui-input">
+            </div>
+            <div>
+                <button class="layui-btn mt3 mr10" lay-submit="" lay-filter="demo1" id="select">查询</button>
+            </div>
+            <div>
+                <button class="layui-btn mt3" lay-submit="" lay-filter="demo1" id="import">导入</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dataTableWrapper">
+
+</div>
+
+<div id="modal" style="display:none;">
+    <div class="larry-personal-body">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">问卷名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" autocomplete="off" class="layui-input" placeholder="请输入问卷名称"
+                           value="" id="quesName">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">适用对象</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" title="全选" lay-skin="primary" checked id="targetCheckAll"
+                           lay-filter="targetCheckAll">
+                    <input type="checkbox" name="quesTarget" title="学生" lay-skin="primary" checked value="学生">
+                    <input type="checkbox" name="quesTarget" title="家长" lay-skin="primary" checked value="家长">
+                    <input type="checkbox" name="quesTarget" title="教师" lay-skin="primary" checked value="教师">
+                    <input type="checkbox" name="quesTarget" title="校长" lay-skin="primary" checked value="校长">
+                    <!--<a class="layui-btn" lay-submit="" lay-filter="demo1" id="testbtn">查询</a>-->
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">适用学段</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" title="全选" lay-skin="primary" checked id="gradeCheckAll"
+                           lay-filter="gradeCheckAll">
+                    <input type="checkbox" name="quesGrade" title="幼儿园" lay-skin="primary" checked value="幼儿园">
+                    <input type="checkbox" name="quesGrade" title="小学" lay-skin="primary" checked value="小学">
+                    <input type="checkbox" name="quesGrade" title="初中" lay-skin="primary" checked value="初中">
+                    <input type="checkbox" name="quesGrade" title="高中" lay-skin="primary" checked value="高中">
+                    <input type="checkbox" name="quesGrade" title="职高" lay-skin="primary" checked value="职高">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">问卷附件</label>
+                <div class="layui-input-block">
+                    <input type="file" name="file" class="layui-upload-file">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">问卷描述</label>
+                <div class="layui-input-block">
+                    <textarea name="desc" placeholder="请输入问卷描述" class="layui-textarea"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--<div class="layui-layer layui-layer-page layui-layer-molv layer-anim" id="layui-layer3" type="page" times="3" showtime="0" contype="string" style="z-index: 19891017; width: 500px; height: 600px; top: 100px; left: 711px;">
+    <div class="layui-layer-title" style="">
+        问卷上传
+    </div>
+    <div id="" class="layui-layer-content" style="height: 500px;">
+        <div class="larry-personal">
+            <header class="larry-personal-tit">
+                <span>个人信息</span>
+            </header>
+            <div class="larry-personal-body">
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">问卷名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="username" autocomplete="off" class="layui-input" placeholder="请输入问卷名称" value="">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">适用对象</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="" title="全选" lay-skin="primary" checked>
+                            <input type="checkbox" name="" title="学生" lay-skin="primary">
+                            <input type="checkbox" name="" title="家长" lay-skin="primary" >
+                            <input type="checkbox" name="" title="教师" lay-skin="primary" >
+                            <input type="checkbox" name="" title="校长" lay-skin="primary" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">适用学段</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="" title="全选" lay-skin="primary" checked>
+                            <input type="checkbox" name="" title="幼儿园" lay-skin="primary">
+                            <input type="checkbox" name="" title="小学" lay-skin="primary" >
+                            <input type="checkbox" name="" title="初中" lay-skin="primary" >
+                            <input type="checkbox" name="" title="高中" lay-skin="primary" >
+                            <input type="checkbox" name="" title="职高" lay-skin="primary" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">问卷附件</label>
+                        <div class="layui-input-block">
+                            <input type="file" name="file" class="layui-upload-file">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">问卷描述</label>
+                        <div class="layui-input-block">
+                            <textarea name="desc" placeholder="请输入问卷描述" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <span class="layui-layer-setwin">
+        <a class="layui-layer-min" href="javascript:;">
+            <cite></cite>
+        </a>
+        <a class="layui-layer-ico layui-layer-max" href="javascript:;"></a>
+        <a class="layui-layer-ico layui-layer-close layui-layer-close2" href="javascript:;"></a>
+    </span>
+    <div class="layui-layer-btn layui-layer-btn-c">
+        <a class="layui-layer-btn0">保存</a>
+        <a class="layui-layer-btn1">返回</a>
+    </div>
+</div>-->

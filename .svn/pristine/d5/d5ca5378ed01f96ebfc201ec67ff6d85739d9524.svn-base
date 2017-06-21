@@ -1,0 +1,193 @@
+/**
+ * Created by sanghuina on 17/5/12.
+ *  附件列表页面
+ */
+define(function (require) {
+    "use strict";
+    var tpl = require('text!tpl/attachment/attachmentList.html'),
+        template = _.template(tpl), _this,_form;
+    var DataTable = require('dataTable1');
+    return Backbone.View.extend({
+        className: "layui-main",
+        initialize: function () {
+            _this = this;
+            this.render();
+        },
+        render: function () {
+            this.$el.html(template(this.model));
+            return this;
+        },
+        afterRender: function () {
+            if(_this.model._opType=="1"){
+                /*1为资源管理员上传,2校长,3公示列表*/
+                $("#import").show();
+            }else{
+                $("#import").hide();
+            }
+            /*加载所有附件表结构名称*/
+            this.getAttachment();
+            /*加载datatable中数据*/
+            _form=PublicUTIL.layForm;
+        },
+        events: {
+            "click #import":"importFun"
+        },
+        initDataTableData:function(){
+            var me=this;
+            var options = {
+                // 数据来源方法
+                data : {
+                    // 异步数据源
+                    sync : function(syncOptions, callback) {
+                        //下面注释的是获取异步数据方法
+                        /*var PAGEJSON={PageIndex: syncOptions.data.page, PageSize: syncOptions.data.rows};
+
+                         require(['btcommon/ajax'], function (_ajax) {
+                         _ajax.ajaxForList(TeacherUTIL.CONFIG.getWorkloadList, "PAGEJSON=" + JSON.stringify(PAGEJSON), function (_d) {
+                         callback && callback({rows:_d.ResultData,total:_d.PageCount});
+                         })
+                         });*/
+                        setTimeout(function(){
+                            var dataList=[{ID:'8787367361',XM:'张月月',XB:2,ZW:'技术人员'},
+                                {ID:'8787367362',XM:'王廷羲',XB:1,ZW:'技术人员'},
+                                {ID:'8787367363',XM:'李文霞',XB:2,ZW:'技术人员'},
+                                {ID:'8787367364',XM:'白宇熙',XB:1,ZW:'技术人员'}
+                            ];
+                            var dataCount=4;
+                            callback && callback({rows:dataList,total:dataCount});
+                        },200);
+
+                    },
+                    // 数据列表的索引
+                    dataArrayIndex : 'rows',
+                    // 分页参数
+                    paging : {
+                        enable : true,
+                        // 每页数据条数
+                        pageSize : 5
+                    },
+                    collection : Backbone.Collection//DataSourceCollection
+                },
+                //显示序号列
+                displayIndex:true,
+                //列显示循序：
+                columns : [
+                    {
+                        text : "编号",
+                        dataIndex : "ID"
+                    },
+                    {
+                        text : "姓名",
+                        dataIndex : "XM"
+                    },
+                    {
+                        text : "性别",
+                        dataIndex : "XB",
+                        render:function(value, row){//将类型转为文字
+                            return value==1?"男":"女";
+                        }
+                    },
+                    {
+                        text : "职位",
+                        dataIndex : "ZW"
+                    },
+                    {
+                        text : "操作",
+                        render:function(value, row){
+                            return "<a data-id='"+ row["ID"] +"' data-name='"+ row["XM"] +"' class='editData btn btn-outline btn btn-xs green' style='width:50px;'>编辑 </a> <a data-id='"+ row["ID"] +"'href='javascript:;' class='btn btn-outline btn btn-xs red deleteData' style='width:50px;' data-target='#confirm' data-toggle='modal'>删除 </a>";
+                        }
+                    }],
+                //表头、表数据初始化完成后调用
+                initTableEventsCall : function(){
+                    //为table中的删除按钮添加事件：
+                    me.$(".deleteData").click(function(_event){
+                        _event.stopPropagation();
+                        var _event = _event || event;
+                        var row = _event.srcElement?_event.srcElement:_event.target;
+                        var $this=$(row);
+                        me.needDeleteId=$this.attr("data-id");
+                        _this.$('#confirm').modal('show');
+                    });
+                    //为table中的编辑按钮添加事件：
+                    me.$(".editData").click(function(_event){
+                        _event.stopPropagation();
+                        var _event = _event || event;
+                        var row = _event.srcElement?_event.srcElement:_event.target;
+                        var $this=$(row);
+                        me.editID=$this.attr("data-id");
+//                      location.href="#workLoadContent/2/"+ me.editID;
+                        BasePluginsUTIL.toastrAlert('success', '提示', "可以跳转到编辑页了："+me.editID);
+                    });
+                    me.$("#dataTableWrapper").find("tbody").find("tr").click(function(_event){
+                        _event.stopPropagation();
+                        var currentTr=event.target;
+                        while(currentTr.tagName!="TR"){
+                            currentTr=currentTr.parentNode;
+                        }
+                        var $this=$(currentTr);
+
+//                      if($this.find(".editData").length>0){
+//                          me.editID=$this.find(".editData").attr("data-id");
+//                      }else{
+//                          me.editID=$this.parents("tr").find(".editTeacher").attr("data-id");
+//                      }
+//                      location.href="#workLoadContent/0/"+ me.editID;
+
+                        if($this.find(".editData").length>0){
+                            var editName=$this.find(".editData").attr("data-name");
+                            BasePluginsUTIL.toastrAlert('success', '提示', "选中行："+editName);
+                        }
+                    });
+                }
+            };
+            this.dataTable = new DataTable(options);
+            /*渲染至页面*/
+            this.$("#dataTableWrapper").html(this.dataTable.$el);
+        },
+        getAttachment:function(){
+            var paramjson={"use_role":"资料管理员"};
+            PublicAjax.ajaxFuncTwo(PublicAjax.ajaxUrl.getAttachmentJG, JSON.stringify(paramjson), function (_d) {
+                    if(_d.resultnum === "0000"){
+                        var jsondata = _d.resultdata;
+                        //附件分组
+                        var attachtypeadd=[];
+                        //每个分组中的option串
+                        var attachOptionS=[];
+                        var optionStr="";
+                        if (jsondata.length > 0) {
+                            for(var i=0;i<jsondata.length;i++){
+                                if($.inArray(jsondata[i].stand_type_name, attachtypeadd)<0){
+                                    //分类不存在则加组,并加入数组中
+                                    attachtypeadd.push(jsondata[i].stand_type_name);
+                                    attachOptionS.push([]);
+                                }
+                                var index=$.inArray(jsondata[i].stand_type_name, attachtypeadd);
+                                attachOptionS[index]=attachOptionS[index]+"<option value=\""+jsondata[i].attachment_id+"\" stand_id=\""+jsondata[i].stand_id+"\" score_type=\""+jsondata[i].score_type+"\" submit_num=\""+jsondata[i].submit_num+"\">"+jsondata[i].attachment_name+"</option>";
+                            }
+                            for(var j=0;j<attachtypeadd.length;j++){
+                                optionStr+="<optgroup label=\""+attachtypeadd[j]+"\">"+attachOptionS[j]+"</optgroup>";
+                            }
+                            $("#fenlei").append("<option value=\"\">请选择资料分类</option>"+optionStr);
+                            _form.render('select');
+                        }
+                    }
+                });
+        },
+        importFun:function(){
+            /*上传资料按钮事件,先判断是否选择了分类,然后判断此类别是否还有上传权限*/
+            if($("#fenlei").val()==""){
+                return;
+            }
+            /*判断是否还需要上传,有每年只能上传一次的*/
+            var submit_num=$("#fenlei").find("option:selected").attr("submit_num");
+            var attachmentid=$("#fenlei").val();
+            if(submit_num=="1"){
+               /*走验证,验证成功后跳转到文件上传页面*/
+            }else{
+                /*直接走上传页面*/
+               location.href="#attachment/1/"+attachmentid;
+            }
+
+        }
+    });
+});

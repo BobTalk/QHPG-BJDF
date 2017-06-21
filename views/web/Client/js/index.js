@@ -1,0 +1,121 @@
+/**
+ * Created by sanghuina on 17/1/10.
+ */
+var roleValue="",UserID="",UserName="",ServiceID="",ServiceName="",ClassID="",ClassName="",GradeID="",GradeName="",ChildID="",ChildName="",UserSex="0",userTeachClassId="";
+$(function(){
+    //滑动
+    var flg = true;
+    var length;
+    //菜单拦左右方向收起展开
+    $('.toggle-menu').click(function(){
+        var ele = $('.main_left');
+        var main = $('.main_mid');
+        var person=$('.person');
+        if( flg == true){
+            ele.addClass("current");
+            main.animate({'margin':'0 180px 0 115px'},500);
+            person.addClass("current");
+            $('#ascrail2000').hide();
+            $('.main-right').css("margin-left","60px");
+            $('.pagination').css("margin-left","-28px");
+            flg = false;
+        }else if( flg == false){
+            ele.removeClass("current");
+            person.removeClass("current");
+            $('.main-right').css("margin-left","234px");
+            $('.pagination').css("margin-left","-115px");
+            if($('.scroll-pane ul').height() < $('.scroll-pane').height()){
+                console.log($('.scroll-pane ul').height());
+                $('#ascrail2000').hide();
+            }else{
+                setTimeout(function(){ //  修复滚动条bug
+                    $('#ascrail2000').show();
+                },500);
+            }
+            $(this).remove("current");
+            main.animate({'margin':'0 180px 0 285px'},500);
+            person.remove("current");
+            flg = true;
+        }
+    });
+
+});
+window.onload=function(){
+    var nheight=$(window).height();
+    $("#mainiframe").css({height:nheight-70});
+
+    //获取任务下的问卷列表
+    roleValue=decodeURIComponent(getUrlPara("role"));
+    UserID=getUrlPara("uid");
+    UserName=decodeURIComponent(getUrlPara("uname"));
+    ServiceID=getUrlPara("xxid");
+    ServiceName=decodeURIComponent(getUrlPara("xxmc"));
+    UserSex=getUrlPara("sex");
+    if(UserSex=="0"){
+        $("#touxiang").attr("src","images/man.png");
+    }else{
+        $("#touxiang").attr("src","images/womon.png");
+    }
+    $("#truename").html(UserName);
+    if(roleValue=="学生"){
+        $("#leibie").addClass("xues");
+        ClassID=getUrlPara("bjid");
+        ClassName=decodeURIComponent(getUrlPara("bjmc"));
+        GradeID=getUrlPara("njmc");
+        GradeName=decodeURIComponent(getUrlPara("njmc"));
+        $("#one").html("<span class=\"pd46\">班级:</span><span class=\"fl\">"+GradeName+ClassName+"</span>");
+        $("#two").html("<span class=\"pd46\">学校:</span><span>"+ServiceName+"</span>");
+    }else if(roleValue=="家长"){
+        $("#leibie").addClass("jz");
+        ClassID=getUrlPara("bjid");
+        ClassName=decodeURIComponent(getUrlPara("bjmc"));
+        GradeID=getUrlPara("njmc");
+        GradeName=decodeURIComponent(getUrlPara("njmc"));
+        ChildID=getUrlPara("childid");
+        ChildName=decodeURIComponent(getUrlPara("childmc"));
+        $("#one").html("<span class=\"pd46\">学生姓名:</span><span class=\"fl\">"+ChildName+"</span>");
+        $("#two").html("<span class=\"pd46\">学生班级:</span><span class=\"fl\">"+GradeName+ClassName+"</span>");
+        $("#three").html("<span class=\"pd46\">学校:</span><span>"+ServiceName+"</span>");
+    }else{
+        $("#leibie").addClass("js");
+        //教师
+       $("#one").html("<span class=\"pd46\">职务:</span><span class=\"fl\">教师</span>");
+        $("#two").html("<span class=\"pd46\">学校:</span><span>"+ServiceName+"</span>");
+    }
+    //获取问卷列表
+    //getTaskPaperList();
+
+};
+//左侧菜单栏中举报点击事件
+$("#jbli").click(function(){
+    $("#tlist").hide();
+    $("#iframediv").show();
+    var url="tipoff/tipoff.html?uid="+UserID+"&serid="+ServiceID+"&role="+encodeURIComponent(roleValue)+"&xxmc="+encodeURIComponent(ServiceName)+"&uname="+encodeURIComponent(UserName)+"&sex="+UserSex+"&action=3&num=1";
+    $("#mainiframe").attr("src",url);
+});
+$("#jzwj").click(function(){
+    $("#tlist").hide();
+    $("#iframediv").show();
+    var url="questionnaire/quesList.html?uid="+_UserObject.user_id+"&serid="+_UserObject.server_id+"&role="+_UserObject.user_role+"&grade_id="+_UserObject.grade_id+"&grade_name="+_UserObject.grade_name;
+    $("#mainiframe").attr("src",url);
+});
+
+$(window).on("load",function(){
+    $("#mainiframe").attr("src","questionnaire/quesList.html?uid="+_UserObject.user_id+"&serid="+_UserObject.server_id+"&role="+_UserObject.user_role+"&grade_id="+_UserObject.grade_id+"&grade_name="+_UserObject.grade_name);
+});
+
+//左侧菜单栏中举报公示点击事件
+$("#jbgs").click(function(){
+    $("#tlist").hide();
+    $("#iframediv").show();
+    var url="tipoff/tipoff.html?uid="+UserID+"&serid="+ServiceID+"&role="+encodeURIComponent(roleValue)+"&xxmc="+encodeURIComponent(ServiceName)+"&uname="+encodeURIComponent(UserName)+"&sex="+UserSex+"&action=1&num=1";
+    $("#mainiframe").attr("src",url);
+});
+//左侧菜单栏中资料公示点击事件
+$("#zlgs").click(function(){
+    $("#tlist").hide();
+    $("#iframediv").show();
+    var url="resource/resourceList.html";
+    $("#mainiframe").attr("src",url);
+});
+

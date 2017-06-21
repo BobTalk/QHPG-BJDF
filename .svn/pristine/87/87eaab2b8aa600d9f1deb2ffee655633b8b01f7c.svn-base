@@ -1,0 +1,130 @@
+<!--wyx 2017/5/17 校内信息-->
+<style>
+    .layui-form {  width: 930px;  }
+</style>
+<!--面包屑-->
+<div class="layui-form-item">
+    <div class="crumbs">
+        <a href="">进度查看</a><span></span>
+        <a href="">教育局进度</a><span></span>
+        <a href="">各学校进度</a><span></span>
+        <a href="">学校进度</a>
+    </div>
+    <div class="crumbsBottom"></div>
+</div>
+<div class=" layui-form layui-form-pane">
+    <!--单项标题-->
+    <div class="singleTitle"><i></i><span>东风西校</span></div>
+
+    <div class="layui-form-item">
+        <div class="statisticsList">
+            <div class="statistics">
+                <div>
+                    <div class="schoolName"><span>统计</span></div>
+                    <div class="statisticsContent ">
+                        <p class="contentTitle mt30">已提交问卷</p>
+                        <div class="contentTotal h80">
+                            <p>34225 <span>份</span></p>
+                        </div>
+                        <div class="partingLine"></div>
+                        <div class="h40 partingLine">
+                            <span class="questionnaireIcon"></span><span class="statisticsTxt">调查问卷</span>
+                        </div>
+                        <div class="h40 partingLine">
+                            <span class="videoIcon"></span><span class="statisticsTxt">视频</span>
+                        </div>
+                        <div class="h40 partingLine">
+                            <span class="formIcon"></span><span class="statisticsTxt">表格</span>
+                        </div>
+
+                        <div class="h40 mb55 partingLine ">
+                            <span class="otherIcon"></span><span class="statisticsTxt">其它</span>
+                        </div>
+                    </div>
+                    <div class="dataFooter2">
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="statisticsItem">
+                <div class="statisticsContent ">
+                    <p class="contentTitle mt55">教师</p>
+                    <div class="contentTotal h80">
+                        <p>342 <span>份</span></p>
+                    </div>
+                    <div class="partingLine"></div>
+                    <div class="h40 partingLine">
+                        <span class="questionnaireNum"></span>1套调查问卷
+                    </div>
+                    <div class="h40 partingLine">
+                        <span class="submitIcom"></span>已提交34份
+                    </div>
+                    <div class="h40 partingLine">
+                        <span class="completedIcon"></span>33.67%已完成
+                    </div>
+
+                    <div class="h40 mb40 partingLine ">
+                        <span class="viewDetails"></span><a href="">查看详情</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="statisticsItem">
+                <div class="statisticsContent ">
+                    <p class="contentTitle mt55">家长</p>
+                    <div class="contentTotal h80">
+                        <p>342 <span>份</span></p>
+                    </div>
+                    <div class="partingLine"></div>
+                    <div class="h40 partingLine">
+                        <span class="questionnaireNum"></span>1套调查问卷
+                    </div>
+                    <div class="h40 partingLine">
+                        <span class="submitIcom"></span>已提交34份
+                    </div>
+                    <div class="h40 partingLine">
+                        <span class="completedIcon"></span>33.67%已完成
+                    </div>
+
+                    <div class="h40 mb40 partingLine ">
+                        <span class="viewDetails"></span><a href="">查看详情</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="statisticsItem">
+                <div class="statisticsContent ">
+                    <p class="contentTitle mt55">学生</p>
+                    <div class="contentTotal h80">
+                        <p>342 <span>份</span></p>
+                    </div>
+                    <div class="partingLine"></div>
+                    <div class="h40 partingLine">
+                        <span class="questionnaireNum"></span>1套调查问卷
+                    </div>
+                    <div class="h40 partingLine">
+                        <span class="submitIcom"></span>已提交34份
+                    </div>
+                    <div class="h40 partingLine">
+                        <span class="completedIcon"></span>33.67%已完成
+                    </div>
+
+                    <div class="h40 mb40 partingLine ">
+                        <span class="viewDetails"></span><a href="">查看详情</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

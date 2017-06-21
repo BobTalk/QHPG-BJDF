@@ -1,0 +1,294 @@
+// ================================================================
+//  author:wenxia
+//  createDate: 2017/5/2.
+//  description: 清华评估-数据表
+//  ===============================================================
+define(function (require) {
+    "use strict";
+    var tpl = require('text!tpl/demo/dataTable.html'),
+        template = _.template(tpl), _this;
+    var DataTable = require('dataTable1');
+    return Backbone.View.extend({
+        className: "layui-main",
+        initialize: function () {
+            _this = this;
+            this.render();
+        },
+        render: function () {
+            this.$el.html(template(this.model));
+            return this;
+        },
+        afterRender: function () {
+            var form=PublicUTIL.layForm;
+            form.render();
+
+            layui.use(['form'], function(){
+                var form=layui.form();
+//                var form = PublicUTIL.layForm;//layui.form();
+            });
+            //加载datatable中数据
+            this.initDataTableData();
+            //初始化页面弹层及事件
+            this.initModal();
+
+            $('#select').on('click', function(){
+                var that = this;
+                var citySelect =  $("#cityTest").val();
+
+                layer.tips(citySelect,that);//'只想提示地精准些', that); //在元素的事件回调体中，follow直接赋予this即可
+            });
+        },
+        events: {
+            "click #import":"importQuestionnaire"
+            ,"click #select":"selectQuestionnaire"
+//            ,"change #quesName":"test"
+//            ,"click #testbtn":"test"
+        },
+        initModal:function(){
+            //将弹层节点移动到body节点下；
+            var modal=$('#modal');
+            $('#modal').remove();
+            $(document.body).append(modal);
+
+            //引入弹层需要的layui模块
+            layui.use(['form','upload' ], function(){
+                layui.upload({
+                    url: '' ,//上传接口
+                    success: function(res){
+                        //上传成功后的回调
+                        console.log(res)
+                    }
+                });
+
+                var form = layui.form();
+                //适用对象全选
+                form.on('checkbox(targetCheckAll)', function(data){
+                    var child = $("#modal").find('input[name="quesTarget"]');
+                    child.each(function(index, item){
+                        item.checked = data.elem.checked;
+                    });
+                    form.render('checkbox');
+                });
+                //适用学段全选
+                form.on('checkbox(gradeCheckAll)', function(data){
+                    var child = $("#modal").find('input[name="quesGrade"]');
+                    child.each(function(index, item){
+                        item.checked = data.elem.checked;
+                    });
+                    form.render('checkbox');
+                });
+            });
+
+            //弹层上的事件
+
+        },
+        test:function(){
+            console.log("llalls");
+        },
+        selectQuestionnaire:function(){
+            /*icon
+            0  警告--！
+            1  提示信息--√
+            2  操作失败--×
+            3  对话框，确认删除--？
+            */
+            /*
+            * layer.alert(content, options, yes)
+            * layer.confirm(content, options, yes, cancel)
+            * layer.msg(content, options, end) 默认没有title,自动消失 */
+            /*layer.confirm('确认删除?', {icon: 0, title:'警告',title:false,closeBtn:0}, function(index){
+                //do something
+                layer.close(index);
+            });
+            layer.msg('同上', {
+                icon: 1,
+                time: 2000 //2秒关闭（如果不配置，默认是3秒）
+            }, function(){
+                //do something
+            });*/
+
+
+        },
+        importQuestionnaire:function(){
+            //弹层设置问卷
+            layer.open({
+                type:1,
+                title:'问卷上传'
+//                content:$("#modal")//,//使用页面元素作为内容时，弹层无法关闭
+                ,content: $('#modal'),// $('#modal').html(),//tplArr.join(""),//$('#modal'),////'页面内容字符串',
+                zIndex:19891018,
+                skin:'layui-layer-molv',//layui-layer-lan layui-layer-molv
+                area: ['600px', '500px'],
+                offset:'100px'//['100px','50px'],//位置偏移量坐标
+                ,btn: ['保存','返回']//['按钮一', '按钮二', '按钮三']
+                ,yes: function(index, layero){//确定按钮回调方法，默认不关闭？！
+                    //获取弹层中表单数据
+                    //获取适用对象
+                    var quesTargetList = $("#modal").find('input[name="quesTarget"]:checked');
+                    var quesTargetStr="";
+                    for(var i=0;i<quesTargetList.length;i++){
+                        if(quesTargetStr){
+                            quesTargetStr+=",";
+                        }
+                        quesTargetStr += $(quesTargetList[i]).val();
+                    }
+                    var quesGradeList = $("#modal").find('input[name="quesGrade"]:checked');
+                    var quesGradeStr="";
+                    for(var i=0;i<quesGradeList.length;i++){
+                        if(quesGradeStr){
+                            quesGradeStr+=",";
+                        }
+                        quesGradeStr += $(quesGradeList[i]).val();
+                    }
+//                    debugger;
+                    console.log(quesTargetStr+"   "+quesGradeStr);
+                }
+                ,btnAlign: 'c'
+                ,closeBtn:2//关闭按钮的风格
+                ,shade: [0.8, '#393D49']//0
+                ,shadeClose:true//是否点击遮罩关闭
+                ,maxmin:true
+                ,resize:false
+                ,scrollbar:false//屏蔽浏览器滚动条
+                ,move: false
+                ,success: function(layero, index){
+//                    var form = layui.form();
+//                    form.render(); //更新全部
+//                    console.log(layero, index);
+                }
+                ,end:function(){
+                    //层销毁之后触发的回调，确定或者关闭都会执行
+                }
+            });
+        },
+        initDataTableData:function(){
+            var me=this;
+            var options = {
+                // 数据来源方法
+                data : {
+                    // 异步数据源
+                    sync : function(syncOptions, callback) {
+                        //下面注释的是获取异步数据方法
+                        /*var PAGEJSON={PageIndex: syncOptions.data.page, PageSize: syncOptions.data.rows};
+
+                         require(['btcommon/ajax'], function (_ajax) {
+                         _ajax.ajaxForList(TeacherUTIL.CONFIG.getWorkloadList, "PAGEJSON=" + JSON.stringify(PAGEJSON), function (_d) {
+                         callback && callback({rows:_d.ResultData,total:_d.PageCount});
+                         })
+                         });*/
+                        setTimeout(function(){
+                            var dataList=[{ID:'8787367361',XM:'张月月',XB:2,ZW:'技术人员'},
+                                {ID:'8787367362',XM:'王廷羲',XB:1,ZW:'技术人员'},
+                                {ID:'8787367363',XM:'李文霞',XB:2,ZW:'技术人员'},
+                                {ID:'8787367364',XM:'白宇熙',XB:1,ZW:'技术人员'}
+                            ];
+                            var dataCount=4;
+                            callback && callback({rows:dataList,total:dataCount});
+                        },200);
+
+                    },
+                    // 数据列表的索引
+                    dataArrayIndex : 'rows',
+                    // 分页参数
+                    paging : {
+                        enable : true,
+                        // 每页数据条数
+                        pageSize : 5
+                    },
+                    collection : Backbone.Collection//DataSourceCollection
+                },
+                //显示序号列
+                displayIndex:true,
+                //列显示循序：
+                columns : [
+                    {
+                        text : "编号",
+                        dataIndex : "ID"
+                    },
+                    {
+                        text : "姓名",
+                        dataIndex : "XM"
+                    },
+                    {
+                        text : "性别",
+                        dataIndex : "XB",
+                        render:function(value, row){//将类型转为文字
+                            return value==1?"男":"女";
+                        }
+                    },
+                    {
+                        text : "职位",
+                        dataIndex : "ZW"
+                    },
+                    {
+                        text : "操作",
+                        render:function(value, row){
+                            return "<a data-id='"+ row["ID"] +"' data-name='"+ row["XM"] +"' class='editData btn btn-outline btn btn-xs green greenBtnTxt'>编辑 </a> <a data-id='"+ row["ID"] +"'href='javascript:;' class='btn btn-outline btn btn-xs red deleteData redBtnTxt' data-target='#confirm' data-toggle='modal'>删除 </a>";
+                        }
+                    }],
+                // 默认多选模式
+                "selModel" : {
+                    // single/multi,为空则不显示
+                    mode :  "multi",
+                    // 是否显示行的checkbox
+                    checkbox : true,
+                    //定义选中的数据列表
+                    selectData:{
+                        keyword:"XM",
+                        selectDataValue:["张月月","白宇熙"]//["1","232423","232424","232432","232435"]
+                    },
+                    keepCheckState:{//保持勾选状态才能获取全部的勾选数据
+                        keepCheck:true,
+                        keepStateKeyword:"XM"
+                    }
+                },
+                //表头、表数据初始化完成后调用
+                initTableEventsCall : function(){
+                    //为table中的删除按钮添加事件：
+                    me.$(".deleteData").click(function(_event){
+                        _event.stopPropagation();
+                        var _event = _event || event;
+                        var row = _event.srcElement?_event.srcElement:_event.target;
+                        var $this=$(row);
+                        me.needDeleteId=$this.attr("data-id");
+                        _this.$('#confirm').modal('show');
+                    });
+                    //为table中的编辑按钮添加事件：
+                    me.$(".editData").click(function(_event){
+                        _event.stopPropagation();
+                        var _event = _event || event;
+                        var row = _event.srcElement?_event.srcElement:_event.target;
+                        var $this=$(row);
+                        me.editID=$this.attr("data-id");
+//                      location.href="#workLoadContent/2/"+ me.editID;
+                        BasePluginsUTIL.toastrAlert('success', '提示', "可以跳转到编辑页了："+me.editID);
+                    });
+                    me.$("#dataTableWrapper").find("tbody").find("tr").click(function(_event){
+                        _event.stopPropagation();
+                        var currentTr=event.target;
+                        while(currentTr.tagName!="TR"){
+                            currentTr=currentTr.parentNode;
+                        }
+                        var $this=$(currentTr);
+
+//                      if($this.find(".editData").length>0){
+//                          me.editID=$this.find(".editData").attr("data-id");
+//                      }else{
+//                          me.editID=$this.parents("tr").find(".editTeacher").attr("data-id");
+//                      }
+//                      location.href="#workLoadContent/0/"+ me.editID;
+
+                        if($this.find(".editData").length>0){
+                            var editName=$this.find(".editData").attr("data-name");
+                            BasePluginsUTIL.toastrAlert('success', '提示', "选中行："+editName);
+                        }
+                    });
+                }
+            };
+            this.dataTable = new DataTable(options);
+            // 渲染至页面
+            this.$("#dataTableWrapper").html(this.dataTable.$el);
+        }
+    });
+});
+

@@ -1,0 +1,38 @@
+/*
+ 2017年5月4日 15:57:41
+ byx
+ 评估管理-问卷模块route层
+ * */
+
+var express = require('express');
+var router = express.Router();
+
+var questionnaireService = require('../../service/pgmanage_service/questionnaireService');
+
+// 获取问卷列表
+router.get('/getQuestionnaireList', function (req, res, next) {
+    questionnaireService.getQuestionnaireList(req, res, next);
+});
+// 获取问卷列表
+router.get('/getQuestionnaireList2', function (req, res, next) {
+    questionnaireService.getQuestionnaireList2(req, res, next);
+});
+// 导入问卷
+router.post('/importQuestionnaire', function (req, res, next) {
+    questionnaireService.importQuestionnaire(req, res, next);
+});
+//删除问卷
+router.get("/deleteQuestoinnaire", function (req, res, next) {
+    questionnaireService.deleteQuestoinnaire(req, res, next);
+});
+//修改问卷
+router.get("/updateQuestoinnaire",function (req,res,next) {
+    questionnaireService.updateQuestoinnaire(req, res, next);
+});
+//获取问卷详情
+router.get("/getQuestoinnaireInfo",function (req,res,next) {
+    questionnaireService.getQuestoinnaire(req, res, next);
+});
+
+module.exports = router;
+

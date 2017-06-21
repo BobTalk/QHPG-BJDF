@@ -1,0 +1,95 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "node-excel",
+        "scope": null,
+        "escapedName": "node-excel",
+        "name": "node-excel",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\axyr\\code2017\\QHPG-BJDF"
+    ]
+  ],
+  "_from": "node-excel@latest",
+  "_id": "node-excel@0.5.0",
+  "_inCache": true,
+  "_location": "/node-excel",
+  "_nodeVersion": "5.0.0",
+  "_npmUser": {
+    "name": "roger.ramos",
+    "email": "rodgerpaulo@hotmail.com"
+  },
+  "_npmVersion": "3.3.6",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "node-excel",
+    "scope": null,
+    "escapedName": "node-excel",
+    "name": "node-excel",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-excel/-/node-excel-0.5.0.tgz",
+  "_shasum": "865a31728cb5fd7c35b96bf13d0c13cc832102c7",
+  "_shrinkwrap": null,
+  "_spec": "node-excel",
+  "_where": "D:\\axyr\\code2017\\QHPG-BJDF",
+  "author": {
+    "name": "Rafael de Brito Fischer",
+    "email": "rafaelfischer@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/e-Construmarket/Node-Excel/issues"
+  },
+  "dependencies": {
+    "collections": "^1.2.1",
+    "node-zip": "1.x"
+  },
+  "description": "Simple data set export to Excel xlsx file",
+  "devDependencies": {
+    "mocha": "",
+    "should": ""
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "dist": {
+    "shasum": "865a31728cb5fd7c35b96bf13d0c13cc832102c7",
+    "tarball": "https://registry.npmjs.org/node-excel/-/node-excel-0.5.0.tgz"
+  },
+  "gitHead": "946b98f8dbbad200f33c6be8e7402268f5925a9f",
+  "homepage": "https://github.com/e-Construmarket/Node-Excel#readme",
+  "keywords": [
+    "Excel",
+    "xlsx"
+  ],
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "roger.ramos",
+      "email": "rodgerpaulo@hotmail.com"
+    }
+  ],
+  "name": "node-excel",
+  "optionalDependencies": {},
+  "readme": "# excel-export #\n\nA simple node.js module for exporting data set to Excel xlsx file.\n\n## Using excel-export ##\nSetup configuration object before passing it into the execute method.  **cols** is an array for column definition.  Column definition should have caption and type properties while width property is not required.  The unit for width property is character.   **beforeCellWrite** callback is optional.  beforeCellWrite is invoked with row, cell data and option object (eOpt detail later) parameters.  The return value from beforeCellWrite is what get written into the cell.  Supported valid types are string, date, bool and number.  **rows** is the data to be exported. It is an Array of Array (row). Each row should be the same length as cols.  Styling is optional.  However, if you want to style your spreadsheet, a valid excel styles xml file is needed.  An easy way to get a styles xml file is to unzip an existing xlsx file which has the desired styles and copy out the styles.xml file. Use **stylesXmlFile** property of configuartion object to specify the relative path and file name of the xml file.  Google for \"spreadsheetml style\" to learn more detail on styling spreadsheet.  eOpt in beforeCellWrite callback contains rowNum for current row number. eOpt.styleIndex should be a valid zero based index from cellXfs tag of the selected styles xml file.  eOpt.cellType is default to the type value specified in column definition.  However, in some scenario you might want to change it for different format. \n\n\n\n    var express = require('express');\n\tvar nodeExcel = require('excel-export');\n\tvar app = express();\n\n\tapp.get('/Excel', function(req, res){\n\t  \tvar conf ={};\n\t\tconf.stylesXmlFile = \"styles.xml\";\n\t  \tconf.cols = [{\n\t\t\tcaption:'string',\n            type:'string',\n            beforeCellWrite:function(row, cellData){\n\t\t\t\t return cellData.toUpperCase();\n\t\t\t},\n            width:28.7109375\n\t\t},{\n\t\t\tcaption:'date',\n\t\t\ttype:'date',\n\t\t\tbeforeCellWrite:function(){\n\t\t\t\tvar originDate = new Date(Date.UTC(1899,11,30));\n\t\t\t\treturn function(row, cellData, eOpt){\n              \t\tif (eOpt.rowNum%2){\n                \t\teOpt.styleIndex = 1;\n              \t\t}  \n              \t\telse{\n                \t\teOpt.styleIndex = 2;\n              \t\t}\n                    if (cellData === null){\n                      eOpt.cellType = 'string';\n                      return 'N/A';\n                    } else\n                      return (cellData - originDate) / (24 * 60 * 60 * 1000);\n\t\t\t\t} \n\t\t\t}()\n\t\t},{\n\t\t\tcaption:'bool',\n\t\t\ttype:'bool'\n\t\t},{\n\t\t\tcaption:'number',\n\t\t\t type:'number'\t\t\t\t\n\t  \t}];\n\t  \tconf.rows = [\n\t \t\t['pi', new Date(Date.UTC(2013, 4, 1)), true, 3.14],\n\t \t\t[\"e\", new Date(2012, 4, 1), false, 2.7182],\n            [\"M&M<>'\", new Date(Date.UTC(2013, 6, 9)), false, 1.61803],\n            [\"null date\", null, true, 1.414]  \n\t  \t];\n\t  \tvar result = nodeExcel.execute(conf);\n\t  \tres.setHeader('Content-Type', 'application/vnd.openxmlformats');\n\t  \tres.setHeader(\"Content-Disposition\", \"attachment; filename=\" + \"Report.xlsx\");\n\t  \tres.end(result, 'binary');\n\t});\n\n\tapp.listen(3000);\n\tconsole.log('Listening on port 3000');\n",
+  "readmeFilename": "Readme.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e-Construmarket/Node-Excel.git"
+  },
+  "scripts": {
+    "test": "mocha test/main"
+  },
+  "version": "0.5.0"
+}

@@ -1,0 +1,56 @@
+/**
+ * Created by bainiu on 2017-03-28 16:58:00.
+ * excel操作工具类
+ */
+
+var fs = require('fs');
+var xlsx = require('xlsx');
+
+module.exports = {
+    /**
+     * 解析 excel 为 JSON 对象，每个 excel 有多个 sheet 页，
+     * 每个 sheet 页里面有多行数据，每行数据有多列，最终 sheet
+     * 的数据存储为二维数组。
+     * 返回格式：
+     * {
+ *     "Sheet 1": [
+ *          [col1, col2, col3, ...],//第一行数据
+ *          [col1, col2, col3, ...],//第二行数据
+ *          ...
+ *     ],
+ *     "Sheet 2": []
+ * }
+     *
+     * @param {String} input - 要处理的 excel 源文件
+     * @return {Object} 返回
+     */
+    parse: function (input) {
+        var book = xlsx.readFileSync(input), result = {};
+        //循环工作表中的每个 sheet 页
+        book.SheetNames.forEach(function (name) {
+            //拿到当前 sheet 页对象
+            var sheet = book.Sheets[name],
+            //得到当前页内数据范围
+                range = xlsx.utils.decode_range(sheet['!ref']),
+            //保存数据范围数据
+                row_start = range.s.r, row_end = range.e.r,
+                col_start = range.s.c, col_end = range.e.c,
+                rows = [], row_data, i, addr, cell;
+            //按行对 sheet 内的数据循环
+            for (; row_start <= row_end; row_start++) {
+                row_data = [];
+                //读取当前行里面各个列的数据
+                for (i = col_start; i <= col_end; i++) {
+                    addr = xlsx.utils.encode_col(i) + xlsx.utils.encode_row(row_start);
+                    cell = sheet[addr];
+                    row_data.push(cell.v);
+                }
+                rows.push(row_data);
+            }
+            //保存当前页内的数据
+            result[name] = rows;
+        });
+        return result;
+    }
+
+}

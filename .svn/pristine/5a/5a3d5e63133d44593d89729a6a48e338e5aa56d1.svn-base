@@ -1,0 +1,82 @@
+<div class="layui-form-item">
+    <div class="crumbs">
+        <a href="#scheduleProject" id="sch_pro" name="sch_pro">进度查看</a><span></span>
+        <a href="" id="sch_bur" style="display: none;"  name="sch_bur" class="crumbs_bur">教官中心进度</a><span style="display: none;" class="crumbs_bur"></span>
+        <a href="" id="sch_sch_list" style="display: none;"  name="sch_sch_list" class="crumbs_list">各学校进度</a><span style="display: none;" class="crumbs_list"></span>
+        <a href="" id="sch_sch" name="sch_sch" class="crumbs_sch">学校进度</a><span class="crumbs_sch"></span>
+        <a href="" id="sch_info" name="sch_info" class="crumbs_info">年级进度</a><span class="crumbs_info"></span>
+        <a href="">班级进度</a>
+    </div>
+    <div class="crumbsBottom"></div>
+</div>
+<div class=" layui-form layui-form-pane">
+    <div class="layui-form-item">
+        <div class="layui-input-inline  ">
+            <div class="data-select-title">调查问卷</div>
+            <select name="paper" name="paper">
+                <option value="">请选择问卷</option>
+            </select>
+        </div>
+        <div class="layui-input-inline ">
+            <div class="data-select-title">年&nbsp;&nbsp;级</div>
+            <select name="grade" id="grade">
+                <option value="">请选择</option>
+            </select>
+        </div>
+        <div class="searchBtn"></div>
+    </div>
+    <div class="layui-form-item">
+        <div class="gradeProgressBox">
+            <div class="gradeSchoolName">
+                <p id="schoolname" name="schoolname">仓上小学</p>
+            </div>
+            <div class="ringOne"></div>
+            <div class="ringTwo"></div>
+            <div class="gradeListBox">
+                <div class="gradeList">
+                    <p class="gradeTitle" id="papername" name="papername">顺义区仓上小学卫生发展情况调查进度</p>
+                    <ul id="schDetailUL" name="schDetailUL">
+                        <li>
+                            <div class="gradeProgress">
+                                <span class="fw400" >一年级一班</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div>50&nbsp;% <span class="w70">9/231人</span> <span class="uncommittedBtn">未提交名单</span>
+                            </div>
+                            <div class="uncommittedDetails">
+                                <div class="gradeProgress">
+                                    <span class="fw400">一年级一班</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div><span class="percentageTxt">50&nbsp;% </span><span class="w70">9/231人</span> <span class="viewDetailsBtn">未提交名单</span>
+                                </div>
+                                <div class="rosterName">
+                                    <p>槐南堂，三槐堂，渭北堂，半仙堂，六和堂，玉冰堂，三白堂，大本堂，五教堂，仁安堂，正义堂，世贤堂，世德堂，四合堂，四柏堂，永承堂，永思堂，存友堂，仰德堂，亦文堂，交德堂，孝友堂，孝睦堂，两仪堂，利文堂，佑启堂，尚德堂，佩传堂，思孝堂，思植堂，保后堂，衍白堂，叙伦堂，冠南堂，素风堂，振趾堂，挹渊堂，恩义堂，恩荣堂，务本堂，梓荫堂，崇本堂，崇孝堂，崇德堂，惇叙堂，淮泽堂</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="gradeProgress">
+                                <span class="fw400">一年级二班</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div>50&nbsp;% <span class="w70">9/231人</span> <span class="uncommittedBtn">未提交名单</span>
+                            </div>
+                            <div class="uncommittedDetails">
+                                <div class="gradeProgress">
+                                    <span class="fw400">一年级二班</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div><span class="percentageTxt">50&nbsp;% </span><span class="w70">9/231人</span> <span class="viewDetailsBtn">未提交名单</span>
+                                </div>
+                                <div class="rosterName">
+                                    <p>槐南堂，三槐堂，渭北堂，半仙堂，六和堂，玉冰堂，三白堂，大本堂，五教堂，仁安堂，正义堂，世贤堂，世德堂，四合堂，四柏堂，永承堂，永思堂，存友堂，仰德堂，亦文堂，交德堂，孝友堂，孝睦堂，两仪堂，利文堂，佑启堂，尚德堂，佩传堂，思孝堂，思植堂，保后堂，衍白堂，叙伦堂，冠南堂，素风堂，振趾堂，挹渊堂，恩义堂，恩荣堂，务本堂，梓荫堂，崇本堂，崇孝堂，崇德堂，惇叙堂，淮泽堂</p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="pt40 footerColorBarOne">
+                    <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                        <li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>

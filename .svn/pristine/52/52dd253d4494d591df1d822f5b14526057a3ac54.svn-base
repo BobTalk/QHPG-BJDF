@@ -1,0 +1,168 @@
+/**
+ * Created by sanghuina on 17/1/10.
+ */
+var roleValue="",UserID="",UserName="",ServiceID="",ServiceName="",ClassID="",ClassName="",GradeID="",GradeName="",ChildID="",ChildName="",UserSex="0",userTeachClassId="";
+var getTaskPaperList=function(){
+    var ajaxobj={
+        itype:"get",
+        iname:"wJController/GetUserWJList"
+    };
+    var actobj={
+        "userChildId":ChildID,
+        "userChildName":ChildName,
+        "userClassId":ClassID,
+        "userClassName":ClassName,
+        "userGradeId":GradeID,
+        "userGradeName":GradeName,
+        "userId":UserID,
+        "userName":UserName,
+        "userRole":roleValue,
+        "userSchoolId":ServiceID,
+        "userSchoolName":ServiceName,
+        "userSex":UserSex,
+        "userTeachClassId":userTeachClassId
+    }
+    alertpop('LoadToast');
+    getdata(ajaxobj,actobj,function(data){
+        if(data.resultnum=="0000"){
+            var jsondata=data.resultdata;
+            var listr="";
+            var statev="未填写";
+            var stateclass="list01";
+            for(var i=0;i<jsondata.length;i++){
+                var date=(new Date(jsondata[i].jieshushijian));
+                var datetext=date.getFullYear()+'-'+(date.getMonth()+1)+ '-'+date.getDate();
+                if(jsondata[i].userWJState==0){
+                    statev="未填写";
+                    stateclass="list01";
+                }else  if(jsondata[i].userWJState==1){
+                    statev="未提交";
+                    stateclass="list02";
+                }else{
+                    statev="可查看";
+                    stateclass="list03";
+                }
+                listr+="<li class='paperli' projectid='"+jsondata[i].projectid+"' taskid='"+jsondata[i].renwuid+"' wjid='"+jsondata[i].wjId+"' state='"+jsondata[i].userWJState+"' >"
+                    +"<div class=\""+stateclass+" hand\">"
+                    +"<p>"+jsondata[i].wjName+"</p>"
+                    +"<span>截止日期："+datetext+"</span><i>"+statev+"</i>"
+                    +"</div></li>";
+            }
+            $("#taskpaperlist").html(listr);
+        }
+        alertclose();
+    });
+};
+$(function(){
+    //滑动
+    var flg = true;
+    var length;
+    //菜单拦左右方向收起展开
+    $('.toggle-menu').click(function(){
+        var ele = $('.main_left');
+        var main = $('.main_mid');
+        var person=$('.person');
+        if( flg == true){
+            ele.addClass("current");
+            main.animate({'margin':'0 180px 0 115px'},500);
+            person.addClass("current");
+            $('#ascrail2000').hide();
+            $('.main-right').css("margin-left","60px");
+            $('.pagination').css("margin-left","-28px");
+            flg = false;
+        }else if( flg == false){
+            ele.removeClass("current");
+            person.removeClass("current");
+            $('.main-right').css("margin-left","234px");
+            $('.pagination').css("margin-left","-115px");
+            if($('.scroll-pane ul').height() < $('.scroll-pane').height()){
+                console.log($('.scroll-pane ul').height());
+                $('#ascrail2000').hide();
+            }else{
+                setTimeout(function(){ //  修复滚动条bug
+                    $('#ascrail2000').show();
+                },500);
+            }
+            $(this).remove("current");
+            main.animate({'margin':'0 180px 0 285px'},500);
+            person.remove("current");
+            flg = true;
+        }
+    });
+
+});
+window.onload=function(){
+    var nheight=$(window).height();
+    $("#mainiframe").css({height:nheight-70});
+    //获取任务下的问卷列表
+    roleValue=decodeURIComponent(getUrlPara("role"));
+    UserID=getUrlPara("uid");
+    UserName=decodeURIComponent(getUrlPara("uname"));
+    ServiceID=getUrlPara("xxid");
+    ServiceName=decodeURIComponent(getUrlPara("xxmc"));
+    UserSex=getUrlPara("sex");
+    if(UserSex=="0"){
+        $("#touxiang").attr("src","images/man.png");
+    }else{
+        $("#touxiang").attr("src","images/womon.png");
+    }
+    $("#truename").html(UserName);
+    if(roleValue=="学生"){
+        $("#leibie").addClass("xues");
+        ClassID=getUrlPara("bjid");
+        ClassName=decodeURIComponent(getUrlPara("bjmc"));
+        GradeID=getUrlPara("njmc");
+        GradeName=decodeURIComponent(getUrlPara("njmc"));
+        $("#one").html("<span class=\"pd46\">班级:</span><span class=\"fl\">"+GradeName+ClassName+"</span>");
+        $("#two").html("<span class=\"pd46\">学校:</span><span>"+ServiceName+"</span>");
+    }else if(roleValue=="家长"){
+        $("#leibie").addClass("jz");
+        ClassID=getUrlPara("bjid");
+        ClassName=decodeURIComponent(getUrlPara("bjmc"));
+        GradeID=getUrlPara("njmc");
+        GradeName=decodeURIComponent(getUrlPara("njmc"));
+        ChildID=getUrlPara("childid");
+        ChildName=decodeURIComponent(getUrlPara("childmc"));
+        $("#one").html("<span class=\"pd46\">学生姓名:</span><span class=\"fl\">"+ChildName+"</span>");
+        $("#two").html("<span class=\"pd46\">学生班级:</span><span class=\"fl\">"+GradeName+ClassName+"</span>");
+        $("#three").html("<span class=\"pd46\">学校:</span><span>"+ServiceName+"</span>");
+    }else{
+        $("#leibie").addClass("js");
+        //教师
+       $("#one").html("<span class=\"pd46\">职务:</span><span class=\"fl\">教师</span>");
+        $("#two").html("<span class=\"pd46\">学校:</span><span>"+ServiceName+"</span>");
+    }
+    //获取问卷列表
+    //getTaskPaperList();
+
+}
+//问卷列表中单个问卷的点击事件
+$("#taskpaperlist").delegate("li","click",function(_event){
+    _event.stopPropagation();
+    var _event = _event || event;
+    var row = _event.srcElement?_event.srcElement:_event.target;
+    var $event=$(row);
+    if($event.hasClass("paperli")){
+        $event=$event;
+    }else{
+        $event=$event.parents("li");
+    }
+    var projectid=$event.attr("projectid");
+    var taskid=$event.attr("taskid");
+    var wjid=$event.attr("wjid");
+    var state=$event.attr("state");
+    $("#tlist").hide();
+    $("#iframediv").show();
+    //根据问卷id不同,跳转不同的问卷页面
+    var url="questionhtml/"+wjid+".html?proid="+projectid+"&taskid="+taskid+"&wjid="+wjid+"&qustate="+state
+        +"&state=0&uid="+UserID+"&serid="+ServiceID+"&role="+encodeURIComponent(roleValue)+"&classn="+encodeURIComponent(ClassName)
+        +"&graden="+encodeURIComponent(GradeName)+"&xxmc="+encodeURIComponent(ServiceName)+"&uname="+encodeURIComponent(UserName)+"&sex="+UserSex+"&bjid="+ClassID+"&njid="+GradeID;
+    $("#mainiframe").attr("src",url);
+});
+//左侧菜单栏中举报点击事件
+$("#jbli").click(function(){
+    $("#tlist").hide();
+    $("#iframediv").show();
+    var url="tipoff/tipoff.html?uid="+UserID+"&serid="+ServiceID+"&role="+encodeURIComponent(roleValue)+"&xxmc="+encodeURIComponent(ServiceName)+"&uname="+encodeURIComponent(UserName)+"&sex="+UserSex;
+    $("#mainiframe").attr("src",url);
+});

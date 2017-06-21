@@ -1,0 +1,179 @@
+/*
+ 2017年5月4日 16:35:56
+ byx
+ 评估管理-问卷模块的service层
+ * */
+var $util = require('../../util/util');
+var $excelUtil = require('../../util/excelUtil');
+
+var questionnaireDao = require('../../dao/pgmanage_dao/questionnaireDao');
+
+module.exports = {
+    //获取问卷列表
+    getQuestionnaireList: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var use_role = param.use_role;//使用对象，无此条件时传空
+            use_role = $util.isNull(use_role) ? "-1" : use_role;
+            var use_xueduan_items = param.use_xueduan_items;//使用学段集合
+            use_xueduan_items = use_xueduan_items.length == 0 ? "-1" : $util.strArrayToString(use_xueduan_items);
+            // 分页
+            var pagesize = param.page_size;
+            var pagenum = param.page_num;
+            pagenum = (pagenum - 1) * pagesize;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        questionnaireDao.getQuestionnaireList(use_role, use_xueduan_items, pagesize, pagenum, function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                questionnaireDao.getQuestionnaireListRows(use_role, use_xueduan_items, function (errRows, resultRows) {
+                    if (errRows != null) {
+                        $util.resJSONError(errRows, res);
+                        return;
+                    }
+                    $util.resJSON.resultnum = $util.resConfig.ok;
+                    $util.resJSON.resultdata = result;
+                    $util.resJSON.rows = resultRows[0].rows;
+                    res.json($util.resJSON);
+                });
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    },
+    //获取问卷列表 by hyq
+    getQuestionnaireList2: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            param.map(function (item) {
+                if (item.questionnaire_id == "undefined") {
+                    $util.resJSONError(error, res);
+                    return;
+                }
+            });
+        } catch (e) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        questionnaireDao.saveInfo(param, function (err, result) {
+            if (err != null) {
+                $util.resJSONError(err, res);
+                return;
+            }
+            $util.resJSON.resultnum = $util.resConfig.ok;
+            $util.resJSON.resultdata = {affectedRows: result.affectedRows};
+            res.json($util.resJSON);
+        });
+    },
+    //导入问卷
+    importQuestionnaire: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var path = "../resource/questionnaire/导入模板-高中教师问卷数据.xls";//问卷地址
+            $excelUtil.parse(path);
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        questionnaireDao.getQuestionnaireList(use_role, use_xueduan_items, pagesize, pagenum, function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                questionnaireDao.getQuestionnaireListRows(use_role, use_xueduan_items, function (errRows, resultRows) {
+                    if (errRows != null) {
+                        $util.resJSONError(errRows, res);
+                        return;
+                    }
+                    $util.resJSON.resultnum = $util.resConfig.ok;
+                    $util.resJSON.resultdata = result;
+                    $util.resJSON.rows = resultRows[0].rows;
+                    res.json($util.resJSON);
+                });
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    },
+    //删除问卷 by hyq
+    deleteQuestoinnaire: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            questionnaire_id = param.questionnaire_id;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        questionnaireDao.removeQuestionnaire(questionnaire_id, function (err, result) {
+            if (err != null) {
+                $util.resJSONError(err, res);
+                return;
+            }
+            $util.resJSON.resultnum = $util.resConfig.ok;
+            $util.resJSON.resultdata = {affectedRows: result.affectedRows};
+            res.json($util.resJSON);
+        });
+    },
+    //更新问卷 by hyq
+    updateQuestoinnaire: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        questionnaireDao.updateQuestionnaire(param, function (err, result) {
+            if (err != null) {
+                $util.resJSONError(err, res);
+                return;
+            }
+            $util.resJSON.resultnum = $util.resConfig.ok;
+            $util.resJSON.resultdata = {affectedRows: result.affectedRows};
+            res.json($util.resJSON);
+        });
+    },
+    //获取问卷详情
+    getQuestoinnaire: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            getQuestoinnaireId = param.questionnaire_id;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        questionnaireDao.getQuestionnaire(getQuestoinnaireId, function (err, result) {
+            if (err != null) {
+                $util.resJSONError(err, res);
+                return;
+            }
+            $util.resJSON.resultnum = $util.resConfig.ok;
+            $util.resJSON.resultdata = result;
+            res.json($util.resJSON);
+        });
+    }
+};

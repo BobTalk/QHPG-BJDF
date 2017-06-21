@@ -1,0 +1,77 @@
+/*
+ 2017年5月4日 16:40:50
+ byx
+ 评估管理-问卷模块的dao层
+ * */
+
+var mysql = require('mysql');
+var $conf = require('../../conf/db');
+var $util = require('../../util/util');
+var $writelog = require('../../libs/logHelper');
+var $mysqlUtil = require('../../util/mysqlUtil');
+var $sql = require('./questionnaireSqlMapping');
+
+// 使用连接池，提升性能
+var pool = mysql.createPool($util.extend({}, $conf.mysql));
+
+module.exports = {
+    //获取问卷列表
+    getQuestionnaireList: function (use_role, use_xueduan_items, pagesize, pagenum, callback) {
+        pool.getConnection(function (err, connection) {
+            var sql = $sql.getQuestionnaireList(use_role, use_xueduan_items, pagesize, pagenum);
+            connection.query(sql, function (err, result) {
+                if (err != null) {
+                    $writelog.helper.writeErr("执行sql发生错误：" + sql + "/n 错误信息：" + err.stack);
+                    callback(err, result);
+                    return;
+                }
+                // 返回结果给service
+                callback(err, result);
+                // 释放连接
+                connection.release();
+            });
+        });
+    },
+    //获取问卷列表 by hyq
+    getQuestionnaireList2: function (questionnaire_name, use_role, use_xueduan_items, pagesize, pagenum, callback) {
+        var sql = $sql.getQuestionnaireList2(questionnaire_name, use_role, use_xueduan_items, pagesize, pagenum);
+        $mysqlUtil.queryStrSql(sql, callback);
+    },
+    //获取问卷列表
+    getQuestionnaireListRows: function (use_role, use_xueduan_items, callback) {
+        pool.getConnection(function (err, connection) {
+            var sql = $sql.getQuestionnaireListRows(use_role, use_xueduan_items);
+            connection.query(sql, function (err, result) {
+                if (err != null) {
+                    $writelog.helper.writeErr("执行sql发生错误：" + sql + "/n 错误信息：" + err.stack);
+                    callback(err, result);
+                    return;
+                }
+                // 返回结果给service
+                callback(err, result);
+                // 释放连接
+                connection.release();
+            });
+        });
+    },
+    //获取问卷列表 by hyq
+    getQuestionnaireListRows2: function (questionnaire_name, use_role, use_xueduan_items, callback) {
+        var sql = $sql.getQuestionnaireListRows2(questionnaire_name, use_role, use_xueduan_items);
+        $mysqlUtil.queryStrSql(sql, callback);
+    },
+    //删除问卷
+    removeQuestionnaire: function (param, callback) {
+        var sql = $sql.removeQuestionnaire(param);
+        $mysqlUtil.queryStrSql(sql, callback);
+    },
+    //更新问卷
+    updateQuestionnaire: function (param, callback) {
+        var sql = $sql.updateQuestionnaire(param);
+        $mysqlUtil.queryArrSql(sql, callback);
+    },
+    //获取问卷详情
+    getQuestionnaire: function (getQuestoinnaireId, callback) {
+        var sql = $sql.getQuestionnaire(getQuestoinnaireId);
+        $mysqlUtil.queryStrSql(sql, callback);
+    }
+};

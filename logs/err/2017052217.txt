@@ -1,0 +1,220 @@
+[2017-05-22 17:28:42.193] [ERROR] logErr - 执行sql发生错误：SELECT COUNT(task_id) AS task_num  FROM task   where project_id = '000e43a8-4fe5-2ffe-6146-2ac81bdff3fd',SELECT   COUNT(DISTINCT questionnaire_id) AS questionnaire_num FROM task_questionnaire   where project_id = '000e43a8-4fe5-2ffe-6146-2ac81bdff3fd',SELECT   COUNT(DISTINCT school_id) AS school_num FROM task_grade   where project_id = '000e43a8-4fe5-2ffe-6146-2ac81bdff3fd',SELECT  COUNT(school_id) AS schoolUser_num FROM task_grade   where project_id = '000e43a8-4fe5-2ffe-6146-2ac81bdff3fd',SELECT  COUNT(questionnaire_id) AS getSchoolSubUserNum FROM questionnaire_submit   where questionnaire_id = 'NaN/n 错误信息：Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''NaN' at line 1
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at PoolConnection.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:208:25)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:40:13
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:718:13
+    at iterate (F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:262:13)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:274:29
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:44:16
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:723:17
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:167:37
+    at Query._callback (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:42:7)
+[2017-05-22 17:28:42.199] [ERROR] logErr - 错误信息：Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''NaN' at line 1
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at PoolConnection.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:208:25)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:40:13
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:718:13
+    at iterate (F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:262:13)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:274:29
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:44:16
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:723:17
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:167:37
+    at Query._callback (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:42:7)
+[2017-05-22 17:30:16.615] [ERROR] logErr - 执行sql发生错误：SELECT COUNT(task_id) AS task_num  FROM task   where project_id = '000e43a8-4fe5-2ffe-6146-2ac81bdff3fd',SELECT   COUNT(DISTINCT questionnaire_id) AS questionnaire_num FROM task_questionnaire   where project_id = '000e43a8-4fe5-2ffe-6146-2ac81bdff3fd',SELECT   COUNT(DISTINCT school_id) AS school_num FROM task_grade   where project_id = '000e43a8-4fe5-2ffe-6146-2ac81bdff3fd',SELECT  COUNT(school_id) AS schoolUser_num FROM task_grade   where project_id = '000e43a8-4fe5-2ffe-6146-2ac81bdff3fd',SELECT  COUNT(questionnaire_id) AS getSchoolSubUserNum FROM questionnaire_submit   where questionnaire_id = 'NaN/n 错误信息：Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''NaN' at line 1
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at PoolConnection.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:208:25)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:40:13
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:718:13
+    at iterate (F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:262:13)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:274:29
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:44:16
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:723:17
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:167:37
+    at Query._callback (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:42:7)
+[2017-05-22 17:30:16.617] [ERROR] logErr - 错误信息：Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''NaN' at line 1
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at PoolConnection.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:208:25)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:40:13
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:718:13
+    at iterate (F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:262:13)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:274:29
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:44:16
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:723:17
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:167:37
+    at Query._callback (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:42:7)
+[2017-05-22 17:34:23.224] [ERROR] logErr - 执行sql发生错误：SELECT p.project_id,p.project_name,p.descript,p.start_time,p.end_time,p.create_time,p.state,p.create_user_id,tq.questionnaire FROM project p join task_questionnaire tq on p.project_id = tq.project_id  WHERE state != 2  ORDER BY p.sync DESC  LIMIT 4, 1/n 错误信息：Error: ER_BAD_FIELD_ERROR: Unknown column 'tq.questionnaire' in 'field list'
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Pool.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Pool.js:199:23)
+    at Queries.query (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:10:9)
+    at Object.queryStrSql (F:\work\QHPG-BJDF\util\mysqlUtil.js:25:16)
+    at Object.getProjectList (F:\work\QHPG-BJDF\dao\pgmanage_dao\scheduleDao.js:20:20)
+    at Object.getProjectList (F:\work\QHPG-BJDF\service\pgmanage_service\scheduleService.js:116:21)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\scheduleRoute.js:14:21
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+[2017-05-22 17:34:23.226] [ERROR] logErr - 错误信息：Error: ER_BAD_FIELD_ERROR: Unknown column 'tq.questionnaire' in 'field list'
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Pool.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Pool.js:199:23)
+    at Queries.query (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:10:9)
+    at Object.queryStrSql (F:\work\QHPG-BJDF\util\mysqlUtil.js:25:16)
+    at Object.getProjectList (F:\work\QHPG-BJDF\dao\pgmanage_dao\scheduleDao.js:20:20)
+    at Object.getProjectList (F:\work\QHPG-BJDF\service\pgmanage_service\scheduleService.js:116:21)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\scheduleRoute.js:14:21
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+[2017-05-22 17:34:47.350] [ERROR] logErr - 执行sql发生错误：SELECT COUNT(task_id) AS task_num  FROM task   where project_id = '43b71915-7e43-bec5-d928-d82da9a3809b',SELECT   COUNT(DISTINCT questionnaire_id) AS questionnaire_num FROM task_questionnaire   where project_id = '43b71915-7e43-bec5-d928-d82da9a3809b',SELECT   COUNT(DISTINCT school_id) AS school_num FROM task_grade   where project_id = '43b71915-7e43-bec5-d928-d82da9a3809b',SELECT  COUNT(school_id) AS schoolUser_num FROM task_grade   where project_id = '43b71915-7e43-bec5-d928-d82da9a3809b',SELECT  COUNT(questionnaire_id) AS getSchoolSubUserNum FROM questionnaire_submit   where questionnaire_id = 'NaN/n 错误信息：Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''NaN' at line 1
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at PoolConnection.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:208:25)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:40:13
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:718:13
+    at iterate (F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:262:13)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:274:29
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:44:16
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:723:17
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:167:37
+    at Query._callback (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:42:7)
+[2017-05-22 17:34:47.355] [ERROR] logErr - 错误信息：Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''NaN' at line 1
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at PoolConnection.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:208:25)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:40:13
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:718:13
+    at iterate (F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:262:13)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:274:29
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:44:16
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:723:17
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:167:37
+    at Query._callback (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:42:7)
+[2017-05-22 17:36:09.897] [ERROR] logErr - 执行sql发生错误：SELECT COUNT(task_id) AS task_num  FROM task   where project_id = '43b71915-7e43-bec5-d928-d82da9a3809b',SELECT   COUNT(DISTINCT questionnaire_id) AS questionnaire_num FROM task_questionnaire   where project_id = '43b71915-7e43-bec5-d928-d82da9a3809b',SELECT   COUNT(DISTINCT school_id) AS school_num FROM task_grade   where project_id = '43b71915-7e43-bec5-d928-d82da9a3809b',SELECT  COUNT(school_id) AS schoolUser_num FROM task_grade   where project_id = '43b71915-7e43-bec5-d928-d82da9a3809b',SELECT  COUNT(questionnaire_id) AS getSchoolSubUserNum FROM questionnaire_submit   where questionnaire_id = 'NaN/n 错误信息：Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''NaN' at line 1
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at PoolConnection.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:208:25)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:40:13
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:718:13
+    at iterate (F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:262:13)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:274:29
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:44:16
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:723:17
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:167:37
+    at Query._callback (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:42:7)
+[2017-05-22 17:36:09.902] [ERROR] logErr - 错误信息：Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''NaN' at line 1
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at PoolConnection.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:208:25)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:40:13
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:718:13
+    at iterate (F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:262:13)
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:274:29
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:44:16
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:723:17
+    at F:\work\QHPG-BJDF\node_modules\mysql-queries\node_modules\async\lib\async.js:167:37
+    at Query._callback (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:42:7)

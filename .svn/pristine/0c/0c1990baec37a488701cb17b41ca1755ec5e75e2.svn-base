@@ -1,0 +1,123 @@
+<style>
+    /* dataTable及页签样式*/
+    /*.table-bordered {*/
+        /*border: 1px solid #ddd;*/
+    /*}*/
+
+    /*.table-striped > tbody > tr:nth-of-type(odd) {*/
+        /*background-color: #f4f2f7;;*/
+    /*}*/
+
+    /*.table-striped > tbody > tr:nth-of-type(even) {*/
+        /*background-color: #fcfcfc;*/
+    /*}*/
+
+    /*.table {*/
+        /*width: 100%;*/
+        /*max-width: 100%;*/
+        /*margin-bottom: 20px;*/
+    /*}*/
+
+    /*.table > thead:first-child > tr:first-child > th {*/
+        /*border-top: 0;*/
+
+    /*}*/
+
+    /*.table.table-bordered thead > tr > th {*/
+        /*border-bottom: 0;*/
+    /*}*/
+
+    /*.table thead tr th {*/
+        /*font-size: 14px;*/
+        /*font-weight: 600;*/
+    /*}*/
+
+    /*.table-bordered > thead > tr > th {*/
+        /*border: 1px solid #ddd;*/
+    /*}*/
+
+    /*.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {*/
+        /*padding: 8px;*/
+        /*line-height: 1.42857143;*/
+        /*vertical-align: top;*/
+        /*border-top: 1px solid #ddd;*/
+    /*}*/
+
+    /*.table > thead > tr > th {*/
+        /*vertical-align: bottom;*/
+        /*border-bottom: 2px solid #ddd;*/
+    /*}*/
+
+    /*.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {*/
+        /*border: 1px solid #ddd;*/
+    /*}*/
+
+
+
+    /*.pagination {*/
+        /*display: inline-block;*/
+        /*padding-left: 0;*/
+        /*border-radius: 4px;*/
+    /*}*/
+
+    /*.pagination > li {*/
+        /*display: inline;*/
+    /*}*/
+
+    /*.pagination > li:first-child > a, .pagination > li:first-child > span {*/
+        /*margin-left: 0;*/
+        /*border-top-left-radius: 4px;*/
+        /*border-bottom-left-radius: 4px;*/
+    /*}*/
+
+    /*.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {*/
+        /*color: #777;*/
+        /*cursor: not-allowed;*/
+        /*background-color: #fff;*/
+        /*border-color: #ddd;*/
+    /*}*/
+
+    /*.pagination > li > a, .pagination > li > span {*/
+        /*position: relative;*/
+        /*float: left;*/
+        /*padding: 6px 12px;*/
+        /*margin-left: -1px;*/
+        /*line-height: 1.42857143;*/
+        /*color: #337ab7;*/
+        /*text-decoration: none;*/
+        /*background-color: #fff;*/
+        /*border: 1px solid #ddd;*/
+    /*}*/
+
+</style>
+<div class="detailsTitle">
+
+    <!--<br/>-->
+    <div class="layui-tab layui-tab-brief pageTitle" lay-filter="docDemoTabBrief ">
+        <ul class="layui-tab-title">
+            <li class="layui-this"><p><span><i>数据表展示</i></span></p></li>
+        </ul>
+        <div class="layui-tab-content"></div>
+    </div>
+</div>
+
+<div class="selectCondition layui-form layui-form-pane">
+    <div class="layui-form-item">
+        <div class="selectSubmitArea">
+            <div class="layui-input-inline">
+                <input type="text" name="username" placeholder="请输入项目名称" autocomplete="off" class="layui-input" id="projectName">
+            </div>
+            <div>
+                <button class="layui-btn mt3 mr10" id="selectProject">查询</button>
+            </div>
+            <div>
+                <button class="layui-btn mt3" lay-submit="" lay-filter="demo1" id="addProject">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dataTableWrapper">
+
+</div>
+

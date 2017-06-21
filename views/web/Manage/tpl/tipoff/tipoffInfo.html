@@ -1,0 +1,76 @@
+<div class="larry-personal-body">
+    <form class="layui-form" id="attachment_form" name="attachment_form">
+        <div id="modal" style="display:block;" class="data-titleFile">
+            <div class="larry-personal-body" id="tipoffform" name="tipoffform">
+                <div class="">
+                    <div class="layui-tab layui-tab-brief pageTitle" lay-filter="docDemoTabBrief ">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this"><p><span><i id="attachname"  name="attachname">举报信息</i></span></p></li>
+                        </ul>
+                        <div class="layui-tab-content"></div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">事件类别:</label>
+                        <div class="layui-input-block">
+                            <select class="layui-select" id="tipoff_type" name="tipoff_type">
+                                <option value="1002002002" score="5">免试就近入学</option>
+                                <option value="1002002003" score="5">复读生和重点班</option>
+                                <option value="1002003003" score="5">教师有偿补课</option>
+                                <option value="1004001001" score="5">教职工非正常上访</option>
+                                <option value="1004001002" score="5">大面积停课罢课</option>
+                                <option value="1007002001" score="5">隐瞒重大事情引发事故</option>
+                                <option value="1007002002" score="5">重大安全事故</option>
+                                <option value="1007002003" score="5">公共卫生突发事件</option>
+                                <option value="1007005" score="3">食品安全</option>
+                                <option value="1008001001" score="5">廉政与纪律问题</option>
+                                <option value="1008001002" score="5">师德师风问题</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">联系方式:</label>
+                        <div class="layui-input-block">
+                            <input type="text" autocomplete="off" class="layui-input" id="iphone" name="iphone">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">事件发生学校:</label>
+                        <div class="layui-input-block">
+                            <input type="text" autocomplete="off" class=" layui-input" id="tip_school_name" name="tip_school_name">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">事件发生时间:</label>
+                        <div class="layui-input-block">
+                            <input type="text"  onclick="layui.laydate({elem: this})" autocomplete="off" class="layui-input" id="tip_time" name="tip_time">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">事件描述:</label>
+                        <div class="layui-input-block">
+                            <textarea class="layui-textarea" id="tip_content" name="tip_content"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item" id="btndiv" name="btndiv">
+                    <div class="layui-input-block">
+                        <a class="layui-btn" id="save" name="save">保存</a>
+                        <a type="reset" class="layui-btn layui-btn-primary" id="pass" name="pass" style="display: none;">通过</a>
+                        <a type="reset" class="layui-btn layui-btn-primary" id="reject" name="reject" style="display: none;">驳回</a>
+                        <a type="reset" class="layui-btn layui-btn-primary" id="back" name="back">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

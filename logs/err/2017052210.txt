@@ -1,0 +1,66 @@
+[2017-05-22 10:04:05.748] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token ， in JSON at position 71
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:60:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 10:04:44.447] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token ， in JSON at position 74
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:60:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 10:06:16.998] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token ， in JSON at position 74
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:60:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 10:09:12.804] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token ， in JSON at position 76
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:60:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 10:10:12.298] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token ， in JSON at position 76
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:60:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 10:52:22.381] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token u in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at Object.projectSchedule (F:\work\QHPG-BJDF\service\pgmanage_service\scheduleService.js:91:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\scheduleRoute.js:14:21
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)

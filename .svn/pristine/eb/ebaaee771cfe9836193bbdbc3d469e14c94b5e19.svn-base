@@ -1,0 +1,99 @@
+<style>
+    .data-titleFile .larry-personal-body > form{
+        margin-left: 0;
+        margin-right: 40px;
+    }
+</style>
+<div class="detailsTitle">
+    <!--<br/>-->
+    <div class="layui-tab layui-tab-brief pageTitle" lay-filter="docDemoTabBrief ">
+        <ul class="layui-tab-title">
+            <li class="layui-this"><p><span><i>问卷列表</i></span></p></li>
+        </ul>
+        <div class="layui-tab-content"></div>
+    </div>
+</div>
+
+<div class="selectCondition layui-form layui-form-pane">
+    <div class="layui-form-item">
+        <div class="layui-input-inline">
+            <select name="quiz3">
+                <option value="">请选择适用对象</option>
+                <option value="学生">学生</option>
+                <option value="家长">家长</option>
+                <option value="教师">教师</option>
+                <option value="校长">校长</option>
+                <option value="资料管理员">资料管理员</option>
+            </select>
+        </div>
+        <div class="selectSubmitArea">
+            <div class="layui-input-inline">
+                <input type="text" name="username" placeholder="请输入问卷名称" autocomplete="off" class="layui-input" id="quseName">
+            </div>
+            <div>
+                <button class="layui-btn mt3 mr10" lay-submit="" lay-filter="demo1" id="select">查询</button>
+            </div>
+            <div>
+                <button class="layui-btn mt3" lay-submit="" lay-filter="demo1" id="import">导入</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dataTableWrapper">
+
+</div>
+
+<div id="modal" style="display:none;">
+    <div class="larry-personal-body">
+        <form class="layui-form" lay-filter="quesForm">
+            <div class="layui-form-item">
+                <label class="layui-form-label">问卷名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" autocomplete="off" class="layui-input" placeholder="请输入问卷名称" required lay-verify="required"
+                           value="" id="quesName">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">适用对象</label>
+                <div class="layui-input-block">
+                    <select name="quiz3" required lay-verify="required">
+                        <option value="">请选择适用对象</option>
+                        <option value="学生">学生</option>
+                        <option value="家长">家长</option>
+                        <option value="教师">教师</option>
+                        <option value="校长">校长</option>
+                        <option value="资料管理员">资料管理员</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">适用学段</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" title="全选" lay-skin="primary" checked id="gradeCheckAll"
+                           lay-filter="gradeCheckAll">
+                    <input type="checkbox" name="quesGrade" title="幼儿园" lay-skin="primary" checked value="幼儿园" lay-filter="quesGrade">
+                    <input type="checkbox" name="quesGrade" title="小学" lay-skin="primary" checked value="小学" lay-filter="quesGrade">
+                    <input type="checkbox" name="quesGrade" title="初中" lay-skin="primary" checked value="初中" lay-filter="quesGrade">
+                    <input type="checkbox" name="quesGrade" title="高中" lay-skin="primary" checked value="高中" lay-filter="quesGrade">
+                    <input type="checkbox" name="quesGrade" title="职高" lay-skin="primary" checked value="职高" lay-filter="quesGrade">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">问卷附件</label>
+                <div class="layui-input-block">
+                    <input type="file" name="file" id="uploadFile">
+                    <!--<input type="file" name="file" class="layui-upload-file" id="uploadFile">-->
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">问卷描述</label>
+                <div class="layui-input-block">
+                    <textarea name="desc" placeholder="请输入问卷描述" class="layui-textarea" required lay-verify="required"></textarea>
+                </div>
+            </div>
+            <button class="layui-btn mt3 mr10" lay-submit="" lay-filter="quesSave" style="display:none;">提交</button>
+        </form>
+    </div>
+</div>
+

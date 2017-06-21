@@ -1,0 +1,58 @@
+/**
+ * Created by sanghuina on 17/1/10.客户端公共js方法
+ */
+
+var initPopuDiv=function(){
+        $(document.body).append("<div class=\"mask\"></div>");
+        var studentToast = [
+            '<div id="gx1" name="gx1" class="tan" style="display:none;">',
+            '<div class="tan_closestu"><a href="javascript:void(0);"></a></div>',
+            '<div class="gxcon1"></div>',
+            '</div>'
+        ].join('');
+        $(document.body).append(studentToast);
+        var OtherToast = [
+            '<div id="gx12"  name="gx12" class="tan" style="display:none;">',
+            '<div class="tan_closestu"><a href="javascript:void(0);"></a></div>',
+            '<div class="gxcon1"></div>',
+            '</div>'
+        ].join('');
+        $(document.body).append(OtherToast);
+        var AlertToast = [
+            '<div id="AlertToast" name="AlertToast" class="tan" style="display:none;">',
+            '<div class="tan_close"><span>信息</span><a href="javascript:void(0);"></a></div>',
+            '<div id="alertconment" name="alertconment"><i class="error"></i></div>',
+            '</div>'
+        ].join('');
+        $(document.body).append(AlertToast);
+        var LoadToast = [
+            '<div id="LoadToast" name="LoadToast" class="tan" style="display:none;">',
+            '<i class="loading"></i>数据加载中......</div>'
+        ].join('');
+        $(document.body).append(LoadToast);
+        $(".tan_closestu").click(function(){
+            alertclose();
+        });
+        $(".tan_close").click(function(){
+            alertclose();
+        });
+
+    },
+alertpop=function(popid,conment,icon){
+        //'error','info','success','warning'
+        if(popid!="LoadToast"){
+            $(".mask").attr("style","display:block");
+        }
+        if(popid=="AlertToast"){
+            $("#alertconment").html("<i class='"+icon+"'></i>"+conment);
+        }
+        $("#"+popid).attr("style","display:block");
+    },
+alertclose=function(){
+        $(".mask").attr("style","display:none;");
+        $(".tan").attr("style","display:none;");
+    },
+getUrlPara= function(m){
+   var sValue = location.search.match(new RegExp("[\?\&]" + m + "=([^\&]*)(\&?)", "i"));
+   return sValue ? sValue[1] : sValue;
+}

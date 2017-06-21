@@ -1,0 +1,747 @@
+<!--Created by wyx on 2017/5/9.
+  1、这里集合了所使用的常见表单类型元素
+  2、使用这些元素的时候要把common.css 放在layui.css之后原因：css优先级
+  3、需要引入layui.js 模块需求
+  4、需要引入formAssenbly.js 声明模块
+  5、配置路由router.js
+-->
+<form class="layui-form layui-form-pane" action="">
+    <!--图标star-->
+    <div class="layui-form-item">
+        <span class="questionnaireIcon"></span>
+        <span class="videoIcon"></span>
+        <span class="formIcon"></span>
+        <span class="otherIcon"></span>
+        <span class="questionnaireNum"></span>
+        <span class="submitIcom"></span>
+        <span class="completedIcon"></span>
+        <span class="viewDetails"></span>
+    </div>
+    <!--图标 end-->
+<!--按钮 star-->
+    <div class="layui-form-item">
+        <span class="redBtn">查看详情</span>
+        <span class="yellowBtn">收起</span>
+         <span class="blueBtn">保存</span>
+         <span class="grayBtn">取消</span>
+
+    </div>
+    <!--按钮 end-->
+    <!--年级进度star-->
+
+    <div class="layui-form-item">
+        <div class="gradeProgressBox">
+            <div class="gradeSchoolName">
+                <p>仓上小学</p>
+            </div>
+            <div class="ringOne"></div>
+            <div class="ringTwo"></div>
+            <div class="gradeListBox">
+                <div class="gradeList">
+                    <p class="gradeTitle">顺义区仓上小学卫生发展情况调查进度</p>
+                    <ul>
+                        <li><span>一年级</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div>50&nbsp;% <span class="w70">9/231人</span> <a href="#" class="viewDetailsBtn">查看详情</a></li>
+                        <li><span>二年级</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div>50&nbsp;% <span class="w70">9/231人</span> <a href="#" class="viewDetailsBtn">查看详情</a></li>
+                        <li><span>三年级</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div>50&nbsp;% <span class="w70">9/231人</span> <a href="#" class="viewDetailsBtn">查看详情</a></li>
+                    </ul>
+                </div>
+                <div class="pt40 footerColorBarOne">
+                    <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                        <li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--年级进度end-->
+
+    <!--班级进度star-->
+    <!--需要js配合显示与隐藏-->
+    <div class="layui-form-item">
+        <div class="gradeProgressBox">
+            <div class="gradeSchoolName">
+                <p>仓上小学</p>
+            </div>
+            <div class="ringOne"></div>
+            <div class="ringTwo"></div>
+            <div class="gradeListBox">
+                <div class="gradeList">
+                    <p class="gradeTitle">顺义区仓上小学卫生发展情况调查进度</p>
+                    <ul>
+                        <li>
+                            <div class="gradeProgress">
+                                <span class="fw400">一年级一班</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div>50&nbsp;% <span class="w70">9/231人</span> <span class="uncommittedBtn">未提交名单</span>
+                            </div>
+                            <div class="uncommittedDetails">
+                                <div class="gradeProgress">
+                                    <span class="fw400">一年级一班</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div><span class="percentageTxt">50&nbsp;% </span><span class="w70">9/231人</span> <span class="viewDetailsBtn">未提交名单</span>
+                                </div>
+                                <div class="rosterName">
+                                    <p>槐南堂，三槐堂，渭北堂，半仙堂，六和堂，玉冰堂，三白堂，大本堂，五教堂，仁安堂，正义堂，世贤堂，世德堂，四合堂，四柏堂，永承堂，永思堂，存友堂，仰德堂，亦文堂，交德堂，孝友堂，孝睦堂，两仪堂，利文堂，佑启堂，尚德堂，佩传堂，思孝堂，思植堂，保后堂，衍白堂，叙伦堂，冠南堂，素风堂，振趾堂，挹渊堂，恩义堂，恩荣堂，务本堂，梓荫堂，崇本堂，崇孝堂，崇德堂，惇叙堂，淮泽堂</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="gradeProgress">
+                                <span class="fw400">一年级二班</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div>50&nbsp;% <span class="w70">9/231人</span> <span class="uncommittedBtn">未提交名单</span>
+                            </div>
+                            <div class="uncommittedDetails">
+                                <div class="gradeProgress">
+                                    <span class="fw400">一年级二班</span><div class="progressBarWhite"><div class="progressBarOne"><div class="percentage"></div></div></div><span class="percentageTxt">50&nbsp;% </span><span class="w70">9/231人</span> <span class="viewDetailsBtn">未提交名单</span>
+                                </div>
+                                <div class="rosterName">
+                                    <p>槐南堂，三槐堂，渭北堂，半仙堂，六和堂，玉冰堂，三白堂，大本堂，五教堂，仁安堂，正义堂，世贤堂，世德堂，四合堂，四柏堂，永承堂，永思堂，存友堂，仰德堂，亦文堂，交德堂，孝友堂，孝睦堂，两仪堂，利文堂，佑启堂，尚德堂，佩传堂，思孝堂，思植堂，保后堂，衍白堂，叙伦堂，冠南堂，素风堂，振趾堂，挹渊堂，恩义堂，恩荣堂，务本堂，梓荫堂，崇本堂，崇孝堂，崇德堂，惇叙堂，淮泽堂</p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="pt40 footerColorBarOne">
+                    <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                        <li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--班级进度end-->
+
+
+
+    <!--学校列表-->
+    <!--学校遮罩层效果需要引入js／.eachSchoolBox-->
+    <div class="layui-form-item">
+        <div class="eachSchoolBox">
+            <div class="schoolName"><span>东风西校</span></div>
+            <div class="eachSchoolMain">
+                <div class="shouldNum">
+                    应提交
+                    <p>2341<span>份</span></p>
+                </div>
+                <div class="actualNum">
+                    实际提交
+                    <p>41<span>份</span></p>
+                </div>
+            </div>
+            <div class="eachSchoolBottom">
+                查看详情 <i></i>
+            </div>
+            <div class="eachSchoolMask">
+                <div class="eachSchoolMaskTxt">
+                    <i></i>查看详情
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 分割线 -->
+    <div class="layui-form-item">
+        分割线
+        <div class="partingLine"></div>
+    </div>
+    <!-- 头部标题 -->
+    <div class="layui-form-item">
+        <div class="headTitle">
+            <p>头部标题</p>
+            <i></i>
+        </div>
+    </div>
+    <!--一级标题-->
+    <div class="layui-form-item">
+        <div class="oneTitle">一级标题</div>
+    </div>
+    <!--二级标题-->
+    <div class="layui-form-item">
+        <div class="twoTitle"><i></i>二级标题</div>
+    </div>
+
+    <!--单项标题-->
+    <div class="layui-form-item">
+        <div class="singleTitle"><i></i><span>东风西校</span></div>
+    </div>
+    <!--面包屑-->
+    <div class="layui-form-item">
+        <div class="crumbs">
+            <a href="">进度查看</a><span></span>
+            <a href="">教育进度</a><span></span>
+            <a href="">各学校进度</a><span></span>
+            <a href="">学校进度</a><span></span>
+            <a href="">班级进度</a>
+        </div>
+    </div>
+
+    <!-- 索索框-->
+    <div class="layui-form-item">
+        <div class="searchBox" >
+            <input type="text" placeholder="项目名称" class="searchBulletedInput"><i class="searchBulletedBtn"></i>
+        </div>
+    </div>
+
+    <!--条件搜索-->
+    <div class="layui-form-item">
+        <div class="layui-input-inline  ">
+            <div class="data-select-title">调查问卷</div>
+            <select name="quiz1">
+                <option value="">请选问卷</option>
+                <option value="浙江">顺义区体育卫生发展情况</option>
+                <option value="你的工号">江西省</option>
+                <option value="你最喜欢的老师">福建省</option>
+            </select>
+        </div>
+        <div class="layui-input-inline ">
+            <div class="data-select-title">年&nbsp;&nbsp;级</div>
+            <select name="quiz2">
+                <option value="">年级</option>
+                <option value="一年纪">一年级</option>
+                <option value="二年级">二年级</option>
+                <option value="三年级">三年级</option>
+                <option value="四年纪">四年级</option>
+                <option value="五年级">五年级</option>
+            </select>
+        </div>
+        <div class="searchBtn"></div>
+    </div>
+
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>文本框集合</legend>
+    </fieldset>
+
+    <!--普通输入框-->
+    <div class="layui-form-item">
+        <div class="dataInputBox">
+            <p class="dataInputHeader"></p>
+            <div class="layui-input-inline">
+                <input type="text" name="username" placeholder="请输入" autocomplete="off"
+                       class="layui-input  dataInput">
+            </div>
+        </div>
+    </div>
+
+    <!--较短输入框-->
+    <div class="layui-form-item">
+        <div class="dataInputBox">
+            <p class="dataInputHeader"></p>
+            <div class="layui-input-inline">
+                <input type="text" name="username" placeholder="短输入框" autocomplete="off"
+                       class="layui-input dataInput ">
+            </div>
+        </div>
+    </div>
+
+    <!--较长输入框-->
+    <div class="layui-form-item">
+        <div class="dataInputBox">
+            <p class="dataInputHeader"></p>
+            <div class="">
+                <input type="text" name="title" autocomplete="off" placeholder="请输入标题"
+                       class="layui-input dataInput dataInputLong">
+            </div>
+        </div>
+    </div>
+
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>日期控件</legend>
+    </fieldset>
+    <div class="layui-form-item">
+        <!--请选择日期-->
+        <div class="layui-inline">
+            <span class="dataDate"></span>
+            <div class="dataInputBox">
+                <p class="dataInputHeader"></p>
+                <div class="">
+                    <input type="text" name="date" lay-verify="date" autocomplete="off" placeholder="请选择日期"
+                           class="layui-input dataInput " onclick="layui.laydate({elem: this})">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-inline">
+            <label class="layui-form-label">原生日期</label>
+            <div class="layui-input-block">
+                <input type="date" name="date1" autocomplete="off" class=" layui-input"
+                       onclick="layui.laydate({elem: this})">
+            </div>
+        </div>
+        <!--有起止的日期插件-->
+        <div class="layui-inline">
+            <span class="dataDate"></span>
+            <div class="dataInputBox dataDateBox">
+                <p class="dataInputHeader"></p>
+                <div class=" fl">
+                    <input type="text" name="date" lay-verify="date" autocomplete="off" placeholder="请选择开始日期"
+                           id="LAY_demorange_s" class="layui-input dataInput dataDateInput ">
+                </div>
+            </div>
+            <span class="time-link">--</span>
+            <div class="dataInputBox">
+                <p class="dataInputHeader"></p>
+                <div class="fl">
+                    <input type="text" name="date" lay-verify="date" autocomplete="off" placeholder="请选择截止日期"
+                           id="LAY_demorange_e" class="layui-input dataInput dataDateInput">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--验证文本框-->
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>验证文本框</legend>
+    </fieldset>
+
+    <div class="layui-form-item">
+        <!--验证必填项-->
+        <div class="layui-inline">
+            <span class="dataRequired"></span>
+            <div class="dataInputBox">
+                <p class="dataInputHeader"></p>
+                <div class="">
+                    <input type="text" name="username" lay-verify="required" autocomplete="off" placeholder="验证必填项"
+                           class="layui-input dataInput ">
+                </div>
+            </div>
+        </div>
+        <!--请输入手机号-->
+        <div class="layui-inline">
+            <span class="dataPhone"></span>
+            <div class="dataInputBox">
+                <p class="dataInputHeader"></p>
+                <div class="">
+                    <input type="text" name="phone" lay-verify="phone" autocomplete="off" placeholder="请输入手机号"
+                           class="layui-input dataInput ">
+                </div>
+            </div>
+        </div>
+
+        <!--请输入邮箱-->
+        <div class="layui-inline">
+            <span class="dataEmail"></span>
+            <div class="dataInputBox">
+                <p class="dataInputHeader"></p>
+                <div class="">
+                    <input type="text" name="email" lay-verify="email" autocomplete="off" placeholder="请输入邮箱"
+                           class="layui-input dataInput ">
+                </div>
+            </div>
+        </div>
+
+        <!--多规则验证邮箱或手机号-->
+        <div class="layui-inline">
+            <span class="dataPhone"></span>
+            <div class="dataInputBox">
+                <p class="dataInputHeader"></p>
+                <div class="">
+                    <input type="text" name="number" lay-verify="email|number" autocomplete="off"
+                           placeholder="多规则验证邮箱或手机号" class="layui-input dataInput ">
+                </div>
+            </div>
+        </div>
+        <!--请选择日期-->
+        <div class="layui-inline">
+            <span class="dataDate"></span>
+            <div class="dataInputBox">
+                <p class="dataInputHeader"></p>
+                <div class="">
+                    <input type="text" name="date" id="date" lay-verify="date" autocomplete="off"
+                           placeholder="请选择日期"
+                           class="layui-input dataInput " onclick="layui.laydate({elem: this})">
+                </div>
+            </div>
+        </div>
+        <!--请输入链接地址-->
+        <div class="layui-inline">
+            <span class="dataUrl"></span>
+            <div class="dataInputBox">
+                <p class="dataInputHeader"></p>
+                <div class="">
+                    <input type="tel" name="url" lay-verify="url" autocomplete="off" placeholder="请输入链接地址"
+                           class="layui-input dataInput ">
+                </div>
+            </div>
+        </div>
+        <!--请输入身份证-->
+        <div class="layui-inline">
+            <span class="dataIdentity"></span>
+            <div class="dataInputBox">
+                <p class="dataInputHeader"></p>
+                <div class="">
+                    <input type="text" name="identity" lay-verify="identity" autocomplete="off" placeholder="请输入身份证"
+                           class="layui-input dataInput ">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--请输入密码-->
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <span class="dataPassword"></span>
+            <div class="dataInputBox">
+                <p class="dataInputHeader"></p>
+                <div class="">
+                    <input type="password" name="password" lay-verify="pass" autocomplete="off" maxlength="12"
+                           minlength="6" placeholder="请输入6到12位密码"
+                           class="layui-input dataInput ">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>文本域编辑域</legend>
+    </fieldset>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">普通文本域</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">简约编辑器</label>
+        <div class="layui-input-block">
+                <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo2"
+                          style="border-bottom:0px; "></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">编辑器</label>
+        <div class="layui-input-block">
+                <textarea class="layui-textarea layui-hide" name="content" lay-verify="content"
+                          id="LAY_demo_editor"></textarea>
+        </div>
+    </div>
+
+    <!--面包屑-->
+    <div class="layui-form-item">
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="index.html">基础组件</a>
+                    <i class="layui-icon">&#xe602;</i>
+                </li>
+                <li>
+                    <a href="#">数据表</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--标题-->
+    <div class="layui-form-item ">
+        <div class="layui-tab layui-tab-brief pageTitle" lay-filter="docDemoTabBrief ">
+            <ul class="layui-tab-title">
+                <li class="layui-this"><p><span><i>数据表展示</i></span></p></li>
+                <li class=""><p><span><i>数据表展示</i></span></p></li>
+                <li class=""><p><span><i>数据表展示</i></span></p></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--提交查询-->
+    <div class="selectCondition layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <div class="selectSubmitArea">
+                <div class="layui-input-inline">
+                    <input type="text" name="username" placeholder="请输入关键词" autocomplete="off" class="layui-input">
+                </div>
+                <div>
+                    <button class="layui-btn mt3 mr10" lay-submit="" lay-filter="demo1">查询</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--级联菜单及查询-->
+    <div class="selectCondition layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+                <select name="quiz1">
+                    <option value="">请选择省</option>
+                    <option value="浙江" selected="">浙江省</option>
+                    <option value="你的工号">江西省</option>
+                    <option value="你最喜欢的老师">福建省</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="quiz2">
+                    <option value="">请选择市</option>
+                    <option value="杭州">杭州</option>
+                    <option value="宁波" disabled="">宁波</option>
+                    <option value="温州">温州</option>
+                    <option value="温州">台州</option>
+                    <option value="温州">绍兴</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="quiz3">
+                    <option value="">请选择县/区</option>
+                    <option value="西湖区">西湖区</option>
+                    <option value="余杭区">余杭区</option>
+                    <option value="拱墅区">临安市</option>
+                </select>
+            </div>
+            <div class="selectSubmitArea">
+                <div class="layui-input-inline">
+                    <input type="text" name="username" placeholder="请输入关键词" autocomplete="off" class="layui-input">
+                </div>
+                <div>
+                    <button class="layui-btn mt3 mr10" lay-submit="" lay-filter="demo1" id="select">查询</button>
+                </div>
+                <div>
+                    <button class="layui-btn mt3" lay-submit="" lay-filter="demo1" id="import">导入</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--table底部彩条需要加载到xml文件table加载数据下-->
+    <div class="dataFooter">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="mt30 footerColorBarOne">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <!--单选控件-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">单选框</label>
+        <div class="layui-input-block">
+            <input type="radio" name="sex" lay-filter="sex" value="男" title="男" checked="">
+            <div class="layui-unselect layui-form-radio layui-form-radioed"><i
+                    class="layui-anim layui-icon"></i><span>男</span>
+            </div>
+            <input type="radio" name="sex" lay-filter="sex" value="女" title="女">
+            <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><span>女</span></div>
+            <input type="radio" name="sex" lay-filter="sex" value="禁" title="禁用" disabled="">
+            <div class="layui-unselect layui-form-radio layui-radio-disbaled layui-disabled"><i
+                    class="layui-anim layui-icon"></i><span>禁用</span></div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开关-默认关</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开关-默认开</label>
+        <div class="layui-input-block">
+            <input type="checkbox" checked="" name="open" lay-skin="switch" lay-text="ON|OFF">
+        </div>
+    </div>
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">原始复选框</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="">
+            <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary"><span>写作</span><i
+                    class="layui-icon"></i></div>
+            <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读">
+            <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>阅读</span><i
+                    class="layui-icon"></i></div>
+            <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏" disabled="">
+            <div class="layui-unselect layui-form-checkbox layui-checkbox-disbaled layui-disabled"
+                 lay-skin="primary">
+                <span>游戏</span><i class="layui-icon"></i></div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">复选框</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="like[write]" title="写作">
+            <div class="layui-unselect layui-form-checkbox" lay-skin=""><span>写作</span><i class="layui-icon"></i>
+            </div>
+            <input type="checkbox" name="like[read]" title="阅读" checked="">
+            <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin=""><span>阅读</span><i
+                    class="layui-icon"></i></div>
+            <input type="checkbox" name="like[game]" title="游戏">
+            <div class="layui-unselect layui-form-checkbox" lay-skin=""><span>游戏</span><i class="layui-icon"></i>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">单行选择框</label>
+        <div class="layui-input-block">
+            <select name="interest" lay-filter="aihao">
+                <option value=""></option>
+                <option value="0">写作</option>
+                <option value="1" selected="">阅读</option>
+                <option value="2">游戏</option>
+                <option value="3">音乐</option>
+                <option value="4">旅行</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">分组选择框</label>
+            <div class="layui-input-inline">
+                <select name="quiz" id="quiz" lay-filter="quiz">
+                    <option value="">请选择问题</option>
+                    <optgroup label="城市记忆">
+                        <option value="你工作的第一个城市">你工作的第一个城市</option>
+                    </optgroup>
+                    <optgroup label="学生时代">
+                        <option value="你的工号">你的工号</option>
+                        <option value="你最喜欢的老师">你最喜欢的老师</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">搜索选择框</label>
+            <div class="layui-input-inline">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">layer</option>
+                    <option value="2">form</option>
+                    <option value="3">layim</option>
+                    <option value="4">element</option>
+                    <option value="5">laytpl</option>
+                    <option value="6">upload</option>
+                    <option value="7">laydate</option>
+                    <option value="8">laypage</option>
+                    <option value="9">flow</option>
+                    <option value="10">util</option>
+                    <option value="11">code</option>
+                    <option value="12">tree</option>
+                    <option value="13">layedit</option>
+                    <option value="14">nav</option>
+                    <option value="15">tab</option>
+                    <option value="16">table</option>
+                    <option value="17">select</option>
+                    <option value="18">checkbox</option>
+                    <option value="19">switch</option>
+                    <option value="20">radio</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">原生选择框</label>
+            <div class="layui-input-inline">
+
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">联动选择框</label>
+        <div class="layui-input-inline">
+            <select name="quiz1">
+                <option value="">请选择省</option>
+                <option value="浙江" selected="">浙江省</option>
+                <option value="你的工号">江西省</option>
+                <option value="你最喜欢的老师">福建省</option>
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select name="quiz2">
+                <option value="">请选择市</option>
+                <option value="杭州">杭州</option>
+                <option value="宁波" disabled="">宁波</option>
+                <option value="温州">温州</option>
+                <option value="温州">台州</option>
+                <option value="温州">绍兴</option>
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select name="quiz3">
+                <option value="">请选择县/区</option>
+                <option value="西湖区">西湖区</option>
+                <option value="余杭区">余杭区</option>
+                <option value="拱墅区">临安市</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+
+</form>
+<div class="layui-form-item">
+    <div class="questionnaireList">
+        <div class="questionnaireListBox">
+            <div class="Double">
+                <div class="DoubleBox">
+                    <span class="Double1"></span>
+                    <span class="Double2"></span>
+                </div>
+            </div>
+            <div class="questionnaireListContent">
+                <p class="unfilledTxt">未填写</p>
+                <div class="questionnaireBox">
+                    <div class="questionnaireTitle">顺义区体育卫生发展情况家长调查问卷顺义区体育顺义区体育卫生发展情况家长调查问卷顺义区体育</div>
+                    <div class="questionnaireEndTime">截止时间：2017年8月27日</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="questionnaireList">
+        <div class="questionnaireListBox">
+            <div class="Double">
+                <div class="DoubleBox">
+                    <span class="Double1"></span>
+                    <span class="Double2"></span>
+                </div>
+            </div>
+            <div class="questionnaireListContent">
+                <p class="uncommittedTxt">未提交</p>
+                <div class="questionnaireBox">
+                    <div class="questionnaireTitle">顺义区体育卫生发展情况家长调查问卷顺义区体育顺义区体育卫生发展情况家长调查问卷顺义区体育</div>
+                    <div class="questionnaireEndTime">截止时间：2017年8月27日</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="questionnaireList">
+        <div class="questionnaireListBox">
+            <div class="Double">
+                <div class="DoubleBox">
+                    <span class="Double1"></span>
+                    <span class="Double2"></span>
+                </div>
+            </div>
+            <div class="questionnaireListContent">
+                <p class="submittedTxt">已提交</p>
+                <div class="questionnaireBox">
+                    <div class="questionnaireTitle">顺义区体育卫生发展情况家长调查问卷顺义区体育顺义区体育卫生发展情况家长调查问卷顺义区体育</div>
+                    <div class="questionnaireEndTime">截止时间：2017年8月27日</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

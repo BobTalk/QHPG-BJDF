@@ -1,0 +1,33 @@
+[2017-05-18 18:40:31.339] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token u in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at Object.updateQuestoinnaire (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:141:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:26:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-18 18:59:44.541] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token 大 in JSON at position 115
+    at JSON.parse (<anonymous>)
+    at Object.updateQuestoinnaire (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:141:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:26:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-18 18:59:57.655] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token 大 in JSON at position 115
+    at JSON.parse (<anonymous>)
+    at Object.updateQuestoinnaire (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:141:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:26:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)

@@ -1,0 +1,37 @@
+/**
+ * Created by sanghuina on 17/5/22.
+ * 点击某个学校进入到学校概括页面scheduleSchoolInfo
+ */
+define(function (require) {
+    "use strict";
+    var tpl = require('text!tpl/schedule/scheduleSchoolList.html'),
+        template = _.template(tpl), _this,_form,_jsonObject;
+    return Backbone.View.extend({
+        className: "layui-main",
+        initialize: function () {
+            _this = this;
+            this.render();
+        },
+        render: function () {
+            this.$el.html(template(this.model));
+            return this;
+        },
+        afterRender: function () {
+            _form = PublicUTIL.layForm;
+            _form.render();
+            /*页面路由参数*/
+            _jsonObject=_this.model._jsonObject;
+        },
+        events:{
+            "click .checkSchoolInfo":"checkSchoolInfoFun"
+        },
+        checkSchoolInfoFun:function(_event){
+            _event.stopPropagation();
+            var _event = _event || event;
+            var eventobj = _event.srcElement?_event.srcElement:_event.target;
+            var $this=$(eventobj);
+            var paprmjson={};
+            location.href="#scheduleSchoolInfo/"+JSON.stringify(paprmjson);
+        }
+    });
+});

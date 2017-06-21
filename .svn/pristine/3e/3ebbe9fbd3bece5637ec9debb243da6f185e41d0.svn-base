@@ -1,0 +1,45 @@
+/**
+ * Created by byx on 17/5/16.
+ * 问卷填报模块
+ */
+
+var $sql = require('./questionnaireSqlMapping');
+var $mysqlUtil = require('../../util/mysqlUtil');
+
+module.exports = {
+    /* 问卷填报--客户端 保存用户填报答案
+     * byx 2017年5月16日 14:10:57
+     * params
+     * @user_id
+     * @server_id
+     * @user_role
+     * @project_id
+     * @questionnaire_id
+     * @content
+     * @page_num
+     *
+     * return answer_id;
+     * */
+    saveAnswer: function (answerInfo, callback) {
+        var sql = $sql.saveAnswer(answerInfo);
+        $mysqlUtil.queryStrSql(sql, callback);
+    },
+    /* 获取问卷答案--客户端
+     * byx 2017年5月16日 14:10:57
+     * params
+     * @user_id
+     * @server_id
+     * @user_role
+     * @project_id
+     * @questionnaire_id
+     * @content
+     * @page_num
+     *
+     * return answer_id;
+     * */
+    getQuestionnaireAnswer: function (answerInfo, callback) {
+        var sql = $sql.getQuestionnaireAnswer(answerInfo);
+        $mysqlUtil.queryStrSql(sql, callback);
+    }
+
+};

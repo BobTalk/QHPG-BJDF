@@ -1,0 +1,58 @@
+/**
+ * Created by byx on 17/5/16.
+ * 问卷填报sql语句
+ */
+var questionnaire = {
+    //问卷填报
+    saveAnswer: function (answerInfo) {
+        var sql = "INSERT INTO questionnaire_answer (answer_id, user_id, server_id, user_role, project_id, task_id, questionnaire_id, content,  page_num)  "
+            + "VALUES ('"
+            + answerInfo.answer_id + "', '"
+            + answerInfo.user_id + "', '"
+            + answerInfo.server_id + "', '"
+            + answerInfo.user_role + "', '"
+            + answerInfo.project_id + "', '"
+            + answerInfo.task_id + "', '"
+            + answerInfo.questionnaire_id + "', '"
+            + answerInfo.content + "', '"
+            + answerInfo.page_num + "') "
+            + " ON DUPLICATE KEY UPDATE " +
+            "user_id = '" + answerInfo.user_id
+            + "',server_id = '" + answerInfo.server_id
+            + "',user_role = '" + answerInfo.user_role
+            + "',project_id = '" + answerInfo.project_id
+            + "',task_id = '" + answerInfo.task_id
+            + "',questionnaire_id = '" + answerInfo.questionnaire_id
+            + "',content = '" + answerInfo.content
+            + "',page_num = '" + answerInfo.page_num + "';"
+        return sql;
+    },
+    //获取问卷答案
+    getQuestionnaireAnswer: function (answerInfo) {
+        var sql = "select * from questionnaire_answer " +
+            "where project_id = '" + answerInfo.project_id + "' and " +
+            "task_id = '" + answerInfo.task_id + "' and " +
+            "questionnaire_id = '" + answerInfo.questionnaire_id + "'  and " +
+            "page_num = '" + answerInfo.page_num + "';"
+        return sql;
+    },
+    //提交问卷
+    submitQuestionnaire: function (answerInfo) {
+        var sql ="INSERT INTO questionnaire_submit (user_id, server_id, project_id, task_id, questionnaire_id)  "
+            + "VALUES ('"
+            + answerInfo.user_id + "', '"
+            + answerInfo.server_id + "', '"
+            + answerInfo.project_id + "', '"
+            + answerInfo.task_id + "', '"
+            + answerInfo.questionnaire_id + "') "
+            + " ON DUPLICATE KEY UPDATE " +
+            "user_id = '" + answerInfo.user_id
+            + "',server_id = '" + answerInfo.server_id
+            + "',project_id = '" + answerInfo.project_id
+            + "',task_id = '" + answerInfo.task_id
+            + "',questionnaire_id = '" + answerInfo.questionnaire_id + "';"
+        return sql;
+    },
+};
+
+module.exports = questionnaire;

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="../js/plugins/layui/css/layui.css?t=1492579944915" media="all">
+    <link rel="stylesheet" href="../js/plugins/layui/css/global.css?t=1492579944915" media="all">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="../js/plugins/ossupload/uploadstyle.css"/>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <!--头部 start-->
+    <!--<div class="layui-header header header-demo">-->
+    <!--<div class="layui-main">-->
+    <!--<a class="logo" href="/">-->
+    <!--<img src="//res.layui.com/images/layui/logo.png" alt="layui">-->
+    <!--</a>-->
+    <!--<div class="layui-form component">-->
+    <!--&lt;!&ndash; 原搜索区域 &ndash;&gt;-->
+    <!--</div>-->
+    <!--<ul class="layui-nav" pc>-->
+    <!--&lt;!&ndash; 原头部菜单区域 &ndash;&gt;-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--</div>-->
+    <ul class="layui-nav data-nav">
+        <li class="layui-main ">
+            <a class="logo" href="/">
+                <img src="images/logo.png" height="34" width="42"/>
+                <span>教育评估</span>
+            </a>
+        </li>
+
+        <!--<li class="layui-nav-item"><a href="">最新活动</a></li>-->
+        <li class="layui-nav-item layui-this">
+            <a href="javascript:;">产品</a>
+            <dl class="layui-nav-child">
+                <dd><a href="">选项1</a></dd>
+                <dd><a href="">选项2</a></dd>
+                <dd><a href="">选项3</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">解决方案</a>
+            <dl class="layui-nav-child">
+                <dd><a href="">移动模块</a></dd>
+                <dd><a href="">后台模版</a></dd>
+                <dd class="layui-this"><a href="">选中项</a></dd>
+                <dd><a href="">电商平台</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item"><a href="">登录</a></li>
+    </ul>
+    <!--头部 stop-->
+
+    <!--左侧导航 start-->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+
+            <ul class="layui-nav layui-nav-tree site-demo-nav">
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="javascript:;" href="javascript:;">项目管理</a>
+                    <span class="layui-nav-more"></span>
+                    <dl class="layui-nav-child">
+                        <dd class="layui-this">
+                            <!--<span class="data-norm-head"></span>-->
+                            <a href="/demo/"><span class="data-quota-icon"></span><cite>指标管理</cite></a>
+                        </dd>
+                        <dd>
+
+                            <a href="/demo/"><span class="data-form-icon"></span><cite>表单管理</cite></a>
+                        </dd>
+                        <dd>
+
+                            <a href="/demo/"><span class="data-questionnaire-icon"></span><cite>问卷管理</cite></a>
+                        </dd>
+                        <dd>
+                            <a href="/demo/"><span class="data-task-icon"></span><cite>任务下发</cite></a>
+                        </dd>
+
+                        <dd>
+                            <a href="/demo/"><span class="data-resource-icon"></span><cite>资源管理</cite></a>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="javascript:;" href="javascript:;">用户管理</a>
+                    <span class="layui-nav-more"></span>
+                    <dl class="layui-nav-child">
+                        <dd class="">
+                            <a href="/demo/button.html"><img src="images/学校.png" height="18"
+                                                             width="18"/><cite>学校管理</cite></a>
+                        </dd>
+                        <dd class="">
+                            <a href="/demo/form.html"><img src="images/专家.png" height="18" width="18"/><cite>专家管理</cite></a>
+                        </dd>
+                        <dd class="">
+                            <a href="/demo/form.html"><img src="images/管理.png" height="18"
+                                                           width="18"/><cite>专家任务管理</cite></a>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="javascript:;" href="javascript:;">评估数据</a>
+                    <span class="layui-nav-more"></span>
+                    <dl class="layui-nav-child">
+                        <dd class="">
+                            <a href="/demo/button.html"><img src="images/沙漏.png" height="18"
+                                                             width="18"/><cite>评估进度</cite></a>
+                        </dd>
+                        <dd class="">
+                            <a href="/demo/form.html"><img src="images/支付结果-完成.png" height="18"
+                                                           width="18"/><cite>评估结果</cite></a>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="javascript:;" href="javascript:;">组件示例</a>
+                    <span class="layui-nav-more"></span>
+                    <dl class="layui-nav-child">
+                        <dd class="">
+                            <a href="/demo/layer.html">
+                                <i class="layui-icon" style="top: 3px;">&#xe638;</i><cite>弹出层</cite>
+                            </a>
+                        </dd>
+                        <dd class="">
+                            <a href="/demo/layim.html">
+                                <i class="layui-icon" style="position: relative; top: 3px;">&#xe63a;</i>
+                                <cite>即时通讯</cite>
+                            </a>
+                        </dd>
+                        <dd class="">
+                            <a href="/demo/layim.html">
+                                <i class="layui-icon" style="position: relative; top: 3px;">&#xe63a;</i>
+                                <cite>举报</cite>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+    <!--左侧导航 stop-->
+    <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+        <!--<ul class="layui-tab-title site-demo-title">-->
+        <!--<li class="layui-this">预览</li>-->
+        <!--<li>查看代码</li>-->
+        <!--<li>帮助</li>-->
+        <!--</ul>-->
+        <!--<div class="layui-body layui-tab-content site-demo site-demo-body">-->
+        <!--<div class="layui-main">-->
+        <!--在这里面，或者这个的外层写内容吧-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <div class="layui-body site-demo " id="content">
+            <!--<div class="layui-main">-->
+            <!--在这里面，或者这个的外层写内容吧-->
+            <!--</div>-->
+        </div>
+    </div>
+
+    <!--底部-->
+    <div class="layui-footer footer footer-demo">
+        <div class="layui-main">
+            <p>&copy; 1817 <a href="/">layui.com</a> MIT license</p>
+            <p>
+                <a href="" target="_blank">案例</a>
+                <a href="" target="_blank">捐赠</a>
+                <!--<a href="javascript:layer.msg('暂无此页');">关于我们</a>-->
+                <a href="">联系</a>
+                <a href="" target="_blank">Git仓库</a>
+                <a href="" target="_blank">微信公众号</a>
+            </p>
+        </div>
+    </div>
+    <div class="site-tree-mobile layui-hide">
+        <i class="layui-icon">&#xe602;</i>
+    </div>
+    <div class="site-mobile-shade"></div>
+
+
+    <!--<script src="../js/plugins/layui/layui.js?t=1492579944915" charset="utf-8"></script>-->
+    <!--<script>-->
+    <!--layui.config({-->
+    <!--base: '../js/'-->
+    <!--,version: '1492579944915'-->
+    <!--}).use('global');-->
+    <!--</script>-->
+</div>
+<!--<script src="../js/plugins/layui/layui.js?t=1492579944915" charset="utf-8"></script>-->
+<script src="../js/plugins/layui/layui.js" charset="utf-8"></script>
+<script data-main="js/main" src="../js/lib/require-2.1.14.min.js" defer async="true"></script>
+<!--<script src="js/common/importModule.js"></script>-->
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {  margin: 0;  padding: 0;  -webkit-tap-highlight-color: rgba(0,0,0,0);  }
+li {list-style: none;}
+/*提示层start*/
+.mask{position:fixed;left:0px;top:0px;z-index:1000;display:none;width:100%;height: 100%;background:#333;filter:Alpha(opacity=30);-moz-opacity:0.3;opacity:0.3; margin:0px;padding:0px;}
+.tan{position:fixed;_position:absolute; top:30%;left:35%;z-index:100000; width: 428px;}
+.tan_close {overflow: hidden;zoom: 1;background-color: #009f95;}
+.tan_close a{ height:25px; width:15px;background:url(../images/close.png) no-repeat; margin-right:10px; margin-top:10px; float:right;}
+.tan_close span{font-size: 16px; color: #fff;margin-left: 10px;line-height: 35px;}
+#alertconment{background-color: #fff; padding: 20px 20px 20px 55px;text-align: left;position: relative;line-height: 24px; word-break: break-all;overflow: hidden;  font-size: 15px;overflow-x: hidden; overflow-y: auto;}
+#alertconment i{position: absolute;top: 16px;left: 15px;_left: -40px;width: 30px;height: 30px;background: url(../images/layicon.png) no-repeat;}
+#alertconment .warning{background-position: 0 0;}
+#alertconment .success{background-position: -180px 0;}
+#alertconment .info{background-position: -90px 0}
+#alertconment .error{background-position: -150px 0;}
+#LoadToast{line-height: 54px;padding-left: 60px;padding-top: 5px; word-break: break-all;overflow: hidden;font-size: 14px;}
+#LoadToast .loading{position: absolute;top: 16px;left: 15px;_left: -40px;width: 40px;height: 40px;background: url(../images/loading2.gif) no-repeat;}
+/*提示层end*/
+/*遮罩层内容页中出现的遮罩层*/
+#overlay {  background: #000;  filter: alpha(opacity=50); /* IE的透明度 */  opacity: 0.5;  /* 透明度 */  display: none;  position: absolute;  top: 0px;  left: 0px;  width: 100%;  height: 100%;  z-index: 100; /* 此处的图层要大于页面 */  display:none;  }

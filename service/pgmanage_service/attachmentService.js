@@ -1,0 +1,259 @@
+/*
+ 2017-5-10 10:22:28
+ byx
+ 评估管理-附件模块的service层
+ * */
+var $util = require('../../util/util');
+
+var attachmentDao = require('../../dao/pgmanage_dao/attachmentDao');
+
+module.exports = {
+    //获取附件列表
+    getAttachmentList: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var user_role = param.use_role;//附件上传适用对象
+            user_role = $util.isNull(user_role) ? "-1" : user_role;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        attachmentDao.getAttachmentList(user_role, function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                $util.resJSON.resultnum = $util.resConfig.ok;
+                $util.resJSON.resultdata = result;
+                res.json($util.resJSON);
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    },
+    /*获取附件结构加载为附件表单*/
+    getAttachmentByID: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var attachment_id = param.attachment_id;//附件上传适用对象
+            attachment_id = $util.isNull(attachment_id) ? "-1" : attachment_id;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        attachmentDao.getAttachmentByID(attachment_id, function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                $util.resJSON.resultnum = $util.resConfig.ok;
+                $util.resJSON.resultdata = result;
+                res.json($util.resJSON);
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    },
+    saveAttachment: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var saveAttachArr = param.saveAttachArr;
+            /*附件上传项插入对象*/
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        attachmentDao.saveAttachment(saveAttachArr, function (errTaskRlt, resultTaskRlt) {
+            try {
+                if (errTaskRlt != null) {
+                    $util.resJSONError(errTaskRlt, resultTaskRlt);
+                    return;
+                }
+                $util.resJSON.resultnum = $util.resConfig.ok;
+                if ($util.isNull(saveAttachArr.id)){
+                    $util.resJSON.resultdata =resultTaskRlt;
+                }else{
+                    $util.resJSON.resultdata =[{"insertId": saveAttachArr.id}];
+                }
+                res.json($util.resJSON);
+            }
+            catch (error) {
+                $util.resJSONError(errTaskRlt, resultTaskRlt);
+            }
+
+        });
+    },
+    /*获取附件结果数据*/
+    getAttachmentResultByID: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var attachment_id = param.id;//附件上传适用对象
+            attachment_id = $util.isNull(attachment_id) ? "-1" : attachment_id;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        attachmentDao.getAttachmentResultByID(attachment_id, function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                $util.resJSON.resultnum = $util.resConfig.ok;
+                $util.resJSON.resultdata = result;
+                res.json($util.resJSON);
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    },
+    /*获取附件上传数据列表*/
+    getAttachmentResultList: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var type = param.type;
+            var stand_id = param.stand_id;
+            var school_id = param.school_id;
+            var pagesize = param.page_size;
+            var pagenum = param.page_num;
+            // 分页
+            pagenum = (pagenum - 1) * pagesize;
+            stand_id = $util.isNull(stand_id) ? "-1" : stand_id;
+            school_id = $util.isNull(school_id) ? "-1" : school_id;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        attachmentDao.getAttachmentResultList(type, stand_id, school_id, pagesize, pagenum, function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                attachmentDao.getAttachmentResultListRows(type, stand_id, school_id, function (errRows, resultRows) {
+                    if (errRows != null) {
+                        $util.resJSONError(errRows, res);
+                        return;
+                    }
+                    $util.resJSON.resultnum = $util.resConfig.ok;
+                    $util.resJSON.resultdata = result;
+                    $util.resJSON.rows = resultRows[0].rows;
+                    res.json($util.resJSON);
+                });
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    },
+    /*修改附件结果数据状态*/
+    updateAttachmentState: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var attachment_id = param.id;//附件上传结果id
+            var state = param.state;//附件上传结果状态
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        attachmentDao.updateAttachmentState(state, attachment_id, function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                $util.resJSON.resultnum = $util.resConfig.ok;
+                $util.resJSON.resultdata = result;
+                res.json($util.resJSON);
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    },
+    /*附件结果数据审批通过*/
+    submitAttachmentResult: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var id = param.id;//附件上传结果id
+            var state = param.state;//附件上传结果状态
+            var stand_id = param.stand_id;//附件表单指标id
+            var school_id = param.school_id;//附件表单学校id
+            var school_name = param.school_name;//附件表单学校名称
+            var score = param.score;//附件表单得分值
+            var score_source = param.score_source;//得分来源,附件,量表,问卷,第三方
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        attachmentDao.submitAttachmentResult(state, id, stand_id, school_id, school_name, score, score_source, function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                $util.resJSON.resultnum = $util.resConfig.ok;
+                $util.resJSON.resultdata = result;
+                res.json($util.resJSON);
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    },
+    /*对于每年只能上传一次的数据做验证*/
+    getAttachResultNums:function(req, res, next){
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var attachment_id = param.attachment_id;//附件表单结构id
+            var school_id = param.school_id;//附件表单学校id
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        attachmentDao.getAttachResultNums(attachment_id, school_id,function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                $util.resJSON.resultnum = $util.resConfig.ok;
+                $util.resJSON.resultdata = result;
+                res.json($util.resJSON);
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    }
+
+};

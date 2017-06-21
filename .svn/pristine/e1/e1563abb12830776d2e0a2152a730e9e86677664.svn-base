@@ -1,0 +1,63 @@
+/*
+ 2017年5月10日 10:23:58
+ byx
+ 评估管理-附件模块的dao层,sql语句
+ * */
+
+var Attachment = {
+    /*附件列表,展现时以父指标id为组展现*/
+    getAttachmentList: "SELECT 	attachment_id, attachment_name,stand_type_name,stand_type, submit_num,stand_id,score_type  FROM attachment where use_role=?  order by stand_type;",
+   /*根据attachment_id获取附件机构信息*/
+    getAttachmentByID:"SELECT * from attachment where attachment_id=?",
+    /*附件表单填写结果保存*/
+    insertAttachMent: function (attachment_item) {
+        var attachmentAtt = [];
+        attachmentAtt = attachment_item;
+        var arrLength = attachmentAtt.length;
+        var sql = "INSERT INTO attachment_result (attachment_id,attachment_name,attachment_term_id,attachment_term_resultjson,score,score_type,user_id,user_name,school_id,school_name,stand_id,state) "
+            + "VALUES ";
+        attachmentAtt.forEach(function (item, index) {
+            sql += "('"
+                + item.attachment_id + "', '"
+                + item.attachment_name + "', '"
+                + item.attachment_term_id + "', '"
+                + item.attachment_term_resultjson + "', '"
+                + item.score + "', '"
+                + item.score_type + "', '"
+                + item.user_id + "', '"
+                + item.user_name + "', '"
+                + item.school_id + "', '"
+                + item.school_name + "', '"
+                + item.stand_id + "', '"
+                + item.state + "') ";
+            if ((index + 1) < arrLength) {
+                sql += ",";
+            }
+        });
+        return sql;
+    },
+    updateAttachMent: function (attachment_item) {
+        var attachmentAtt = [];
+        attachmentAtt = attachment_item;
+        var arrLength = attachmentAtt.length;
+        var sql = "";
+        attachmentAtt.forEach(function (item, index) {
+            sql += "update attachment_result set "
+                +"attachment_id='"+ item.attachment_id + "',"
+                + "attachment_name='"+item.attachment_name + "',"
+                + "attachment_term_id='"+item.attachment_term_id + "',"
+                + "attachment_term_resultjson='"+item.attachment_term_resultjson + "',"
+                + "score="+item.score + ","
+                + "score_type="+item.score_type + ","
+                + "user_id='"+item.user_id + "',"
+                + "user_name='"+item.user_name + "',"
+                + "school_id='"+item.school_id + "',"
+                + "school_name='"+item.school_name + "',"
+                + "stand_id='"+item.stand_id + "',"
+                + "state="+item.state + "  where id='"+item.id+"';";
+        });
+        return sql;
+    }
+};
+
+module.exports = Attachment;

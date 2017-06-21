@@ -1,0 +1,55 @@
+[2017-05-19 09:41:36.877] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token “ in JSON at position 30
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:17:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:14:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-19 09:45:59.063] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token “ in JSON at position 30
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:58:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-19 09:47:15.419] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token “ in JSON at position 30
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:58:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-19 09:48:27.717] [ERROR] logErr - 执行sql发生错误：SELECT DISTINCT questionnaire_id, questionnaire_name, descript, load_user_id, create_time, use_role FROM questionnaire   LEFT  JOIN questionnaire_xueduan ON questionnaire.questionnaire_id = questionnaire_xueduan.q_id where questionnaire_xueduan.xd_name IN (学生) and questionnaire.use_role = '问卷学生1' LIMIT 0, '大学','中学'/n 错误信息：Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''大学','中学'' at line 1
+    at Query.Sequence._packetToError (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at PoolConnection.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:208:25)
+    at F:\work\QHPG-BJDF\dao\pgmanage_dao\questionnaireDao.js:39:24
+    at Handshake.onConnect [as _callback] (F:\work\QHPG-BJDF\node_modules\mysql\lib\Pool.js:64:7)
+    at Handshake.Sequence.end (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Handshake.Sequence.OkPacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\sequences\Sequence.js:95:8)
+    at Protocol._parsePacket (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:103:28)

@@ -1,0 +1,152 @@
+h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {  margin: 0;  padding: 0;  -webkit-tap-highlight-color: rgba(0,0,0,0);  }
+li {list-style: none;}
+input{outline:none;}
+input, label {  vertical-align: middle;  }
+.septalLine{width: 100%;border-bottom: 1px solid #e7e7e7;}
+/*提示层start*/
+.mask{position:fixed;left:0px;top:0px;z-index:1000;display:none;width:100%;height: 100%;background:#333;filter:Alpha(opacity=30);-moz-opacity:0.3;opacity:0.3; margin:0px;padding:0px;}
+.tan{position:fixed;_position:absolute; top:30%;left:35%;z-index:100000; }/* 删除宽度width: 428px; 20170517 by wenxia*/
+.tan_close {overflow: hidden;zoom: 1;background-color: #009f95;}
+.tan_close a{ height:25px; width:15px;background:url(../images/close.png) no-repeat; margin-right:10px; margin-top:10px; float:right;}
+.tan_close span{font-size: 16px; color: #fff;margin-left: 10px;line-height: 35px;}
+.alertconment{background-color: #fff; padding: 20px 20px 20px 55px;text-align: left;position: relative;line-height: 24px; word-break: break-all;overflow: hidden;  font-size: 15px;overflow-x: hidden; overflow-y: auto;}
+.alertconment i{position: absolute;top: 16px;left: 15px;_left: -40px;width: 30px;height: 30px;background: url(../images/layicon.png) no-repeat;}
+.alertconment .warning{background-position: 0 0;}
+.alertconment .success{background-position: -180px 0;}
+.alertconment .info{background-position: -90px 0}
+.alertconment .error{background-position: -150px 0;}
+#MsgToast .alertconment{opacity: 0.7;background: #333;color: #fff;padding: 20px;}
+#LoadToast{line-height: 54px;padding-left: 60px;padding-top: 5px; word-break: break-all;overflow: hidden;font-size: 14px;}
+#LoadToast .loading{position: absolute;top: 16px;left: 15px;_left: -40px;width: 40px;height: 40px;background: url(../images/loading2.gif) no-repeat;}
+/*提示层end*/
+/*遮罩层内容页中出现的遮罩层*/
+#overlay {  background: #000;  filter: alpha(opacity=50); /* IE的透明度 */  opacity: 0.5;  /* 透明度 */  display: none;  position: absolute;  top: 0px;  left: 0px;  width: 100%;  height: 100%;  z-index: 100; /* 此处的图层要大于页面 */  display:none;  }
+
+/*问卷star*/
+.answerBox{height: 230px;}
+.answerBox .answerHeader{ width: 100%;height: 216px;background: url("../images/answerHader.jpg")no-repeat;background-size: 100% 100%; }
+.answerBox  .answerTitle{text-align: center;position: relative;top: -80px}
+.answerBox .answerTitle .titleLeft{background: url("../images/titleLeft.png")no-repeat 100% 100%; height: 39px;width: 61px; display: inline-block;position: relative;  left: 15px;  top: 20px;z-index: 10;}
+.answerBox .titleHead{ text-align: center;  position: relative;  top: -60px; z-index: 30;font-size: 18px;font-weight: 100;color: #fff;}
+.answerBox .answerTitle .titleCenter{ border: 1px solid #34e2be;border-radius: 5px; background-color: #34e2be; padding: 10px; font-size: 16px;text-align: center;color: #fff; display: inline-block; z-index: 20; position: relative;}
+.answerBox .answerTitle .titleRight{background: url("../images/titleRight.png") no-repeat 100% 100%; display: inline-block;width: 61px;height: 39px;position: relative; left: -15px; top:20px; z-index: 10;}
+.answerMain{ margin: auto; margin-left: 11%;margin-right: 11%;color: #666;}
+.answerMain .btnBox{text-align: center;margin: 40px; margin-top: 100px;}
+.answerMain .preservedBtn{background-color:#4fc3ba;color: #fff;border-radius: 3px;display: inline-block;padding: 10px 40px;margin-right: 5%; cursor: pointer;}
+.answerMain .submitBtn{background-color:#8895b5;color: #fff;border-radius: 3px;display: inline-block;padding: 10px 40px;margin-right: 5%; cursor: pointer;}
+.answerTxt{margin-left: 10%;margin-right: 10%;margin-top: 50px;margin-bottom: 50px;color: #646464;text-align: left;text-indent:2em;}
+.problem{padding-top: 30px; clear: both;}
+/*已填写状态*/
+.problem .problemBor{width: 30px; height: 40px;border: 2px solid #4fc3ba;display: inline-block;float: left; }
+/*未填写状态*/
+.problem .problemBorNOt{width: 30px; height: 40px;border: 2px solid #74829f;display: inline-block;float: left; }
+.problem .problemNum{width: 20px;     height: 24px;  line-height: 24px;  background: #fff;  position: relative;  top: 10px;  left: 20px;font-size: 14px;color: #74829f}
+.problem .problemTitle{margin-left: 55px; font-size: 14px;margin-top: 14px;}
+.problem .problemTitle   input[type=text]{width: 300px;height: 40px;padding-left: 10px;border-radius: 3px;border:1px solid #d3d9e5;}
+.problem .problemTitle   input[type=text]:focus{border: 1px solid #4fc3ba;}
+.problem .layui-form-item{clear: none; margin-top: 10px;}
+.problem .questionbconc { padding-top: 5px;  line-height: 32px;  font-size: 16px;  color: #4c4f68;  }
+/*等宽选项*/
+.problem .uniformWidth .qula li{width: 200px;margin-right: 10px;  padding-top: 5px;  cursor: pointer;  display: inline-block;  line-height: 28px; color: #989898;  font-size: 12px;  }
+.problem .noUniformWidth .qula li{margin-right: 10px; padding-top: 5px;  cursor: pointer;  display: block;  line-height: 28px;  color: #989898;  font-size: 12px;  }
+
+/*.qula {  overflow: hidden;  zoom: 1;  }*/
+.radios {  float: left;  width: 16px;height: 16px;  background: url(../images/radioNot.png) no-repeat;  margin-top: 6px;  margin-right: 8px;}
+.radio-pitch .radios {  background: url(../images/radio.png) no-repeat;}
+
+.checkbox {  float: left;  width: 16px;height: 16px; background: url(../images/checkboxNot.png) no-repeat;  margin-top: 6px;  margin-right: 8px;   }
+.checkbox-pitch .checkbox {  background: url(../images/checkbox.png) no-repeat;  }
+.problem .data-input-radio{position: relative;  min-width: 200px; margin-left: 10px;float: left;line-height: 30px;}
+.problem .data-input-radio input[type=radio]{position: relative; top: -2px;width: 16px;height: 16px;}
+.problem .data-input-checkbox{position: relative;  min-width: 200px; margin-left: 10px;float: left;line-height: 30px;}
+.problem .data-input-checkbox input[type=checkbox]{position: relative; top: -2px;width: 16px;height: 16px;}
+
+.footerBar{padding: 30px 0px;}
+.footerBar ul li{float: left;width:16.6%;height:10px;}
+.footerBar ul li:nth-child(even){background-color: #1dd1b9;}
+.footerBar ul li:nth-child(odd){background-color: #ffe035;}
+/*进度条 star*/
+.progressBar{position: fixed;right:22%;top: 45%;}
+.progressBar .div1{background-color:#17caae;border: 1px solid #e5e5e5; width: 17px;height: 226px;border-radius: 17px;}
+.progressBar .div1 .sumNum{position: absolute;left: -26px;top: 10px;border: 1px solid #fd7569;  width: 24px; height: 16px;line-height: 16px;background-color:#fd7569;
+    color: #fff;text-align: center;border-radius: 3px 0px 0px 3px;}
+.progressBar .div1 .div2{background-color:#35e6bf; border: #35e6bf;border-radius: 7px;width: 7px;height: 216px;margin-left: 5px;margin-top: 5px; }
+.progressBar .div1 .div2 .div3{border-left:1px solid #59cab1;height: 206px;width: 1px;margin-top: 5px;margin-left: 3px;position: absolute;}
+.progressBar .reticule{position: absolute;bottom: 0px;  left: -1px;background: #ffee1d;width: 1px;min-height:7%;border-left: #ffee1d; z-index: 1; }/* 删除宽度height: 50%; 20170517 by wenxia*/
+.progressBar .reticule .thisNum {display: inline-block;width: 45px;height: 16px; padding-right: 5px;
+    line-height: 16px;background-color:#ffe035;color: #2bcaae;font-size: 12px; text-align: right;position: absolute;left: -15px;    border: 1px solid #ffe035;
+    border-radius: 0px 5px 5px 0px;filter:alpha(opacity=90);  -moz-opacity:0.9;  opacity:0.9;}
+.progressBar .baseNum{position: absolute;left: 18px;bottom: 7px;width: 24px;height: 16px;line-height: 16px;background-color:#74829f;border: 1px solid #74829f; border-radius: 0px 5px 5px 0px;color: #fff;text-align: center;  }
+/*进度条 end*/
+
+/*问卷end*/
+
+/*问卷列表star*/
+.questionnaireList{float: left; margin-top: 40px; margin-right: 25px;}
+.questionnaireListBox{border-top:6px solid #4fc3ba; width: 270px; position: relative;}
+.questionnaireListBox .Double{position: absolute; left:60px; z-index: 100; }
+.questionnaireListBox .DoubleBox{width: 153px;border-left: 1px solid #fc7568;border-right: 1px solid #fc7568; height: 50px;}
+.questionnaireListBox .DoubleBox .Double1{width:7px;height: 7px; background-color: #fc7568;border-radius: 50%;display: inline-block;position: absolute;top: -7px;left: -3px;}
+.questionnaireListBox .DoubleBox .Double2{width:7px;height: 7px; background-color: #fc7568;border-radius: 50%;display: inline-block;position: absolute;top: -7px;left: 151px;}
+.questionnaireListBox .questionnaireListContent{height: 147px;border: 1px solid #dbdfe9;background-color: #fff; text-align: center;position: relative; z-index: 90;}
+.questionnaireListBox .questionnaireListContent p{position: absolute; left:257px;top: 40px; width:22px; height: 53px; border: 1px solid #dbdfe9;border-radius: 10px; font-size: 12px;line-height: 16px;padding-top: 5px;}
+.unfilledTxt{background-color: #fff;color: #9b9b9b;}
+.uncommittedTxt{background-color:#fff;color: #fc7568;}
+.submittedTxt{background-color: #4fc3ba;color: #fff;}
+.questionnaireListBox .questionnaireListContent .questionnaireBox {width: 208px; height: 84px; background-color:#fc7568; margin-top: 47px; margin-left: 30px; color: #fff; }
+.questionnaireListBox .questionnaireListContent .questionnaireBox .questionnaireTitle{font-size: 14px;  padding-top: 10px;  margin: 0 10px 10px 10px;width: 188px; height: 44px;overflow: hidden}
+.questionnaireListBox .questionnaireListContent .questionnaireBox .questionnaireEndTime{font-size: 12px;height:22px; font-weight: 100;}
+/*问卷列表end*/
+/* 分页样式 begin by wenxia*/
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    border-radius: 4px;
+    margin: 0;
+}
+.pagination > li {
+    display: inline;
+    list-style: none;
+}
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.pagination > li > a, .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.pagination > li.active > a{
+    font-weight: 600;
+}
+.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+}
+/* 分页样式 end by wenxia*/
+
+@media screen and (max-width: 1100px) {
+    .progressBar {
+        position: fixed;
+        right: 6%;
+        top: 45%;
+    }
+
+}@media screen and (max-width: 1500px) {
+    .progressBar {
+        position: fixed;
+        right: 6%;
+        top: 45%;
+    }
+
+}

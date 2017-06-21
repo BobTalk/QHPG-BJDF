@@ -1,0 +1,109 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "mysql-queries",
+        "scope": null,
+        "escapedName": "mysql-queries",
+        "name": "mysql-queries",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\axyr\\code2017\\QHPG-BJDF"
+    ]
+  ],
+  "_from": "mysql-queries@latest",
+  "_id": "mysql-queries@0.2.0",
+  "_inCache": true,
+  "_location": "/mysql-queries",
+  "_nodeVersion": "4.4.3",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/mysql-queries-0.2.0.tgz_1466614255033_0.6131385315675288"
+  },
+  "_npmUser": {
+    "name": "zzzhan",
+    "email": "chunzhan.he@gmail.com"
+  },
+  "_npmVersion": "2.15.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "mysql-queries",
+    "scope": null,
+    "escapedName": "mysql-queries",
+    "name": "mysql-queries",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mysql-queries/-/mysql-queries-0.2.0.tgz",
+  "_shasum": "5cb91251ddc5083c6a5d4dd081d88e3ead501c3f",
+  "_shrinkwrap": null,
+  "_spec": "mysql-queries",
+  "_where": "D:\\axyr\\code2017\\QHPG-BJDF",
+  "author": {
+    "name": "zzzhan"
+  },
+  "bugs": {
+    "url": "https://github.com/zzzhan/nodejs-mysql-queries/issues"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "mysql": "^2.8.0"
+  },
+  "description": "Execute multiple queries with only one callback for MySQL.",
+  "devDependencies": {
+    "cz-conventional-changelog": "^1.1.5",
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "matchdep": "^0.3.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "5cb91251ddc5083c6a5d4dd081d88e3ead501c3f",
+    "tarball": "https://registry.npmjs.org/mysql-queries/-/mysql-queries-0.2.0.tgz"
+  },
+  "files": [
+    "lib"
+  ],
+  "gitHead": "14a364f2d4367cb1d11d29066bdea1fa070d42f6",
+  "homepage": "https://github.com/zzzhan/nodejs-mysql-queries#readme",
+  "keywords": [
+    "queries",
+    "mysql",
+    "query",
+    "callback",
+    "utility",
+    "module"
+  ],
+  "license": "MIT",
+  "main": "lib/mysql-queries.js",
+  "maintainers": [
+    {
+      "name": "zzzhan",
+      "email": "chunzhan.he@gmail.com"
+    }
+  ],
+  "name": "mysql-queries",
+  "optionalDependencies": {},
+  "readme": "# nodejs-mysql-queries\n> Execute multiple queries with only one callback for MySQL.\n\n## Install\n\n```sh\n$ npm install mysql-queries --save\n```\n\n## How to Use\n\nInit `mysql-queries` to somewhere,such as `app.js` of `Express`, like this:\n```js\nvar options = {\n\thost: 'localhost',\n\tport: 3306,\n\tuser: 'db_user',\n\tpassword: 'password',\n\tdatabase: 'db_name'\n};\n\nrequire('mysql-queries').init(options);\n```\nUse it to some other module, like this:\n\n* Execute SQLs directly\n\n```js\nvar sqlclient = require('mysql-queries'),\n  sqls = ['SELECT * FROM prod_unit WHERE NAME=? limit 1',\n  'INSERT INTO prod_unit(name) values(?)',\n  'INSERT INTO product(name, type_id, unit_id, price) VALUES(?, ?, ?, ?)'];\n  \nsqlclient.queries(sqls,\n  [[data.unit_name],[data.unit_name],[data.name,data.type_id,data.unit_id,data.price]], \n  function(err, results){\n\tif(!!err) {\n\t  console.log(err);\n\t} else {\n\t//If not error, the \"results\" is the results of the SQLs as array.\n\t  console.log(results);\n\t}\n  });\n```\n\n* Execute SQLs with condiction\n\n```js\nsqlclient.queries(sqls,\n  [[data.unit_name],[data.unit_name],[data.name,data.type_id,data.unit_id,data.price]], {\n  skip:function(i, arg, results) {\n\tvar skip = false;\n\tswitch(i) {\n\t  case 1:\n\t  //handle second SQL\n\t  //Execute the second SQL depending on the first SQL result.\n\t  skip = results[0].length!==0;\n\t  break;\n\tcase 2:\n\t  //If the second SQL executed, passing the \"insertId\" to the third SQL as parameter.\n\t  if(results[0].length===0) {\n\t\targ[2]=results[1].insertId;\n\t  }\n\t  break;\n\t}\n\treturn skip;\n  }\n}, function(err, results){\n  if(!!err) {\n\tconsole.log(err);\n  } else {\n\t//If not error, the \"results\" is the results of the SQLs as array.\n\tconsole.log(results);\n  }\n});\n```\n\n* Execute only one SQL\n\n```js\nsqlclient.query('SELECT * FROM prod_unit', function(err, result){\n  if(!!err) {\n\tconsole.log(err);\n  } else {\n\tconsole.log(result);\n  }\n});\n```\n\n## Features\n* Less code when executing multiple SQLs\n* Support transaction of connection\n* Support connection pool\n* Auto release the connection\n\n## Running Tests\n\nWith your correct configured of MySQL on `./test/mysql.json`, running tests is as simple as:\n```\nnpm test\n```",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzzhan/nodejs-mysql-queries.git"
+  },
+  "scripts": {
+    "test": "node ./test/test.js"
+  },
+  "version": "0.2.0"
+}

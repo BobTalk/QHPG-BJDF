@@ -1,0 +1,48 @@
+/*
+ 2017-5-10 10:23:16
+ byx
+ 评估管理-附件模块的dao层
+ * */
+
+var mysql = require('mysql');
+var $conf = require('../../conf/db');
+var $util = require('../../util/util');
+var $writelog = require('../../libs/logHelper');
+var $sql = require('./attachmentSqlMapping');
+
+// 使用连接池，提升性能
+var pool = mysql.createPool($util.extend({}, $conf.mysql));
+
+module.exports = {
+    //获取附件结构列表
+    getAttachmentList: function (user_role,callback) {
+        pool.getConnection(function (err, connection) {
+            connection.query($sql.getAttachmentList,user_role, function (err, result) {
+                if (err != null) {
+                    $writelog.helper.writeErr("执行sql发生错误：" + sql + "/n 错误信息：" + err.stack);
+                    callback(err, result);
+                    return;
+                }
+                // 返回结果给service
+                callback(err, result);
+                // 释放连接
+                connection.release();
+            });
+        });
+    },
+    getAttachmentByID: function (attachment_id,callback) {
+        pool.getConnection(function (err, connection) {
+            connection.query($sql.getAttachmentByID,attachment_id, function (err, result) {
+                if (err != null) {
+                    $writelog.helper.writeErr("执行sql发生错误：" + sql + "/n 错误信息：" + err.stack);
+                    callback(err, result);
+                    return;
+                }
+                // 返回结果给service
+                callback(err, result);
+                // 释放连接
+                connection.release();
+            });
+        });
+    }
+};

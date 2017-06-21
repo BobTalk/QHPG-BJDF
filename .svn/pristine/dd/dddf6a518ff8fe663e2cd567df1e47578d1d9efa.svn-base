@@ -1,0 +1,18 @@
+/**
+ * Created by byx on 17/5/16.
+ * 问卷填报模块路由
+ */
+var express = require('express');
+var router = express.Router();
+
+var questionnaireService = require('../../service/client_service/questionnaireService');
+
+// 问卷填报
+router.get('/saveAnswer', function (req, res, next) {
+    questionnaireService.saveAnswer(req, res, next);
+});
+// 获取问卷答案
+router.get('/getQuestionnaireAnswer', function (req, res, next) {
+    questionnaireService.getQuestionnaireAnswer(req, res, next);
+});
+module.exports = router;

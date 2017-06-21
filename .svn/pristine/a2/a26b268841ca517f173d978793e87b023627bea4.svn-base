@@ -1,0 +1,21 @@
+/*
+ 2017年5月10日 10:20:12
+ byx
+ 评估管理-附件模块route层
+ * */
+
+var express = require('express');
+var router = express.Router();
+
+var attachmentService = require('../../service/pgmanage_service/attachmentService');
+
+ /*获取附件列表*/
+router.get('/getAttachmentList', function (req, res, next) {
+    attachmentService.getAttachmentList(req, res, next);
+});
+/*获取附件表单机构*/
+router.get('/getAttachmentByID', function (req, res, next) {
+    attachmentService.getAttachmentByID(req, res, next);
+});
+module.exports = router;
+

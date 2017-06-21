@@ -1,0 +1,69 @@
+/*
+ 2017-5-10 10:22:28
+ byx
+ 评估管理-附件模块的service层
+ * */
+var $util = require('../../util/util');
+
+var attachmentDao = require('../../dao/pgmanage_dao/attachmentDao');
+
+module.exports = {
+    //获取附件列表
+    getAttachmentList: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var user_role=param.use_role;//附件上传适用对象
+            user_role = $util.isNull(user_role) ? "-1" : user_role;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        attachmentDao.getAttachmentList(user_role,function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                $util.resJSON.resultnum = $util.resConfig.ok;
+                $util.resJSON.resultdata = result;
+                res.json($util.resJSON);
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    },
+    /*获取附件结构加载为附件表单*/
+    getAttachmentByID: function (req, res, next) {
+        try {
+            // 获取前台页面传过来的参数
+            var param = req.query || req.params;
+            param = JSON.parse(param.JSONPARAM);
+            var attachment_id=param.attachment_id;//附件上传适用对象
+            attachment_id = $util.isNull(attachment_id) ? "-1" : attachment_id;
+        }
+        catch (error) {
+            $util.resJSONError(error, res);
+            return;
+        }
+        attachmentDao.getAttachmentByID(attachment_id,function (err, result) {
+            try {
+                if (err != null) {
+                    $util.resJSONError(err, res);
+                    return;
+                }
+                $util.resJSON.resultnum = $util.resConfig.ok;
+                $util.resJSON.resultdata = result;
+                res.json($util.resJSON);
+            }
+            catch (error) {
+                $util.resJSONError(error, res);
+            }
+        });
+    }
+
+
+};

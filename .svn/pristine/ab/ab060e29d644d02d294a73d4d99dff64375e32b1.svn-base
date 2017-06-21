@@ -1,0 +1,75 @@
+/*举报功能样式文件 by shn*/
+/*标题样式*/
+body {  line-height: 24px;  font: 12px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;background-color: #f4f4f4; }
+.layui-main {margin: 20px;padding:15px;line-height: 22px;  background-color: #fff;}
+.pageTitle {clear: both;  margin-bottom: 0;}
+.layui-tab {margin: 10px 0;  text-align: left!important;  }
+.layui-tab-title {border-bottom: 1px solid #999;position: relative;left: 0;  height: 40px;  white-space: nowrap;font-size: 0;}
+.layui-tab-title li {padding: 0px!important;display: inline-block;  vertical-align: middle;-webkit-transition: all .2s; position: relative;  min-width: 65px;}
+.layui-tab-brief>.layui-tab-title .layui-this {line-height:28px; color: #000;font-size: 16px;  height: 20px; border: 1px solid #4fc2b9; border-top: 0px; border-bottom: 0px; }
+.layui-tab-brief>.layui-tab-title .layui-this>p{display: inline-block; border: 1px solid #4fc2b9; position: relative;  top: -6px;  margin: 3px;height: 24px;}
+.layui-tab-brief>.layui-tab-title .layui-this>p>span {border-bottom: 1px solid #4fc2b9; display: inline-block; margin: 3px;position: relative; top: -3px;height: 28px;}
+.layui-tab-brief>.layui-tab-title .layui-this>p>span>i{color:#666;border-top: 1px solid #4fc2b9; display: inline-block; margin: 3px;position: relative;top: -8px;font-size: 14px;}
+.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{border-bottom: 0px;}
+.layui-input, .layui-select, .layui-textarea {  height: 30px;  line-height: 30px;   border: 1px solid #e6e6e6;  background-color: #fff;  display: block;  width: 100%;  padding-left: 10px;  border-radius: 3px 3px 3px 3px;  transition: border-color .3s cubic-bezier(.65,.05,.35,.5);  box-sizing: border-box!important; outline:none;  }
+/*按钮*/
+.layui-btn{display: inline-block;  height: 30px;margin-left: 10px; margin-top: 4px;  line-height: 30px;  padding: 0 18px;  background-color: #009688;  color: #fff;  white-space: nowrap;  text-align: center;  font-size: 12px;  border: none;  border-radius: 2px;  cursor: pointer;  opacity: .9;outline:none;}
+.layui-btn-danger {  background-color: #fc7569;  }
+.layui-btn-disabled{background-color: #999;}
+#dataTableWrapper{margin-top: 70px;}
+/* dataTable及页签样式*/
+.table-bordered {border: 1px solid #ddd;  }
+.table-striped>tbody>tr:nth-of-type(odd) {  background-color:#f4f2f7; ;  }
+.table-striped>tbody>tr:nth-of-type(even) {  background-color: #fcfcfc;  }
+.table {  width: 100%;  max-width: 100%;  margin-bottom: 20px;  }
+.table>thead:first-child>tr:first-child>th {  border-top: 0;  }
+.table.table-bordered thead > tr > th {  border-bottom: 0;  }
+.table thead tr th {  font-size: 14px;  font-weight: 600;  }
+.table-bordered>thead>tr>th {  border: 1px solid #ddd;  }
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {  padding: 8px;  line-height: 1.42857143;  vertical-align: top;  border-top: 1px solid #ddd;  }
+.table>thead>tr>th {  vertical-align: bottom;  border-bottom: 2px solid #ddd;  }
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {  border: 1px solid #ddd; border-left: 0px;  border-bottom: 0px;  }
+.dataFooter>ul li{float: left;width:12.5%; background-color: #4fc2b9;height: 8px;}
+.dataFooter>ul>li:nth-of-type(odd){background-color: #fc7569;}
+.pagination {  display: inline-block;  padding-left: 0;  border-radius: 4px;  }
+.pagination>li {  display: inline;  }
+.pagination>li:first-child>a, .pagination>li:first-child>span {  margin-left: 0;  border-top-left-radius: 4px;  border-bottom-left-radius: 4px;  }
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {  color: #777;  cursor: not-allowed;  background-color: #fff;  border-color: #ddd;  }
+.pagination>li>a, .pagination>li>span {  position: relative;  float: left;  padding: 6px 12px;  margin-left: -1px;  line-height: 1.42857143;  color: #337ab7;  text-decoration: none;  background-color: #fff;  border: 1px solid #ddd;  }
+/* 面包屑相关样式*/
+.page-bar {  }
+.page-bar .page-breadcrumb {  padding: 11px 0;  }
+.page-bar .page-breadcrumb {  display: inline-block;  float: left;  margin: 0;  list-style: none;  }
+.page-bar .page-breadcrumb > li {display: inline-block;  }
+
+/*页面标题样式*/
+.pageTitle{  clear: both;  margin-bottom: 0;  }
+.selectSubmitArea .layui-input-inline{  float: right;  }
+.selectSubmitArea div{  float: right;  }
+.selectSubmitArea{  margin-top: 10px;  margin-bottom: 0;  }
+
+/*上传问卷弹层样式*/
+.larry-personal-body {  padding: 20px;  }
+.larry-personal-body>form{  margin-right: 40px;  }
+/*表单样式*/
+
+.closeBtn{color:#666;float: right; font-size: 14px;cursor:pointer;}
+.closeBtn:hover{color:#fc7569;}
+/*遮罩层*/
+#overlay {  background: #000;  filter: alpha(opacity=50); /* IE的透明度 */  opacity: 0.5;  /* 透明度 */  display: none;  position: absolute;  top: 0px;  left: 0px;  width: 100%;  height: 100%;  z-index: 100; /* 此处的图层要大于页面 */  display:none;  }
+#addtipoff{position: absolute;z-index: 200;width: 100%;  height: 100%; border-radius: 5px;}
+.layui-form-item {  margin-bottom: 15px;margin-top: 15px;  clear: both;}
+.layui-btn, .layui-inline, img {  vertical-align: middle;  }
+.layui-form-item .layui-inline {  margin-bottom: 5px;  margin-right: 10px;}
+.layui-form-pane .layui-form-label {  width: 110px;  padding: 8px 15px;  height: 38px;  line-height: 20px;  text-align: right;  overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis;  -webkit-box-sizing: border-box!important;  -moz-box-sizing: border-box!important;  box-sizing: border-box!important;  position: absolute;  }
+.layui-input-block {  margin-left: 110px;  min-height: 36px;position: relative; }
+
+.layui-input, .layui-select, .layui-textarea {  height: 38px;  line-height: 38px;  line-height: 36px\9;  border: 1px solid #e6e6e6;  background-color: #fff;  border-radius: 0px;  }
+.layui-textarea {  min-height: 100px;  border-radius: 0 0 2px 2px; }
+/*列表中按钮样式*/
+.editData,.checkData{color: #4fc2b9; }
+.deleteData{color: red;}
+.maginleft10{margin-left: 10px;}
+a{cursor:pointer;}
+
+

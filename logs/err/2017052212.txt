@@ -1,0 +1,128 @@
+[2017-05-22 12:00:55.419] [ERROR] logErr - 错误信息：TypeError: arr.forEach is not a function
+    at Object.strArrayToString (F:\work\QHPG-BJDF\util\util.js:77:13)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:65:78)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 12:01:34.640] [ERROR] logErr - 错误信息：TypeError: arr.forEach is not a function
+    at Object.strArrayToString (F:\work\QHPG-BJDF\util\util.js:76:13)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:65:78)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 12:05:01.637] [ERROR] logErr - 错误信息：TypeError: arr.forEach is not a function
+    at Object.strArrayToString (F:\work\QHPG-BJDF\util\util.js:76:13)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:65:78)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 12:05:04.090] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token ' in JSON at position 66
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:60:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 12:05:08.853] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token ' in JSON at position 66
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:60:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 12:05:21.655] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token ' in JSON at position 66
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:60:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 12:05:27.307] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token ' in JSON at position 66
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:60:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 12:05:29.347] [ERROR] logErr - 错误信息：SyntaxError: Unexpected token ' in JSON at position 66
+    at JSON.parse (<anonymous>)
+    at Object.getQuestionnaireList2 (F:\work\QHPG-BJDF\service\pgmanage_service\questionnaireService.js:60:26)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\questionnaireRoute.js:18:26
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:110:13)
+    at Route.dispatch (F:\work\QHPG-BJDF\node_modules\express\lib\router\route.js:91:3)
+    at Layer.handle [as handle_request] (F:\work\QHPG-BJDF\node_modules\express\lib\router\layer.js:82:5)
+    at F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:267:22
+    at Function.proto.process_params (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:321:12)
+    at next (F:\work\QHPG-BJDF\node_modules\express\lib\router\index.js:261:10)
+[2017-05-22 12:59:33.853] [ERROR] logErr - 执行sql发生错误：SELECT * FROM task t JOIN project p  WHERE  t.project_id = p.project_id  LIMIT 1, 4/n 错误信息：Error: connect ETIMEDOUT
+    at PoolConnection.Connection._handleConnectTimeout (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:419:13)
+    at Socket.g (events.js:292:16)
+    at emitNone (events.js:86:13)
+    at Socket.emit (events.js:185:7)
+    at Socket._onTimeout (net.js:342:8)
+    at ontimeout (timers.js:365:14)
+    at tryOnTimeout (timers.js:237:5)
+    at Timer.listOnTimeout (timers.js:207:5)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\work\QHPG-BJDF\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Pool.js:202:8)
+    at Queries.query (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:10:9)
+    at Object.queryStrSql (F:\work\QHPG-BJDF\util\mysqlUtil.js:25:16)
+    at Object.getProjectList (F:\work\QHPG-BJDF\dao\pgmanage_dao\scheduleDao.js:13:20)
+    at Object.projectSchedule (F:\work\QHPG-BJDF\service\pgmanage_service\scheduleService.js:105:21)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\scheduleRoute.js:14:21
+[2017-05-22 12:59:33.866] [ERROR] logErr - 错误信息：Error: connect ETIMEDOUT
+    at PoolConnection.Connection._handleConnectTimeout (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:419:13)
+    at Socket.g (events.js:292:16)
+    at emitNone (events.js:86:13)
+    at Socket.emit (events.js:185:7)
+    at Socket._onTimeout (net.js:342:8)
+    at ontimeout (timers.js:365:14)
+    at tryOnTimeout (timers.js:237:5)
+    at Timer.listOnTimeout (timers.js:207:5)
+    --------------------
+    at Protocol._enqueue (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (F:\work\QHPG-BJDF\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (F:\work\QHPG-BJDF\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\work\QHPG-BJDF\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (F:\work\QHPG-BJDF\node_modules\mysql\lib\Pool.js:202:8)
+    at Queries.query (F:\work\QHPG-BJDF\node_modules\mysql-queries\lib\mysql-queries.js:10:9)
+    at Object.queryStrSql (F:\work\QHPG-BJDF\util\mysqlUtil.js:25:16)
+    at Object.getProjectList (F:\work\QHPG-BJDF\dao\pgmanage_dao\scheduleDao.js:13:20)
+    at Object.projectSchedule (F:\work\QHPG-BJDF\service\pgmanage_service\scheduleService.js:105:21)
+    at F:\work\QHPG-BJDF\routes\pgmanage_route\scheduleRoute.js:14:21

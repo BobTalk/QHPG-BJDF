@@ -1,0 +1,44 @@
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+
+//声明页面路由
+var routes = require('./routes/index');
+//声明接口路由
+var questionnaireRoute = require('./routes/pgmanage_route/questionnaireRoute');//评估管理-问卷模块路由
+var tipoffRoute=require('./routes/client_route/tipoffRoute');//客户端-举报模块路由 by shn
+var schoolRoute=require('./routes/bdmanage_route/schoolRoute');//基础数据-学校模块路由 by byx
+var organRoute=require('./routes/bdmanage_route/organRoute');//基础数据-学校模块路由 by byx
+var scaleRoute = require('./routes/pgmanage_route/scaleRoute');//评估管理-量表模块路由 by byx
+var attachmentRoute = require('./routes/pgmanage_route/attachmentRoute');//评估管理-附件模块路由 by byx
+var projectRoute = require('./routes/pgmanage_route/projectRoute');//评估管理-项目管理模块路由 by byx
+var questionnaireRoute_Clint=require('./routes/client_route/questionnaireRoute');//客户端-问卷填报报模块路由 by shn
+
+var app = express();
+
+// 关于首页的设置
+app.use(express.static(path.join(__dirname, 'views')));
+
+//定义页面路由访问名称
+app.use('/', routes);
+
+//设置跨域访问接口，放到页面声明之后
+app.all('*', function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By", ' 3.2.1')
+    res.header("Content-Type", "application/json;charset=utf-8");
+    next();
+});
+//定义接口路由访问名称
+app.use('/QHPG-BJDF/pgmanage/questionnaireController', questionnaireRoute); // 自定义cgi路径
+app.use('/QHPG-BJDF/client/tipoffController', tipoffRoute); // 举报模块自定义cgi路径 by shn
+app.use('/QHPG-BJDF/bdmanage/baseDataController', schoolRoute); // 基础数据-学校模块自定义cgi路径 by byx
+app.use('/QHPG-BJDF/bdmanage/baseDataController', organRoute); // 基础数据-学校模块自定义cgi路径 by byx
+app.use('/QHPG-BJDF/pgmanage/scaleController', scaleRoute); // 评估管理-量表模块自定义cgi路径 by byx
+app.use('/QHPG-BJDF/pgmanage/attachmentController', attachmentRoute); // 评估管理-附件模块自定义cgi路径 by byx
+app.use('/QHPG-BJDF/pgmanage/projectController', projectRoute); // 评估管理-项目管理模块自定义cgi路径 by byx
+app.use('/QHPG-BJDF/client/questionnaireController', questionnaireRoute_Clint); // 评估管理-项目管理模块自定义cgi路径 by byx
+
+module.exports = app;

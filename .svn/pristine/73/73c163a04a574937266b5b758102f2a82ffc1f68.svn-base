@@ -1,0 +1,128 @@
+<div class="layui-form-item">
+    <div class="crumbs">
+        <a href="" id="sch_pro" name="sch_pro">进度查看</a><span></span>
+        <a href="" id="sch_bur" name="sch_bur">教官中心进度</a><span></span>
+        <a href="">各学校进度</a>
+    </div>
+    <div class="crumbsBottom"></div>
+</div>
+<div class=" layui-form layui-form-pane">
+    <div class="layui-form-item">
+        <div class="layui-input-inline  ">
+            <div class="data-select-title">学段</div>
+            <select name="quiz1">
+                <option value="">请选择学段</option>
+                <option value="幼儿园">幼儿园</option>
+                <option value="小学">小学</option>
+                <option value="初中">初中</option>
+                <option value="高中">高中</option>
+                <option value="职高">职高</option>
+            </select>
+        </div>
+        <div class="layui-input-inline ">
+            <div class="data-select-title">教官中心</div>
+            <select name="quiz2">
+                <option value="">请选择教官中心</option>
+            </select>
+        </div>
+        <div class="searchBtn"></div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="eachSchoolBox">
+            <div class="schoolName"><span>东风西校</span></div>
+            <div class="eachSchoolMain">
+                <div class="shouldNum">
+                    应提交
+                    <p>2341<span>份</span></p>
+                </div>
+                <div class="actualNum">
+                    实际提交
+                    <p>41<span>份</span></p>
+                </div>
+            </div>
+            <div class="eachSchoolBottom checkSchoolInfo">
+                查看详情 <i></i>
+            </div>
+            <a href="#">
+                <div class="eachSchoolMask">
+                    <div class="eachSchoolMaskTxt">
+                        <i></i>查看详情
+                    </div>
+                </div>
+            </a>
+
+        </div>
+        <div class="eachSchoolBox">
+            <div class="schoolName"><span>东风西校</span></div>
+            <div class="eachSchoolMain">
+                <div class="shouldNum">
+                    应提交
+                    <p>2341<span>份</span></p>
+                </div>
+                <div class="actualNum">
+                    实际提交
+                    <p>41<span>份</span></p>
+                </div>
+            </div>
+            <div class="eachSchoolBottom checkSchoolInfo">
+                查看详情 <i></i>
+            </div>
+            <a href="#">
+                <div class="eachSchoolMask">
+                    <div class="eachSchoolMaskTxt">
+                        <i></i>查看详情
+                    </div>
+                </div>
+            </a>
+
+        </div>
+        <div class="eachSchoolBox">
+            <div class="schoolName"><span>东风西校</span></div>
+            <div class="eachSchoolMain">
+                <div class="shouldNum">
+                    应提交
+                    <p>2341<span>份</span></p>
+                </div>
+                <div class="actualNum">
+                    实际提交
+                    <p>41<span>份</span></p>
+                </div>
+            </div>
+            <div class="eachSchoolBottom checkSchoolInfo">
+                查看详情 <i></i>
+            </div>
+            <a href="#">
+                <div class="eachSchoolMask">
+                    <div class="eachSchoolMaskTxt">
+                        <i></i>查看详情
+                    </div>
+                </div>
+            </a>
+
+        </div>
+        <div class="eachSchoolBox">
+            <div class="schoolName"><span>东风西校</span></div>
+            <div class="eachSchoolMain">
+                <div class="shouldNum">
+                    应提交
+                    <p>2341<span>份</span></p>
+                </div>
+                <div class="actualNum">
+                    实际提交
+                    <p>41<span>份</span></p>
+                </div>
+            </div>
+            <div class="eachSchoolBottom checkSchoolInfo">
+                查看详情 <i></i>
+            </div>
+            <a href="#">
+                <div class="eachSchoolMask">
+                    <div class="eachSchoolMaskTxt">
+                        <i></i>查看详情
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

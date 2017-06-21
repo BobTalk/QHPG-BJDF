@@ -1,0 +1,136 @@
+// ================================================================
+//  author:wenxia
+//  createDate: 2017/4/26.
+//  description: 清华评估 路由定义
+//  ===============================================================
+define(function (require) {
+    "use strict";
+    return Backbone.Router.extend({
+        routes: {
+            /* by 文霞--begin  */
+            "": "ChartsSetting",
+            //图表设置
+            "ChartsSetting": "ChartsSetting",
+            //文件上传
+            "fileUpload": "fileUpload",
+            //列表页
+            "dataTable":"dataTable",
+            "dataTable1":"dataTable1",
+            /*项目下发--demo(1是添加,2编辑,3查看)*/
+            "dataNewTask/:type/:projectId":"dataNewTask",
+            /*项目列表--demo*/
+            "projectList1":"projectList1",
+
+            /*项目列表--正式*/
+            "projectList":"projectList",
+            /*项目下发--正式(1是添加,2编辑,3查看)*/
+            "projectDetail/:type/:projectId":"projectDetail",
+
+
+            /* by 文霞--end  */
+
+            /* by 王燕欣--begin  */
+
+            /*wyx问卷列表--demo*/
+            "questionnaireList":"questionnaireList",
+            /*wyx问卷--demo*/
+            "answerList":"answerList",
+
+            /* by 王燕欣--end  */
+            /*表单组件*/
+            "formAssembly":"formAssembly",
+            /*文件上传*/
+            "uploadFile":"uploadFile",
+            /*by shn --begin*/
+            /*附件列表,1为资源管理员上传,2校长,3公示列表*/
+            "attachmentList/:type":"attachmentList",
+            /*参数分别为操作(0预览,1是添加,2修改,3查看);附件机构id;1为资源管理员,2校长,3公示列表*/
+            "attachment/:action/:attachmentid/:type":"attachment"
+            /*by shn --end*/
+        },
+        goIndex: function (requirePath, operationType, currentId, jsonObject) {
+            //菜单栏选中事件
+//            PublicUTIL.initMenu();
+            require([requirePath], function (view) {
+//      		var viewObj=(!currentId)?{model: {_opType:operationType}}:{model: {_opType:operationType,_currentId:currentId}};
+
+                var viewObj = {model: {_opType: operationType, _currentId: currentId, _jsonObject: jsonObject}};
+                var _view = new view(viewObj);
+                $('#content').html(_view.$el);
+                //设置中间内容区域屏幕的高度,中间内容区域层的class必须是page-content
+                _view.afterRender();
+
+            });
+        },
+        /* by 王燕欣--begin  */
+        /*wyx问卷dome*/
+        answerList:function(){
+            this.goIndex("pages/demo/answerList");
+        },
+        /*wyx问卷列表dome*/
+        questionnaireList:function(){
+            this.goIndex("pages/demo/questionnaireList");
+        },
+
+
+        /* by 王燕欣--end  */
+
+        /* by 文霞--begin  */
+        /*任务下发*/
+        dataNewTask:function(type,projectId){
+            this.goIndex("pages/demo/dataNewTask",type,projectId);
+        },
+        projectList1:function(){
+            this.goIndex("pages/demo/projectList");
+        },
+        /*项目列表--正式*/
+        projectList:function(){
+            this.goIndex("pages/project/projectList");
+        },
+        /*项目下发--正式(1是添加,2编辑,3查看)*/
+        projectDetail:function(type,projectId){
+            this.goIndex("pages/project/projectDetail",type,projectId);
+        },
+
+        //图表设置
+        ChartsSetting:function(){
+            this.goIndex("pages/demo/ChartsSetting");
+        },
+        //列表页
+        dataTable:function(){
+            this.goIndex("pages/demo/dataTable");
+        },
+        dataTable1:function(){
+            this.goIndex("pages/demo/dataTable1");
+        },
+        //附件上传
+        fileUpload:function(){
+            this.goIndex("pages/demo/fileUpload");
+        },
+        /* by 文霞--end  */
+
+        /*文件上传*/
+        uploadFile:function(){
+            this.goIndex("pages/demo/uploadFile");
+        },
+        /*表单组件*/
+        formAssembly:function(){
+            this.goIndex("pages/demo/formAssembly");
+        },
+
+        dataStatistics:function(orgId){
+            this.goIndex("pages/dataStatistics/dataStatistics",orgId)
+        },
+        progress:function(operationType, currentId, jsonObject){
+            this.goIndex("pages/progress/progess",operationType, currentId, jsonObject);
+        },
+        /*by shn --begin*/
+        attachmentList:function(type){
+            this.goIndex("pages/attachment/attachmentList",type);
+        },
+        attachment:function(action,attachmentid,type){
+            this.goIndex("pages/attachment/attachment",action,attachmentid,type);
+        }
+        /*by shn --end*/
+    })
+})

@@ -1,0 +1,9 @@
+1.登录
+url：http://101.200.231.203/QHPG/page/baseDataController/UserLogin
+入参：JSONPARAM: "{"username":"G642224200201042610","userpwd":"e10adc3949ba59abbe56e057f20f883e"}
+出参：{"resultnum":"0000","resultdata":{"userChildId":"","userChildName":"","userClassId":"087534bb5cee4031bb51daf30bd61ede","userClassName":"11班","userGradeId":"8cb51b5202ff481da3ac8f017f607a93","userGradeName":"七年级","userId":"00ace1bd0adc4fe89db3c73c33aa55cd","userName":"马博文","userRole":"学生","userSchoolId":"aff546e96362436f81bac5ca7ec3036d","userSchoolName":"隆德县第二中学","userSex":"0","userTeachClassId":""},"result":"成功","ragecount":"0"}
+
+2.获取我的问卷列表
+url:http://101.200.231.203/QHPG/page/wJController/GetUserWJList
+入参：{"userChildId":"","userChildName":"","userClassId":"087534bb5cee4031bb51daf30bd61ede","userClassName":"11班","userGradeId":"%E4%B8%83%E5%B9%B4%E7%BA%A7","userGradeName":"七年级","userId":"00ace1bd0adc4fe89db3c73c33aa55cd","userName":"马博文","userRole":"学生","userSchoolId":"aff546e96362436f81bac5ca7ec3036d","userSchoolName":"隆德县第二中学","userSex":"0","userTeachClassId":""}
+出参：{"resultnum":"0000","resultdata":[{"canyuduixiang":"学生","canyuxuexiaoid":"aff546e96362436f81bac5ca7ec3036d","jieshushijian":1493481600000,"kaishishijian":1492185600000,"nianjiid":"七年级","projectid":"0c313effb63a4d95bf29a3962c202ada","renwuid":"51e4e5b56579491498c7e00f4a80d515","userWJState":0,"wenjuanid":"e759b9fbb4f54d989c7692dafdf62305","wenjuanmingcheng":"初中生问卷","wjId":"e759b9fbb4f54d989c7692dafdf62305","wjName":"初中生问卷"}],"result":"成功","ragecount":"0"}

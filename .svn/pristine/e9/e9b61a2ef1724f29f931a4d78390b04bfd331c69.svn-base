@@ -1,0 +1,85 @@
+*{margin:0;padding:0;}
+html, body {font:normal 14px 'Microsoft YaHei';margin:0; padding:0;border:none;height:100%;width:100%;}
+body{overflow:hidden;}
+div,p,ul,li,form,input,h1,h2,h3,h4,h5,h6,dl,dt,dd,img{padding:0; margin:0;}
+input, label{vertical-align:middle}
+ol,ul,li {list-style:none;}
+a{ text-decoration:none!important;}
+.wrapper {width: 100%;background-color: #fff;height: 100%;}
+.topbar {height: 50px;width: 100%;background: #7a85a1;}
+.topbar p {padding: 17px 120px 0 36px;color: #fff;font-size: 22px;}
+.toububiaoqian {display: inline-block;width:300px;height:40px; background:url(../images/logo.png) no-repeat;vertical-align: middle;  }
+.xues{background-position:0px -5px !important; }
+.jz{background-position:0 -85px !important}
+.js{background-position:0 -165px !important}
+.xz{background-position:0 -245px !important}
+.jyj{ background-position:0 -325px !important}
+.help{display: inline-block; width:22px;height:22px; background:url(../images/bg_2.png) no-repeat;vertical-align: middle;background-position:0px -107px;float: right;margin: 9px 30px 0 0;}
+.helpap, .help:hover,.help:active{background-position:0px 0px;}
+.quit{display: inline-block;width:20px;height:22px;background:url(../images/bg_2.png) no-repeat; vertical-align: middle;background-position:-34px 0;float: right; margin-top: 9px;  }
+.quit:hover,.quit:active{background-position:-34px -107px; }
+.mianbox{ position: absolute;top:50px; bottom: 0;left: 0;right: 0;z-index:1;}
+.main_left{width:200px; background: #7a85a1; position: absolute;top:0;left:0;bottom:0;border-right: 1px solid #ebebeb;}
+.logowrap{position:absolute;padding:20px; }
+.toggle-menu {display: inline-block;background:url(../images/lable.png) no-repeat; background-position:0px -554px; width:20px;height:18px; }
+.scroll-pane {position: absolute;outline: none;margin-top: 0px;top: 0px;  left: 0px;  bottom: 35px;  right: 0;  overflow: hidden; }
+.jspDrag { background: #fff; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;  }
+.jspTrack { width: 10px; background: none; }
+.jspVerticalBar {display: none; width: 10px; padding-left: 1px; padding-right: 1px; background: #dad9d9; border-radius: 10px;-moz-border-radius: 10px; -webkit-border-radius: 10px; }
+.jspHorizontalBar {display: none; height: 10px;padding-top: 1px; padding-bottom: 1px;background: #dad9d9;  border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;  }
+.jspCorner {padding: 1px;  }
+.bg-info{background:url(../images/bg_1.png) no-repeat;}
+.xian{ width:100%; height:1px; position:absolute; bottom:26px  }
+ul, ol, li {list-style: none;}
+
+
+.scroll-pane ul li { margin: 1px 0;background: #8895b5; border-left:3px solid #fff;width: 232px; height: 40px;font-size: 14px;  }
+.scroll-pane ul li a {  display: block;line-height: 24px;  color: #fff;}
+.scroll-pane ul li a:hover.icon {background-position: 21px -219px !important; }
+.scroll-pane ul li a:hover.icon1 {background-position: 21px -334px!important; }
+.scroll-pane ul li a p, .person p {padding-left:20px; line-height:40px; font-family: "Arial";  }
+.scroll-pane  .current{background: #7a85a1;border-left:3px solid #f56f57; width:232px;  }
+.scroll-pane li.current a {color: #FFF !important;  }
+.scroll-pane li.current a p {color: #FFF !important;  }
+.scroll-pane ul li a:hover p {box-shadow: 0 0 1px #fff; position: relative; font-size: 14px; background-color: #7a85a1;}
+.scroll-pane ul  li:hover{background: #7a85a1; border-left:3px solid #4fc2b9;  }
+.scroll-pane ul  .data-this{background-color:#4fc3ba;color: #fff; }
+.person{ position:absolute;bottom:20px;border-top:1px solid #7a85a1;width:235px; height: 60px; line-height:60px;color:#7a85a1;background: url(../images/bg_2.png); background-position: -185px -36px;  }
+.person:hover p{ background: url(../images/bg_2.png) #7a85a1;  color:#fff !important; background-position: -115px -36px;  z-index:99;  }
+.person.current{  width:60px; background-position: -200px -36px; overflow:hidden;}
+.person.current:hover{background-position: -132px -36px;  }
+.footer{ width:100%;height:20px;background:#7a85a1; position:fixed;bottom:0; z-index:9;}
+.person-info{background:#fff;text-align:center; color: #676c74;  }
+.message{ position: absolute;top: 20px;left: 192px;display: inline-block;background:url(../images/bg_2.png) no-repeat; width: 20px; height:20px; background-position: -34px -31px;  color:#f56f57;  font-size:8px;  text-align: center;  line-height: 19px;font-family: arial; }
+.person-info img{ border:1px solid #c9c9c9; border-radius: 50%;width:76px;height:76px;margin-top: 15px;  }
+.name{ font-size:18px;color:#676c74; font-weight: normal;  padding:10px 0 0px 0; }
+.class,.school{  line-height:20px;  font: normal 14px 'Microsoft YaHei'; color: #676c74;padding:5px 0 2px 0;letter-spacing: 3px;  }
+.main_left.current{width:60px;  }
+.current .logoWrap {text-align: center; }
+.current .logo { display: none;}
+.current .person-info { visibility:hidden; height:200px;  }
+.current li { height: 56px; overflow: hidden;  }
+.current li a span {display: block;  float: left;  margin:15px 20px;  }
+.current .logowrap .toggle-menu {display: inline-block; background:url(../images/lable.png) no-repeat;  background-position:0px -570px;  width:20px;  height:18px;  }
+.current .scroll-pane{border:none; width:56px;}
+.current .jspPane{ width:56px !important; }
+.current .scroll-pane .current{width:58px !important;  }
+.current .current li { height: 56px;  overflow: hidden; }
+.current .scroll-pane ul li{width: 58px !important;  overflow: hidden;  }
+.current>.icon {background-position: 21px 20px;  }
+.current>.icon1{background-position: 21px -95px;  }
+.current  .scroll-pane ul li a:hover.icon1{background-position: 22px -95px;}
+.current>.icon2{background-position: 22px -220px;  }
+.current  .scroll-pane ul li a:hover.icon2{background-position: 17px -220px;}
+.current>.icon3{background-position: 15px -336px;  }
+.current  .scroll-pane ul li a:hover.icon3{background-position: 15px -336px;}
+.current>.icon4{background-position:21px -458px;  }
+.current .scroll-pane ul li a:hover.icon4{background-position: 15px -460px;}
+
+
+
+/*图标*/
+.questionnaireIcon{display: inline-block;width: 20px;height: 20px;background-image: url("../images/lable.png");background-repeat: no-repeat;background-position:0px -369px;position: relative;top: 5px;padding-right: 5px; }
+.myReportIcon{display: inline-block;width: 20px;height: 20px;background-image: url("../images/lable.png");background-repeat: no-repeat;background-position:0px -253px;position: relative;top: 5px;padding-right: 5px; }
+.publicityReportIcon{display: inline-block;width: 20px;height: 20px;background-image: url("../images/lable.png");background-repeat: no-repeat;background-position:0px -44px;position: relative;top: 5px;padding-right: 5px; }
+.dataPublicity{display: inline-block;width: 20px;height: 20px;background-image: url("../images/lable.png");background-repeat: no-repeat;background-position:0px -345px;position: relative;top: 5px;padding-right: 5px; }

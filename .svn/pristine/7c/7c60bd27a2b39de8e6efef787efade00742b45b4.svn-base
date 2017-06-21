@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style media="screen"></style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>举报</title>
+    <link href="../css/comon.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/tipoff.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .layui-input-block{width: 500px;}
+    </style>
+</head>
+<body>
+<!--举报信息层-->
+<div class="layui-main" id="addtipoff">
+    <div class="layui-form layui-form-pane">
+        <div class="detailsTitle">
+            <div class="layui-tab layui-tab-brief pageTitle" lay-filter="docDemoTabBrief ">
+                <ul class="layui-tab-title">
+                    <li class="layui-this"><p><span><i>我要举报</i></span></p></li>
+                </ul>
+                <div class="layui-tab-content"></div>
+            </div>
+        </div>
+        <div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">事件类别:</label>
+                    <div class="layui-input-block">
+                        <select class="layui-select" id="tipoff_type" name="tipoff_type">
+                            <option value="1002002002" score="5">免试就近入学</option>
+                            <option value="1002002003" score="5">复读生和重点班</option>
+                            <option value="1002003003" score="5">教师有偿补课</option>
+                            <option value="1004001001" score="5">教职工非正常上访</option>
+                            <option value="1004001002" score="5">大面积停课罢课</option>
+                            <option value="1007002001" score="5">隐瞒重大事情引发事故</option>
+                            <option value="1007002002" score="5">重大安全事故</option>
+                            <option value="1007002003" score="5">公共卫生突发事件</option>
+                            <option value="1007005" score="3">食品安全</option>
+                            <option value="1008001001" score="5">廉政与纪律问题</option>
+                            <option value="1008001002" score="5">师德师风问题</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">联系方式:</label>
+                    <div class="layui-input-block">
+                        <input type="text" autocomplete="off" class="layui-input" id="iphone" name="iphone">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">事件发生学校:</label>
+                    <div class="layui-input-block">
+                        <input type="text" autocomplete="off" class=" layui-input" id="tip_school_name" name="tip_school_name">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">事件发生时间:</label>
+                    <div class="layui-input-block">
+                        <input type="date"  autocomplete="off" class="layui-input" id="tip_time" name="tip_time">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">事件描述:</label>
+                    <div class="layui-input-block">
+                        <textarea class="layui-textarea" id="tip_content" name="tip_content"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item" style="text-align: center;">
+                <div class="layui-input-block">
+                    <button class="layui-btn " id="save" name="save" >确定</button>
+                    <button class="layui-btn layui-btn-disabled" style="margin-right: 46px" id="back" name="back">返回</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="../js/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
+<script type="text/javascript" src="../js/tipoffInfo.js"></script>
+</body>
+</html>

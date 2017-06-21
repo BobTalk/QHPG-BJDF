@@ -1,0 +1,96 @@
+/*
+ 2017-5-10 10:23:16
+ byx
+ 评估管理-附件模块的dao层
+ * */
+
+var mysql = require('mysql');
+var $conf = require('../../conf/db');
+var $util = require('../../util/util');
+var $writelog = require('../../libs/logHelper');
+var $sql = require('./attachmentSqlMapping');
+var $mysqlUtil = require('../../util/mysqlUtil');
+// 使用连接池，提升性能
+var pool = mysql.createPool($util.extend({}, $conf.mysql));
+
+module.exports = {
+    /*//获取附件结构列表*/
+    getAttachmentList: function (user_role, callback) {
+        pool.getConnection(function (err, connection) {
+            connection.query($sql.getAttachmentList, user_role, function (err, result) {
+                if (err != null) {
+                    $writelog.helper.writeErr("执行sql发生错误：" + sql + "/n 错误信息：" + err.stack);
+                    callback(err, result);
+                    return;
+                }
+                // 返回结果给service
+                callback(err, result);
+                // 释放连接
+                connection.release();
+            });
+        });
+    },
+    /*获取单个附件机构数据*/
+    getAttachmentByID: function (attachment_id, callback) {
+        pool.getConnection(function (err, connection) {
+            connection.query($sql.getAttachmentByID, attachment_id, function (err, result) {
+                if (err != null) {
+                    $writelog.helper.writeErr("执行sql发生错误：" + sql + "/n 错误信息：" + err.stack);
+                    callback(err, result);
+                    return;
+                }
+                // 返回结果给service
+                callback(err, result);
+                // 释放连接
+                connection.release();
+            });
+        });
+    },
+    /*附件上传数据保存*/
+    saveAttachment: function (saveAttachArr, callback) {
+        var sqls = [];
+        if ($util.isNull(saveAttachArr.id)) {
+            sqls.push($sql.insertAttachMent(saveAttachArr));
+        } else {
+            sqls.push($sql.updateAttachMent(saveAttachArr));
+        }
+        $mysqlUtil.queryArrSql(sqls, callback);
+    },
+    /*根据id获取已上传的附件结果*/
+    getAttachmentResultByID: function (id, callback) {
+        pool.getConnection(function (err, connection) {
+            connection.query($sql.getAttachmentResultByID, id, function (err, result) {
+                if (err != null) {
+                    $writelog.helper.writeErr("执行sql发生错误：" + sql + "/n 错误信息：" + err.stack);
+                    callback(err, result);
+                    return;
+                }
+                // 返回结果给service
+                callback(err, result);
+                // 释放连接
+                connection.release();
+            });
+        });
+    },
+    /*获取附件上传数据列表*/
+    getAttachmentResultList: function (type, stand_id, school_id, pagesize, pagenum, callback) {
+        var sql = $sql.getAttachmentResultList(type, stand_id, school_id, pagesize, pagenum);
+        $mysqlUtil.queryStrSql(sql, callback);
+    },
+    /*获取附件上传数据列表行数*/
+    getAttachmentResultListRows:function(type, stand_id, school_id, callback){
+        var sql = $sql.getAttachmentResultListRows(type, stand_id, school_id);
+        $mysqlUtil.queryStrSql(sql, callback);
+    },
+    /*修改附件数据状态*/
+    updateAttachmentState:function(state,id,callback){
+        $mysqlUtil.queryStrSql($sql.updateAttachmentState,[state,id], callback);
+    },
+    /*附件结果数据审批通过*/
+    submitAttachmentResult:function(state,id,stand_id,school_id,school_name,score,score_source,callback){
+        var sqls = [];
+        sqls.push($sql.updateAttachmentState);
+        sqls.push($sql.insertScoreResult);
+        $mysqlUtil.queryArrSql(sqls,[[state,id],[stand_id,school_id,school_name,score,score_source]],callback);
+    }
+};

@@ -1,0 +1,49 @@
+<div class="detailsTitle">
+    <div class="layui-tab layui-tab-brief pageTitle" lay-filter="docDemoTabBrief ">
+        <ul class="layui-tab-title">
+            <li class="layui-this"><p><span><i id="listTitle" name="listTitle">举报审批列表</i></span></p></li>
+        </ul>
+        <div class="layui-tab-content"></div>
+    </div>
+</div>
+<div class="selectCondition layui-form layui-form-pane">
+    <div class="layui-form-item">
+        <div class="selectSubmitArea">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 120px;">举报分类</label>
+                <div class="layui-input-inline">
+                    <select class="layui-select" id="tipoff_type" name="tipoff_type">
+                        <option value="" score="0">请选择事件类别</option>
+                        <option value="1002002002" score="5">免试就近入学</option>
+                        <option value="1002002003" score="5">复读生和重点班</option>
+                        <option value="1002003003" score="5">教师有偿补课</option>
+                        <option value="1004001001" score="5">教职工非正常上访</option>
+                        <option value="1004001002" score="5">大面积停课罢课</option>
+                        <option value="1007002001" score="5">隐瞒重大事情引发事故</option>
+                        <option value="1007002002" score="5">重大安全事故</option>
+                        <option value="1007002003" score="5">公共卫生突发事件</option>
+                        <option value="1007005" score="3">食品安全</option>
+                        <option value="1008001001" score="5">廉政与纪律问题</option>
+                        <option value="1008001002" score="5">师德师风问题</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline" id="schoolsearch" name="schoolsearch">
+                <label class="layui-form-label" style="width: 120px;">学校</label>
+                <div class="layui-input-inline">
+                    <select name="school" lay-filter="school" id="school">
+                        <option value="">请选择学校</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <a class="layui-btn mt3 mr10"  id="select" name="select">查询</a>
+                <a class="layui-btn mt3" id="addtipoff" name="addtipoff">我要举报</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dataTableWrapper">
+
+</div>
