@@ -1,5 +1,5 @@
 ﻿学习地址：http://www.alloyteam.com/2015/03/sexpressmysql/comment-page-1/?utm_source=tuicool&utm_medium=referral#comments
-/*baiyuxi 2017年3月29日 14:09:07*/
+/*2017年3月29日 14:09:07*/
 1. 目录解析：
     bin/www         程序启动文件，设置端口
     conf            数据库配置，描述数据库链接的基本信息
